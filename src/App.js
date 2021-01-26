@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import './App.css';
+import HeaderComponent from './Components/HeaderComponent'
+import UserComponent from './Components/UserComponent'
+import HomePage from './Components/HomePage'
+import AddUserComponent from './Components/AddUserComponent';
+import OrganizationComponent from './Components/OrganizationComponent';
+import AddOrganizationComponent from './Components/AddOrganizationComponent';
+import ViewUserComponent from './Components/ViewUserComponent';
+import ViewOrganizationComponent from './Components/ViewOrganizationComponent';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+       <HeaderComponent/>
+        <div className="container"> 
+          <Switch>
+            <Route path="/" exact component={HomePage}></Route>
+            <Route path="/userlist" component={UserComponent}></Route>
+            <Route path="/adduser" component={AddUserComponent}></Route>
+            <Route path="/viewuser/:id" component={ViewUserComponent}></Route>
+            <Route path="/organizationlist" component={OrganizationComponent}></Route>  
+            <Route path="/addorganization" component={AddOrganizationComponent}></Route>
+            <Route path="/vieworganization/:id" component={ViewOrganizationComponent}></Route>
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 }
