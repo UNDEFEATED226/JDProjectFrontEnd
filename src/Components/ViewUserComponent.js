@@ -50,7 +50,7 @@ class ViewUserComponent extends React.Component{
                 <h3 className="text-center">用户详情</h3>
                 <div className="card-body">
                     <div className="row">
-                        <label>id:</label>
+                        <label>ID:</label>
                         <div>{this.state.user.id}</div>
                     </div>
                     <div className="row">
@@ -70,7 +70,7 @@ class ViewUserComponent extends React.Component{
                         <div>{this.state.user.realname}</div>
                     </div>
                     <div className="row">
-                        <label>组织id:</label>
+                        <label>组织ID:</label>
                         <div>{this.state.user.orgid}</div>
                     </div>
                     <div className="row">
@@ -102,11 +102,11 @@ class ViewUserComponent extends React.Component{
                         <div>{this.state.user.userstatus}</div>
                     </div>
                     <div className="row">
-                        <label>用户分组id:</label>
+                        <label>用户分组ID:</label>
                         <div>{this.state.user.usergroupid}</div>
                     </div>
                     <div className="row">
-                        <label>租户id:</label>
+                        <label>租户ID:</label>
                         <div>{this.state.user.tenantid}</div>
                     </div>
                     <div className="row">

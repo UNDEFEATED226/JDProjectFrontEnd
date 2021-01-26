@@ -6,13 +6,27 @@ class ViewOrganizationComponent extends React.Component{
         super(props)
         this.state={
             id:this.props.match.params.id,
-            organization:{}
+            organization:{},
+            isdeleted:'',
+            ishavechild:''
         }
     }
 
     componentDidMount(){
         OrganizationService.findById(this.state.id).then(res => {
             this.setState({organization:res.data});
+            if(this.state.organization.isdeleted === 1){
+                this.setState({isdeleted:"已删除"});
+            }
+            if(this.state.organization.isdeleted === 0){
+                this.setState({isdeleted:"未删除"});
+            }
+            if(this.state.organization.ishavechild === 1){
+                this.setState({ishavechild:"存在子节点"});
+            }
+            if(this.state.organization.ishavechild === 0){
+                this.setState({ishavechild:"不存在子节点"});
+            }
         })
     }
     
@@ -21,42 +35,42 @@ class ViewOrganizationComponent extends React.Component{
             <div>
                 <br></br>
               <div className="card col-md-6 offset-md-3">
-                <h3 className="text-center">公司详情</h3>
+                <h3 className="text-center">组织详情</h3>
                 <div className="card-body">
                     <div className="row">
                         <label>id:</label>
                         <div>{this.state.organization.id}</div>
                     </div>
                     <div className="row">
-                        <label>公司名称:</label>
+                        <label>组织名称:</label>
                         <div>{this.state.organization.orgname}</div>
                     </div>
                     <div className="row">
-                        <label>母公司id:</label>
+                        <label>父级组织ID:</label>
                         <div>{this.state.organization.parentorgid}</div>
                     </div>
                     <div className="row">
-                        <label>公司等级:</label>
+                        <label>组织层级:</label>
                         <div>{this.state.organization.orglevel}</div>
                     </div>
                     <div className="row">
-                        <label>公司类别:</label>
+                        <label>组织类型ID:</label>
                         <div>{this.state.organization.orgtype}</div>
                     </div>
                     <div className="row">
-                        <label>公司类别名称:</label>
+                        <label>组织类型名称:</label>
                         <div>{this.state.organization.orgtypename}</div>
                     </div>
                     <div className="row">
-                        <label>org_catlog:</label>
+                        <label>组织种类:</label>
                         <div>{this.state.organization.orgcatlog}</div>
                     </div>
                     <div className="row">
-                        <label>base_org_code:</label>
+                        <label>基准组织编码:</label>
                         <div>{this.state.organization.baseorgcode}</div>
                     </div>
                     <div className="row">
-                        <label>租户id:</label>
+                        <label>租户ID:</label>
                         <div>{this.state.organization.tenantid}</div>
                     </div>
                     <div className="row">
@@ -68,16 +82,16 @@ class ViewOrganizationComponent extends React.Component{
                         <div>{this.state.organization.createtime}</div>
                     </div>
                     <div className="row">
-                        <label>是否删除:</label>
-                        <div>{this.state.organization.isdeleted}</div>
+                        <label>是否已删除:</label>
+                        <div>{this.state.isdeleted}</div>
                     </div>
                     <div className="row">
-                        <label>完整母公司id:</label>
+                        <label>路径:</label>
                         <div>{this.state.organization.fullparentid}</div>
                     </div>
                     <div className="row">
-                        <label>是否有子公司:</label>
-                    <div>{this.state.organization.ishavechild}</div>
+                        <label>是否有子节点:</label>
+                    <div>{this.state.ishavechild}</div>
                     </div>
                 </div>
               </div>

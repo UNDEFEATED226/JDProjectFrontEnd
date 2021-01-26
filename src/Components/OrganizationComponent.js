@@ -29,21 +29,21 @@ class OrganizationComponent extends React.Component{
         return(
             <div>
             <br></br>
-            <h1 className="text-center">公司列表</h1>
-            <button className="btn btn-primary" onClick={this.addOrganization}>添加公司</button>
+            <h1 className="text-center">组织列表</h1>
+            <button className="btn btn-primary" onClick={this.addOrganization}>添加组织</button>
             <div className="row">
             </div>
             <table className="table table-striped table-boarder"> 
                <thead>
                     <tr>
                       <th>id</th>  
-                      <th>公司名称</th>     
-                      <th>公司等级</th>  
-                      <th>公司类别</th>  
-                      <th>公司类别名称</th> 
-                      <th>org_catlog</th>  
-                      <th>base_org_code</th>  
-                      <th>租户id</th>  
+                      <th>组织名称</th>     
+                      <th>组织层级</th>  
+                      <th>组织类型ID</th>  
+                      <th>组织类型名称</th> 
+                      <th>组织种类</th>  
+                      <th>基准组织编码</th>  
+                      <th>租户ID</th>  
                       <th>操作</th>
                     </tr>
                     </thead>
@@ -61,7 +61,7 @@ class OrganizationComponent extends React.Component{
                                  <td>{organization.baseorgcode}</td>
                                  <td>{organization.tenantid}</td>
                                  <td>
-                                    <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-primary">查看公司详情</button>
+                                    <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-primary">查看组织详情</button>
                                  </td>
                              </tr>
                          )
