@@ -3,15 +3,15 @@ import axios from 'axios'
 class OrganizationService{
 
     findAllOrganization(){
-        return axios.get("http://localhost:8080/organization/findallorganization");
+        return axios.get("/organization/findallorganization");
     }
   
     findById(id){
-        return axios.get("http://localhost:8080/organization/findbyid?id="+id);
+        return axios.get("/organization/findbyid?id="+id);
     }
 
     addOrganization(organization){
-        return axios.post("http://localhost:8080/organization/addorganization",organization);
+        return axios.post("/organization/addorganization",organization);
     }
 }
 

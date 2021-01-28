@@ -3,15 +3,15 @@ import axios from 'axios'
 class UserService{
     
     findAllUser(){
-        return axios.get("http://localhost:8080/user/findalluser");
+        return axios.get("/user/findalluser");
     }
 
     findById(id){
-        return axios.get("http://localhost:8080/user/findbyid?id="+id);
+        return axios.get("/user/findbyid?id="+id);
     }
 
     addUser(user){
-        return axios.post("http://localhost:8080/user/adduser",user);
+        return axios.post("/user/adduser",user);
     }  
 }
 
