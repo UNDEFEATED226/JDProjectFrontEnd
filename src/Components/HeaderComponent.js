@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 class HeaderComponent extends React.Component{
    constructor(props){
@@ -10,17 +11,23 @@ class HeaderComponent extends React.Component{
    render(){
        return(
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a className="navbar-brand" href="http://localhost:3000">IOT Core 物管平台</a>
+        <Link to="" className="navbar-brand">
+         IOT Core 物管平台
+        </Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
+            <Link to="/userlist" className="nav-link">
+              <li className="nav-item">
+               用户管理
+              </li>
+            </Link>
+            <Link to="/organizationlist" className="nav-link">
             <li className="nav-item">
-              <a className="nav-link" href="http://localhost:3000/userlist">用户管理</a>
+              组织管理
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="http://localhost:3000/organizationlist">公司管理</a>
-            </li>
+            </Link>
           </ul>
         </div>
         </nav>
