@@ -12,6 +12,8 @@ class addUserComponent extends React.Component{
             loginnameformat:'',
             password:'',
             passwordformat:'',
+            passwordconfirm:'',
+            passwordconfirmformat:'',
             realname:'',
             realnameformat:'',
             orgid:'',
@@ -41,6 +43,7 @@ class addUserComponent extends React.Component{
         this.changeRealnameHandler=this.changeRealnameHandler.bind(this);
         this.changeLoginnameHandler=this.changeLoginnameHandler.bind(this);
         this.changePasswordHandler=this.changePasswordHandler.bind(this);
+        this.changePasswordconfirmHandler=this.changePasswordconfirmHandler.bind(this);
         this.changeOrgidHandler=this.changeOrgidHandler.bind(this);
         this.changeEmailHandler=this.changeEmailHandler.bind(this);
         this.changeSexHandler=this.changeSexHandler.bind(this);
@@ -69,6 +72,9 @@ class addUserComponent extends React.Component{
     changePasswordHandler=(event) =>{
         this.setState({password: event.target.value});
     }
+    changePasswordconfirmHandler=(event) =>{
+        this.setState({passwordconfirm:event.target.value});
+    }
     changeOrgidHandler=(event) =>{
         this.setState({orgid: event.target.value});
     }
@@ -85,7 +91,7 @@ class addUserComponent extends React.Component{
         this.setState({userstatus: event.target.value});
     }
     changeUsergroupidHandler=(event) =>{
-        this.setState({usergroupid: event.target.value});
+        this.setState({usergroupid:event.target.value});
    }
    changeTenantidHandler=(event) =>{
        this.setState({tenantid:event.target.value});
@@ -108,6 +114,7 @@ class addUserComponent extends React.Component{
     saveUser = (u) => {
         this.setState({loginnameformat:''});
         this.setState({passwordformat:''});
+        this.setState({passwordconfirmformat:''});
         this.setState({realnameformat:''});
         this.setState({orgidformat:''});
         this.setState({emailformat:''});
@@ -124,6 +131,10 @@ class addUserComponent extends React.Component{
             createtime:this.state.createtime,updatetime:this.state.updatetime,userstatus:this.state.userstatus,
             usergroupid:this.state.usergroupid,tenantid:this.state.tenantid,istenantadmin:this.state.istenantadmin,isforbidden:this.state.isforbidden,fullparentid:this.state.fullparentid
             ,mobile:this.state.mobile};
+            if(this.state.password !== this.state.passwordconfirm){
+                this.setState({passwordconfirmformat:"两次密码输入不一致,请重新输入"});
+                throw "Password confirmation failure!";
+            }   
             UserService.addUser(user).then(res => {
                 this.props.history.push("/userlist")}).catch(err =>{
                     if(this.state.loginname === ''||this.state.loginname.length>64){
@@ -159,6 +170,9 @@ class addUserComponent extends React.Component{
                     if(this.state.mobile.length>20){
                         this.setState({mobileformat:"手机号过长..."});
                     }
+                    if(this.state.password !== this.state.passwordconfirm){
+                        this.setState({passwordconfirmformat:"两次密码输入不一致,请重新输入"});
+                    }   
                 });
     }
 
@@ -184,6 +198,11 @@ class addUserComponent extends React.Component{
                         <label>登录密码:</label>
                         <input placeholder="请输入登录密码..." className="form-control" value={this.state.password} onChange={this.changePasswordHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.passwordformat}</div>
+                    </div>       
+                    <div className="form-group">
+                        <label>登录密码确认:</label>
+                        <input placeholder="请再次输入登录密码..." className="form-control" value={this.state.passwordconfirm} onChange={this.changePasswordconfirmHandler}/>
+                        <div style={{color:"#f44e3b"}}>{this.state.passwordconfirmformat}</div>
                     </div>       
                     <div className="form-group">
                         <label>名字:</label>
