@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.color-nav{
+  background:linear-gradient(to left,#30cfd0,#330867);
+}

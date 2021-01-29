@@ -29,22 +29,22 @@ class OrganizationComponent extends React.Component{
         return(
             <div>
             <br></br>
-            <h1 className="text-center">组织列表</h1>
-            <button className="btn btn-primary" onClick={this.addOrganization}>添加组织</button>
+            <h1 className="text-center font-weight-bold text-secondary">组织列表</h1>
+            <button className="btn btn-secondary text-white btn-lg font-weight-bold" onClick={this.addOrganization}>添加组织</button>
             <div className="row">
             </div>
             <table className="table table-striped table-boarder"> 
                <thead>
                     <tr>
-                      <th>id</th>  
-                      <th>组织名称</th>     
-                      <th>组织层级</th>  
-                      <th>组织类型ID</th>  
-                      <th>组织类型名称</th> 
-                      <th>组织种类</th>  
-                      <th>基准组织编码</th>  
-                      <th>租户ID</th>  
-                      <th>操作</th>
+                      <th className="text-secondary">id</th>  
+                      <th className="text-secondary">组织名称</th>     
+                      <th className="text-secondary">组织层级</th>  
+                      <th className="text-secondary">组织类型ID</th>  
+                      <th className="text-secondary">组织类型名称</th> 
+                      <th className="text-secondary">组织种类</th>  
+                      <th className="text-secondary">基准组织编码</th>  
+                      <th className="text-secondary">租户ID</th>  
+                      <th className="text-secondary">操作</th>
                     </tr>
                     </thead>
                  <tbody>
@@ -61,7 +61,7 @@ class OrganizationComponent extends React.Component{
                                  <td>{organization.baseorgcode}</td>
                                  <td>{organization.tenantid}</td>
                                  <td>
-                                    <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-primary">查看组织详情</button>
+                                    <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-secondary font-weight-bold">查看组织详情</button>
                                  </td>
                              </tr>
                          )
