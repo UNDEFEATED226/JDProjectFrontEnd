@@ -1,4 +1,5 @@
 import React from 'react'
+import OrganizationService from '../Service/OrganizationService';
 import UserService from '../Service/UserService';
 
 class addUserComponent extends React.Component{
@@ -34,7 +35,8 @@ class addUserComponent extends React.Component{
             fullparentid:'',
             fullparentidformat:'',
             mobile:'',
-            mobileformat:''
+            mobileformat:'',
+            organizations:[]
         }
         this.changeRealnameHandler=this.changeRealnameHandler.bind(this);
         this.changeLoginnameHandler=this.changeLoginnameHandler.bind(this);
@@ -52,6 +54,11 @@ class addUserComponent extends React.Component{
         this.changeIsforbiddenHandler=this.changeIsforbiddenHandler.bind(this);
         this.changeIsdeletedHandler=this.changeIsdeletedHandler.bind(this);
         this.saveUser=this.saveUser.bind(this);
+    }
+    componentDidMount(){
+        OrganizationService.findAllOrganization().then((response) =>{
+            this.setState({organizations:response.data});
+        })
     }
     changeRealnameHandler=(event)=>{
         this.setState({realname:event.target.value});
@@ -128,8 +135,8 @@ class addUserComponent extends React.Component{
                     if(this.state.realname.length>64){
                         this.setState({realnameformat:"名字过长..."});
                     }
-                    if(this.state.orgid.length>256){
-                        this.setState({orgidformat:"组织ID过长..."});
+                    if(this.state.orgid === ''){
+                        this.setState({orgidformat:"请选择组织,如无可选项请先添加组织..."});
                     }
                     if(this.state.email.length>64){
                         this.setState({emailformat:"邮箱过长..."});
@@ -184,16 +191,23 @@ class addUserComponent extends React.Component{
                         <div style={{color:"#f44e3b"}}>{this.state.realnameformat}</div>
                     </div>
                     <div className="form-group">
-                        <label>组织ID:</label>
-                        <input placeholder="请输入组织ID..." className="form-control" value={this.state.orgid} onChange={this.changeOrgidHandler}/>
-                        <div style={{color:"#f44e3b"}}>{this.state.orgidformat}</div>
+                    <label>组织ID:</label>
+                    <select className="form-control" onClick={this.changeOrgidHandler}>
+                        <option defaultValue value=''>请选择组织</option>
+                       {
+                             this.state.organizations.map(
+                                organization =>
+                             <option value={organization.id}>{organization.orgname}</option>
+                             )
+                     }
+                    </select>
+                    <div style={{color:"#f44e3b"}}>{this.state.orgidformat}</div>
                     </div>
                     <div className="form-group">
                         <label>是否已删除:</label>
                         <select className="form-control" onClick={this.changeIsdeletedHandler}>
-                        <option defaultValue value=''>请选择是否已删除</option>
+                        <option defaultValue value="0">否</option>
                         <option value="1">是</option>
-                        <option value="0">否</option>
                         </select>
                     </div>
                     <div className="form-group">

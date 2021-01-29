@@ -30,8 +30,6 @@ class UserComponent extends React.Component{
         <br></br>
         <h1 className="text-center font-weight-bold">用户列表</h1>
         <button className="btn btn-primary" onClick={this.addUser}>添加用户</button>
-        <div className="row">
-        </div>
         <table className="table table-striped table-boarder"> 
            <thead className="text-justify">
                 <tr>

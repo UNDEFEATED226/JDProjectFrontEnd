@@ -88,8 +88,8 @@ class AddOrganizationComponent extends React.Component{
         OrganizationService.addOrganization(organization).then(res => {
             this.props.history.push("/organizationlist");
         }).catch(err=>{
-            if(this.state.orgname.length>64){
-                this.setState({orgnameformat:"组织名称过长..."});
+            if(this.state.orgname === '' || this.state.orgname.length>64){
+                this.setState({orgnameformat:"组织名称为空或组织名称过长..."});
             }
             if(this.state.orgtypename.length>64){
                 this.setState({orgtypenameformat:"组织类型名称过长..."});
@@ -165,9 +165,8 @@ class AddOrganizationComponent extends React.Component{
                     <div className="form-group">
                         <label>是否已删除:</label>
                         <select className="form-control" onClick={this.changeIsdeletedHandler}>
-                            <option defaultValue value=''>请选择是否已删除</option>
-                            <option value="1">是</option>
-                            <option value="0">否</option>
+                            <option defaultValue value="0">否</option>
+                            <option value="1">是</option>                          
                         </select>
                         
                     </div>

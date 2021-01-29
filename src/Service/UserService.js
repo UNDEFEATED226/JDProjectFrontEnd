@@ -11,7 +11,7 @@ class UserService{
     }
 
     addUser(user){
-        return axios.post("/user/adduser",user);
+        return axios.post("/user/adduser/",user);
     }  
 }
 
