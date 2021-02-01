@@ -1,4 +1,5 @@
 import React from 'react'
+import OrganizationService from '../Service/OrganizationService';
 import UserService from '../Service/UserService'
 
 class UserComponent extends React.Component{
@@ -22,6 +23,9 @@ class UserComponent extends React.Component{
 
     viewUser(id){
         this.props.history.push(`/viewuser/${id}`);
+    }
+    editUser(id){
+        this.props.history.push(`/edituser/${id}`);
     }
 
     render(){
@@ -52,11 +56,12 @@ class UserComponent extends React.Component{
                              <td>{user.userid}</td>
                              <td>{user.loginname}</td>
                              <td>{user.realname}</td>
-                             <td>{user.orgid}</td>
+                             <td>{OrganizationService.findById(user.orgid).orgname}</td>
                              <td>{user.email}</td>
                              <td>{user.mobile}</td>
                              <td>
-                                <button className="btn btn-secondary font-weight-bold" onClick={() => this.viewUser(user.id)}>查看用户详情</button>
+                                <button className="btn btn-secondary font-weight-bold" onClick={() => this.viewUser(user.id)}>查看详情</button>
+                                <button className="btn btn-secondary font-weight-bold" onClick={() => this.editUser(user.id)} style={{marginLeft:"10px"}}>编辑资料</button>
                              </td>
                          </tr>
                      )

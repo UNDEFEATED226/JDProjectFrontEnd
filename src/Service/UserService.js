@@ -13,6 +13,10 @@ class UserService{
     addUser(user){
         return axios.post("/user/adduser/",user);
     }  
+
+    editUser(id,user){
+        return axios.post("/user/edituser/"+id,user);
+    }
 }
 
 export default new UserService()
