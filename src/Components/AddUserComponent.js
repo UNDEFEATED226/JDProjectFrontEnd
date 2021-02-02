@@ -102,11 +102,9 @@ class addUserComponent extends React.Component{
     render(){
         return(
             <div>
-            <div className="container">
-                <div className="row">
                  <div className="card col-md-6 offset-md-3 offset-md-3" style={{marginTop:"5%"}}>
                   <br></br>
-                   <h3 className="text-center text-secondary font-weight-bold">添加新用户</h3>
+                   <h3 className="card-header text-center text-secondary font-weight-bold">添加新用户</h3>
                     <div className="card-body">
                     <form>
                     <div className="form-group">
@@ -143,8 +141,6 @@ class addUserComponent extends React.Component{
                          </div>
                     </div>
                 </div>
-            </div>
-        </div>
         )
     }
 }

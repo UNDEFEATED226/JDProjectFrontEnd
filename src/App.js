@@ -10,6 +10,7 @@ import ViewUserComponent from './Components/ViewUserComponent';
 import ViewOrganizationComponent from './Components/ViewOrganizationComponent';
 import RoleComponent from './Components/RoleComponent';
 import EditUserComponent from './Components/EditUserComponent';
+import EditOrganizationComponent from './Components/EditOrganizationComponent';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/viewuser/:id" component={ViewUserComponent}></Route>
             <Route path="/organizationlist" component={OrganizationComponent}></Route>  
             <Route path="/addorganization" component={AddOrganizationComponent}></Route>
+            <Route path="/editorganization/:id" component={EditOrganizationComponent}></Route>
             <Route path="/vieworganization/:id" component={ViewOrganizationComponent}></Route>
             <Route path="/rolelist" component={RoleComponent}></Route>
           </Switch>

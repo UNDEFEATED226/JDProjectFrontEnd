@@ -21,6 +21,10 @@ class OrganizationComponent extends React.Component{
         this.props.history.push("/addorganization");
     }
 
+    editOrganization(id){
+        this.props.history.push(`/editorganization/${id}`)
+    }
+
     viewOrganization(id){
         this.props.history.push(`/vieworganization/${id}`);
     }
@@ -61,7 +65,8 @@ class OrganizationComponent extends React.Component{
                                  <td>{organization.baseorgcode}</td>
                                  <td>{organization.tenantid}</td>
                                  <td>
-                                    <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-secondary font-weight-bold">查看组织详情</button>
+                                    <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-secondary font-weight-bold">查看详情</button>
+                                    <button  onClick={() => this.editOrganization(organization.id)} className="btn btn-secondary font-weight-bold" style={{marginLeft:"15px"}}>编辑资料</button>
                                  </td>
                              </tr>
                          )

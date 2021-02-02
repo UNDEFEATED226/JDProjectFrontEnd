@@ -1,5 +1,4 @@
 import React from 'react'
-import OrganizationService from '../Service/OrganizationService';
 import UserService from '../Service/UserService'
 
 class UserComponent extends React.Component{
@@ -38,10 +37,9 @@ class UserComponent extends React.Component{
            <thead className="text-justify">
                 <tr>
                  <th  className="text-secondary">id</th>
-                  <th  className="text-secondary">用户编号</th>
                   <th  className="text-secondary">登录用户名</th>  
                   <th  className="text-secondary">名字</th>  
-                  <th  className="text-secondary">组织id</th> 
+                  <th  className="text-secondary">组织名称</th> 
                   <th  className="text-secondary">邮箱</th>  
                   <th  className="text-secondary">手机号</th> 
                   <th  className="text-secondary">操作</th>
@@ -53,10 +51,9 @@ class UserComponent extends React.Component{
                          user =>
                          <tr key= {user.id}>         
                              <td>{user.id}</td>
-                             <td>{user.userid}</td>
                              <td>{user.loginname}</td>
                              <td>{user.realname}</td>
-                             <td>{OrganizationService.findById(user.orgid).orgname}</td>
+                             <td>{user.orgid}</td>
                              <td>{user.email}</td>
                              <td>{user.mobile}</td>
                              <td>
@@ -64,7 +61,7 @@ class UserComponent extends React.Component{
                                 <button className="btn btn-secondary font-weight-bold" onClick={() => this.editUser(user.id)} style={{marginLeft:"10px"}}>编辑资料</button>
                              </td>
                          </tr>
-                     )
+                     )  
                  }
              </tbody>
         </table>

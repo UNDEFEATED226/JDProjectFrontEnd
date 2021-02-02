@@ -45,8 +45,8 @@ class AddOrganizationComponent extends React.Component{
         OrganizationService.addOrganization(organization).then(res => {
             this.props.history.push("/organizationlist");
         }).catch(err=>{
-            if(this.state.orgname === '' || this.state.orgname.length>64){
-                this.setState({orgnameformat:"组织名称为空或组织名称过长..."});
+            if(this.state.orgname.length>64){
+                this.setState({orgnameformat:"组织名称过长..."});
             }
         })
     }

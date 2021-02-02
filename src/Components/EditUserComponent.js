@@ -36,6 +36,21 @@ class EditUserComponent extends React.Component{
             isforbidden:'',
             organizations:[]
         }
+        this.changeLoginnameHandler=this.changeLoginnameHandler.bind(this);
+        this.changePasswordHandler=this.changePasswordHandler.bind(this);
+        this.changeRealnameHandler=this.changeRealnameHandler.bind(this);
+        this.changeOrgidHandler=this.changeOrgidHandler.bind(this);
+        this.changeEmailHandler=this.changeEmailHandler.bind(this);
+        this.changeSexHandler=this.changeSexHandler.bind(this);
+        this.changeCommentHandler=this.changeCommentHandler.bind(this);
+        this.changeUserstatusHandler=this.changeUserstatusHandler.bind(this);
+        this.changeUsergroupidHandler=this.changeUsergroupidHandler.bind(this);
+        this.changeFullparentidHandler=this.changeFullparentidHandler.bind(this);
+        this.changeMobileHandler=this.changeMobileHandler.bind(this);
+        this.changeIsdeletedHandler=this.changeIsdeletedHandler.bind(this);
+        this.changeIstenantadminHandler=this.changeIstenantadminHandler.bind(this);
+        this.changeIsforbiddenHandler=this.changeIsforbiddenHandler.bind(this);
+        this.editUser=this.editUser.bind(this)
     }
     
     componentDidMount(){
@@ -111,6 +126,7 @@ class EditUserComponent extends React.Component{
     }
 
     editUser=(u)=>{
+        u.preventDefault();
         this.setState({loginnameformat:''});
         this.setState({passwordformat:''});
         this.setState({realnameformat:''});
@@ -120,7 +136,6 @@ class EditUserComponent extends React.Component{
         this.setState({usergroupidformat:''});
         this.setState({fullparentidformat:''});
         this.setState({mobileformat:''});
-        u.preventDefault();
         let user= {id:this.state.id,userid:this.state.userid,loginname:this.state.loginname,
             password:this.state.password,realname:this.state.realname,orgid:this.state.orgid,
             email:this.state.email,sex:this.state.sex,comment:this.state.comment,
@@ -192,7 +207,7 @@ class EditUserComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">组织:</label>
-                        <select className="form-control" onClick={this.changeOrgidHandler}>
+                        <select className="form-control" onChange={this.changeOrgidHandler}>
                         <option defaultValue value={this.state.orgid}>请选择组织:</option>
                         {
                             this.state.organizations.map(
@@ -209,7 +224,7 @@ class EditUserComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">性别:</label>
-                        <select className="form-control" onClick={this.changeSexHandler}>
+                        <select className="form-control" onChange={this.changeSexHandler}>
                             <option defaultValue value={this.state.sex}>请选择性别</option>
                             <option value="1">男</option>
                             <option value="0">女</option>
@@ -242,7 +257,7 @@ class EditUserComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">是否已删除</label>
-                        <select className="form-control" onClick={this.changeIsdeletedHandler}>
+                        <select className="form-control" onChange={this.changeIsdeletedHandler}>
                             <option defaultValue value={this.state.isdeleted}>请选择是否已删除</option>
                             <option value="1">是</option>
                             <option value="0">否</option>
@@ -250,7 +265,7 @@ class EditUserComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">是否为租户管理员</label>
-                        <select className="form-control" onClick={this.changeIstenantadminHandler}>
+                        <select className="form-control" onChange={this.changeIstenantadminHandler}>
                             <option defaultValue value={this.state.istenantadmin}>请选择是否为租户管理员</option>
                             <option value="1">是</option>
                             <option value="0">否</option>
@@ -258,7 +273,7 @@ class EditUserComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">是否被禁用</label>
-                        <select className="form-control" onClick={this.changeIsforbiddenHandler}>
+                        <select className="form-control" onChange={this.changeIsforbiddenHandler}>
                             <option defaultValue value={this.state.isforbidden}>请选择是否被禁用</option>
                             <option value="1">是</option>
                             <option value="0">否</option>
