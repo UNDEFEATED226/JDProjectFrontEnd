@@ -1,0 +1,26 @@
+import axios from 'axios'
+
+class ResourceService{
+
+    findAllResource(){
+        return axios.get("/resource/findallresource");
+    }
+
+    resourceMenu(resourcetypeid){
+        return axios.get("/resource/resourcemenu?resourcetypeid="+resourcetypeid);
+    }
+
+    findById(id){
+        return axios.get("/resource/findbyid?id="+id);
+    }
+
+    deleteResource(id){
+        return axios.get("/resource/deleteresource?id="+id);
+    }
+
+    editResource(id,resource){
+        return axios.post("/resource/editresource/"+id,resource);
+    }
+}
+
+export default new ResourceService()

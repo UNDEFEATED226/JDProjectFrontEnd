@@ -1,7 +1,6 @@
 import React from 'react'
 import OrganizationService from '../Service/OrganizationService';
 import UserService from '../Service/UserService'
-import OrganizationComponent from './OrganizationComponent';
 
 class EditUserComponent extends React.Component{
     constructor(props){
@@ -154,7 +153,7 @@ class EditUserComponent extends React.Component{
             if(this.state.realname!=null && this.state.realname!=='' && this.state.realname.length>64){
                 this.setState({realnameformat:"名字过长..."});
             }
-            var pattern= /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+            var pattern= /^([a-zA-Z0-9]+[_]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
             var strEmail=pattern.test(this.state.email);
             if(this.state.email!=null && this.state.email!=='' && (this.state.email.length>64||!strEmail)){
                 this.setState({emailformat:"邮箱过长或格式不正确..."});

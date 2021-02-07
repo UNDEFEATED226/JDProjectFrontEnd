@@ -8,6 +8,9 @@ class UserComponent extends React.Component{
             users:[]
         }
         this.addUser=this.addUser.bind(this);
+        this.viewUser=this.viewUser.bind(this);
+        this.editUser=this.editUser.bind(this);
+        this.deleteUser=this.deleteUser.bind(this);
     }
     
     componentDidMount(){
@@ -25,6 +28,12 @@ class UserComponent extends React.Component{
     }
     editUser(id){
         this.props.history.push(`/edituser/${id}`);
+    }
+
+    deleteUser(id){
+        UserService.deleteUser(id).then(res =>{
+            this.setState({users:this.state.users.filter(user => user.id!==id)});
+        })
     }
 
     render(){
@@ -59,6 +68,7 @@ class UserComponent extends React.Component{
                              <td>
                                 <button className="btn btn-secondary font-weight-bold" onClick={() => this.viewUser(user.id)}>查看详情</button>
                                 <button className="btn btn-secondary font-weight-bold" onClick={() => this.editUser(user.id)} style={{marginLeft:"10px"}}>编辑资料</button>
+                                <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteUser(user.id)} style={{marginLeft:"10px"}}>删除</button>
                              </td>
                          </tr>
                      )  

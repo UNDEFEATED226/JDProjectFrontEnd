@@ -9,6 +9,8 @@ class OrganizationComponent extends React.Component{
         }
         this.addOrganization=this.addOrganization.bind(this);
         this.viewOrganization=this.viewOrganization.bind(this);
+        this.editOrganization=this.editOrganization.bind(this);
+        this.deleteOrganization=this.deleteOrganization.bind(this);
     }
 
     componentDidMount(){
@@ -27,6 +29,12 @@ class OrganizationComponent extends React.Component{
 
     viewOrganization(id){
         this.props.history.push(`/vieworganization/${id}`);
+    }
+
+    deleteOrganization(id){
+        OrganizationService.deleteOrganization(id).then(res=>{
+            this.setState({organizations:this.state.organizations.filter(organization => organization.id!==id)});
+        })
     }
 
     render(){
@@ -66,7 +74,8 @@ class OrganizationComponent extends React.Component{
                                  <td>{organization.tenantid}</td>
                                  <td>
                                     <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-secondary font-weight-bold">查看详情</button>
-                                    <button  onClick={() => this.editOrganization(organization.id)} className="btn btn-secondary font-weight-bold" style={{marginLeft:"15px"}}>编辑资料</button>
+                                    <button  onClick={() => this.editOrganization(organization.id)} className="btn btn-secondary font-weight-bold" style={{marginLeft:"10px"}}>编辑资料</button>
+                                    <button  onClick={() => this.deleteOrganization(organization.id)} className="btn btn-danger font-weight-bold" style={{marginLeft:"10px"}}>删除</button>
                                  </td>
                              </tr>
                          )

@@ -11,25 +11,56 @@ class HeaderComponent extends React.Component{
    render(){
        return(
         <nav className="navbar navbar-expand-lg navbar-light color-nav">
-        <Link to="" className="navbar-brand font-weight-bold text-white">
+        <Link to="/" className="navbar-brand font-weight-bold text-white">
          IOT Core 物管平台
         </Link>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
-            <Link to="/userlist" className="nav-link font-weight-bold text-white">
-              <li className="nav-item">
-               用户管理
-              </li>
-            </Link>
-            <Link to="/organizationlist" className="nav-link font-weight-bold text-white">
             <li className="nav-item">
-              组织管理
-            </li>
+            <Link to="/userlist" className="nav-link font-weight-bold text-white">
+               用户管理
             </Link>
+            </li>
+            <li className="nav-item">
+            <Link to="/organizationlist" className="nav-link font-weight-bold text-white">
+              组织管理
+              </Link>
+            </li>
+            <li className="nav-item">
+            <Link to="/resourcelist" className="nav-link font-weight-bold text-white">            
+              资源管理
+            </Link>
+            </li>
+            <li className="nav-item">
+            <Link to="/iotmenu" className="nav-link font-weight-bold text-white">            
+              iotmenu
+            </Link>
+            </li>
+            <li className="nav-item">
+            <Link to="/iotapi" className="nav-link font-weight-bold text-white">            
+              iotapi
+            </Link>
+            </li>
+            <li className="nav-item">
+            <Link to="/emenu" className="nav-link font-weight-bold text-white">            
+              emenu
+            </Link>
+            </li>
+            <li className="nav-item">
+            <Link to="/eapi" className="nav-link font-weight-bold text-white">            
+              eapi
+            </Link>
+            </li>
+            <li className="nav-item">
+            <Link to="/govmenu" className="nav-link font-weight-bold text-white">            
+              govmenu
+            </Link>
+            </li>
+            <li className="nav-item">
+            <Link to="/govapi" className="nav-link font-weight-bold text-white">            
+              govapi
+            </Link>
+            </li>
           </ul>
-        </div>
         </nav>
        )
    }

@@ -17,6 +17,10 @@ class OrganizationService{
     editOrganization(id,organization){
         return axios.post("/organization/editorganization/"+id,organization);
     }
+
+    deleteOrganization(id){
+        return axios.get("/organization/deleteorganization?id="+id);
+    }
 }
 
 export default new OrganizationService()

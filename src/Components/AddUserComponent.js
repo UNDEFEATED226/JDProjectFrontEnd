@@ -6,38 +6,14 @@ class addUserComponent extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            id:'',
-            userid:'',
             loginname:'',
             loginnameformat:'',
             password:'',
             passwordformat:'',
             passwordconfirm:'',
             passwordconfirmformat:'',
-            realname:'',
-            realnameformat:'',
             orgid:'',
             orgidformat:'',
-            isdeleted:'',
-            email:'',
-            emailformat:'',
-            sex:'',
-            comment:'',
-            commentformat:'',
-            createtime:'',
-            updatetime:'',
-            userstatus:'',
-            userstatusformat:'',
-            usergroupid:'',
-            usergroupidformat:'',
-            tenantid:'',
-            tenantidformat:'',
-            istenantadmin:'',
-            isforbidden:'',
-            fullparentid:'',
-            fullparentidformat:'',
-            mobile:'',
-            mobileformat:'',
             organizations:[]
         }
         this.changeLoginnameHandler=this.changeLoginnameHandler.bind(this);
@@ -69,12 +45,12 @@ class addUserComponent extends React.Component{
         this.setState({passwordconfirmformat:''});
         this.setState({orgidformat:''});
         u.preventDefault();
-        let user = {id:this.state.id,userid:this.state.userid,loginname:this.state.loginname,
-            password:this.state.password,realname:this.state.realname,orgid:this.state.orgid,
-            isdeleted:this.state.isdeleted,email:this.state.email,sex:this.state.sex,comment:this.state.comment,
-            createtime:this.state.createtime,updatetime:this.state.updatetime,userstatus:this.state.userstatus,
-            usergroupid:this.state.usergroupid,tenantid:this.state.tenantid,istenantadmin:this.state.istenantadmin,isforbidden:this.state.isforbidden,fullparentid:this.state.fullparentid
-            ,mobile:this.state.mobile};
+        let user = {id:'',userid:'',loginname:this.state.loginname,
+            password:this.state.password,realname:'',orgid:this.state.orgid,
+            isdeleted:0,email:'',sex:'',comment:'',
+            createtime:'',updatetime:'',userstatus:'',
+            usergroupid:'',tenantid:'',istenantadmin:0,isforbidden:0,fullparentid:''
+            ,mobile:''};
             if(this.state.password !== this.state.passwordconfirm){
                 this.setState({passwordconfirmformat:"两次密码输入不一致,请重新输入"});
                 throw new Error("Password confirmation failure!");

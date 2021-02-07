@@ -17,6 +17,10 @@ class UserService{
     editUser(id,user){
         return axios.post("/user/edituser/"+id,user);
     }
+
+    deleteUser(id){
+        return axios.get("/user/deleteuser?id="+id);
+    }
 }
 
 export default new UserService()

@@ -5,28 +5,8 @@ class AddOrganizationComponent extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            id:'',
             orgname:'',
-            orgnameformat:'',
-            parentorgid:'',
-            parentorgidformat:'',
-            orglevel:'',
-            orglevelformat:'',
-            orgtype:'',
-            orgtypeformat:'',
-            orgtypename:'',
-            orgtypenameformat:'',
-            orgcatlog:'',
-            orgcatlogformat:'',
-            baseorgcode:'',
-            baseorgcodeformat:'',
-            tenantid:'',
-            updatetime:'',
-            createtime:'',
-            isdeleted:'',
-            fullparentid:'',
-            fullparentidformat:'',
-            ishavechild:''          
+            orgnameformat:''    
         }
         this.changeOrgnameHandler=this.changeOrgnameHandler.bind(this);
         this.saveOrganzation=this.saveOrganzation.bind(this);
@@ -38,10 +18,10 @@ class AddOrganizationComponent extends React.Component{
     saveOrganzation = (o) => {
         this.setState({orgnameformat:''});
         o.preventDefault();
-        let organization = {id:this.state.id,orgname:this.state.orgname,parentorgid:this.state.parentorgid,
-        orglevel:this.state.orglevel,orgtype:this.state.orgtype,orgtypename:this.state.orgtypename,orgcatlog:this.state.orgcatlog,
-        baseorgcode:this.state.baseorgcode,tenantid:this.state.tenantid,updatetime:this.state.updatetime,createtime:this.state.createtime,
-        isdeleted:this.state.isdeleted,fullparentid:this.state.fullparentid,ishavechild:this.state.ishavechild};
+        let organization = {id:'',orgname:this.state.orgname,parentorgid:'',
+        orglevel:'',orgtype:'',orgtypename:'',orgcatlog:'',
+        baseorgcode:'',tenantid:'',updatetime:'',createtime:'',
+        isdeleted:0,fullparentid:'',ishavechild:''};
         OrganizationService.addOrganization(organization).then(res => {
             this.props.history.push("/organizationlist");
         }).catch(err=>{
