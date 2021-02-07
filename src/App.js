@@ -28,6 +28,9 @@ import EditRoleComponent from './RoleComponents/EditRoleComponent';
 import AuthComponent from './AuthComponents/AuthComponent';
 import AddAuthComponent from './AuthComponents/AddAuthComponent';
 import EditAuthComponent from './AuthComponents/EditAuthComponent';
+import TenantComponent from './TenantComponents.js/TenantComponent';
+import AddTenantComponent from './TenantComponents.js/AddTenantComponent';
+import EditTenantComponent from './TenantComponents.js/EditTenantComponent';
 
 function App() {
   return (
@@ -63,6 +66,9 @@ function App() {
             <Route path="/authlist" component={AuthComponent}></Route>
             <Route path="/addauth" component={AddAuthComponent}></Route>
             <Route path="/editauth/:id" component={EditAuthComponent}></Route>
+            <Route path="/tenantlist" component={TenantComponent}></Route>
+            <Route path="/addtenant" component={AddTenantComponent}></Route>
+            <Route path="/edittenant/:id" component={EditTenantComponent}></Route>
           </Switch>
         </div>
       </Router>

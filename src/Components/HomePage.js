@@ -34,6 +34,12 @@ class HomePage extends React.Component{
                     <h2 >权限列表</h2>
                     </Link>
                     </li>
+                    <br></br>
+                    <li>
+                    <Link to="/tenantlist">            
+                    <h2 >租户列表</h2>
+                    </Link>
+                    </li>
                     </ul>
                 </div>
             </div>
