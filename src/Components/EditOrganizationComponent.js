@@ -97,14 +97,16 @@ class EditOrganizationComponent extends React.Component{
     }
     editOrganization=(o)=>{
         o.preventDefault();
-        this.setState({orgnameformat:''});
-        this.setState({parentorgidformat:''});
-        this.setState({orglevelformat:''});
-        this.setState({orgtypeformat:''});
-        this.setState({orgtypenameformat:''});
-        this.setState({orgcatlogformat:''});
-        this.setState({baseorgcodeformat:''});
-        this.setState({fullparentidformat:''});
+        this.setState({
+            orgnameformat:'',
+            parentorgidformat:'',
+            orglevelformat:'',
+            orgtypeformat:'',
+            orgtypenameformat:'',
+            orgcatlogformat:'',
+            baseorgcodeformat:'',
+            fullparentidformat:''
+        });
         let organization= {id:this.state.id,orgname:this.state.orgname,parentorgid:this.state.parentorgid,
         orglevel:this.state.orglevel,orgtype:this.state.orgtype,orgtypename:this.state.orgtypename,orgcatlog:this.state.orgcatlog,
         baseorgcode:this.state.baseorgcode,tenantid:this.state.tenantid,updatetime:this.state.updatetime,createtime:this.state.createtime,

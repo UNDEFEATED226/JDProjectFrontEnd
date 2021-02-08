@@ -46,9 +46,11 @@ class EditTenantComponent extends React.Component{
 
     editTenant=(t)=>{
         t.preventDefault();
-        this.setState({nameformat:''});
-        this.setState({businessassignmentformat:''});
-        this.setState({adminuseridformat:''});
+        this.setState({
+            nameformat:'',
+            businessassignmentformat:'',
+            adminuseridformat:''
+        });
         let tenant= {id:this.state.id,name:this.state.name,businessassignment:this.state.businessassignment,
         isdeleted:this.state.isdeleted,createtime:this.state.createtime,updatetime:'',adminuserid:this.state.adminuserid};
         TenantService.editTenant(this.state.id,tenant).then(res =>{

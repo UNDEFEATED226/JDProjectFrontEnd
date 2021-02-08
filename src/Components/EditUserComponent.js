@@ -126,15 +126,17 @@ class EditUserComponent extends React.Component{
 
     editUser=(u)=>{
         u.preventDefault();
-        this.setState({loginnameformat:''});
-        this.setState({passwordformat:''});
-        this.setState({realnameformat:''});
-        this.setState({emailformat:''});
-        this.setState({commentformat:''});
-        this.setState({userstatusformat:''});
-        this.setState({usergroupidformat:''});
-        this.setState({fullparentidformat:''});
-        this.setState({mobileformat:''});
+        this.setState({
+            loginnameformat:'',
+            passwordformat:'',
+            realnameformat:'',
+            emailformat:'',
+            commentformat:'',
+            userstatusformat:'',
+            usergroupidformat:'',
+            fullparentidformat:'',
+            mobileformat:''
+        });
         let user= {id:this.state.id,userid:this.state.userid,loginname:this.state.loginname,
             password:this.state.password,realname:this.state.realname,orgid:this.state.orgid,
             email:this.state.email,sex:this.state.sex,comment:this.state.comment,

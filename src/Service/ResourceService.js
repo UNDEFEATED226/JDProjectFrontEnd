@@ -14,6 +14,10 @@ class ResourceService{
         return axios.get("/resource/findbyid?id="+id);
     }
 
+    addResource(resource){
+        return axios.post("/resource/addresource",resource);
+    }
+
     deleteResource(id){
         return axios.get("/resource/deleteresource?id="+id);
     }

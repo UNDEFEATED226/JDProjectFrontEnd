@@ -31,6 +31,7 @@ import EditAuthComponent from './AuthComponents/EditAuthComponent';
 import TenantComponent from './TenantComponents.js/TenantComponent';
 import AddTenantComponent from './TenantComponents.js/AddTenantComponent';
 import EditTenantComponent from './TenantComponents.js/EditTenantComponent';
+import AddResourceComponent from './ResourceComponents/AddResourceComponent';
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
             <Route path="/eapi" component={eApiComponent}></Route>
             <Route path="/govmenu" component={govMenuComponent}></Route>
             <Route path="/govapi" component={govApiComponent}></Route>
+            <Route path="/addresource" component={AddResourceComponent}></Route>
             <Route path="/editresource/:id" component={EditResourceComponent}></Route>
             <Route path="/viewresource/:id" component={ViewResourceComponent}></Route>
             <Route path="/rolelist" component={RoleComponent}></Route>

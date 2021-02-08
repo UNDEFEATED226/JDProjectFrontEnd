@@ -1,5 +1,6 @@
 import React from 'react'
 import OrganizationService from '../Service/OrganizationService'
+import TenantService from '../Service/TenantService'
 
 class ViewOrganizationComponent extends React.Component{
     constructor(props){
@@ -7,8 +8,10 @@ class ViewOrganizationComponent extends React.Component{
         this.state={
             id:this.props.match.params.id,
             organization:{},
+            tenant:{},
             isdeleted:'',
-            ishavechild:''
+            ishavechild:'',
+            tenantname:''
         }
     }
 
@@ -27,7 +30,15 @@ class ViewOrganizationComponent extends React.Component{
             if(this.state.organization.ishavechild === 0){
                 this.setState({ishavechild:"不存在子节点"});
             }
-        })
+            if(this.state.organization.tenantid!=null && this.state.organization.tenantid!==''){
+                TenantService.findById(this.state.organization.tenantid).then(res=>{
+                    this.setState({tenant:res.data});
+                    this.setState({tenantname:this.state.tenant.name});
+                })
+            }else{
+                this.setState({tenantname:''});
+            }   
+        });
     }
     
     render(){
@@ -69,8 +80,8 @@ class ViewOrganizationComponent extends React.Component{
                         <div>{this.state.organization.baseorgcode}</div>
                     </div>
                     <div className="row">
-                        <label>租户ID:</label>
-                        <div>{this.state.organization.tenantid}</div>
+                        <label>租户:</label>
+                        <div>{this.state.tenantname}</div>
                     </div>
                     <div className="row">
                         <label>更新时间:</label>

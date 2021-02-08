@@ -40,11 +40,13 @@ class addUserComponent extends React.Component{
         this.setState({orgid: event.target.value});
     }
     saveUser = (u) => {
-        this.setState({loginnameformat:''});
-        this.setState({passwordformat:''});
-        this.setState({passwordconfirmformat:''});
-        this.setState({orgidformat:''});
         u.preventDefault();
+        this.setState({
+            loginnameformat:'',
+            passwordformat:'',
+            passwordconfirmformat:'',
+            orgidformat:''
+        });
         let user = {id:'',userid:'',loginname:this.state.loginname,
             password:this.state.password,realname:'',orgid:this.state.orgid,
             isdeleted:0,email:'',sex:'',comment:'',

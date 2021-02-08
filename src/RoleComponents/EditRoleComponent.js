@@ -74,11 +74,13 @@ class EditRoleComponent extends React.Component{
 
     editRole=(r)=>{
         r.preventDefault();
-        this.setState({rolenameformat:''});
-        this.setState({roletypeformat:''});
-        this.setState({descriptionformat:''});
-        this.setState({tenantidformat:''});
-        this.setState({rolecodeformat:''});
+        this.setState({
+            rolenameformat:'',
+            roletypeformat:'',
+            descriptionformat:'',
+            tenantidformat:'',
+            rolecodeformat:''
+        });
         let role= {id:this.state.id,rolename:this.state.rolename,roletype:this.state.roletype,
         description:this.state.description,tenantid:this.state.tenantid,isdeleted:this.state.isdeleted,
         issystem:this.state.issystem,createtime:this.state.createtime,updatetime:this.state.updatetime,

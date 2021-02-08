@@ -10,6 +10,7 @@ class ResourceComponent extends React.Component{
         this.viewResource=this.viewResource.bind(this);
         this.editResource=this.editResource.bind(this);
         this.deleteResource=this.deleteResource.bind(this);
+        this.addResource=this.addResource.bind(this);
     }
     
     componentDidMount(){
@@ -30,12 +31,16 @@ class ResourceComponent extends React.Component{
         this.props.history.push(`/deleteresource/${id}`);
     }
 
+    addResource(){
+        this.props.history.push("/addresource");
+    }
 
     render(){
        return(
         <div>
         <br></br>
         <h1 className="text-center font-weight-bold text-secondary">资源列表</h1>
+        <button className="btn btn-lg btn-secondary text-white font-weight-bold" onClick={this.addResource}>添加资源</button>
         <table className="table table-striped table-boarder"> 
            <thead className="text-justify">
                 <tr>
