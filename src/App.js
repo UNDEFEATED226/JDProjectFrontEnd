@@ -1,15 +1,15 @@
 import {HashRouter as Router,Switch,Route} from 'react-router-dom'
 import './App.css';
 import HeaderComponent from './Components/HeaderComponent'
-import UserComponent from './Components/UserComponent'
+import UserComponent from './UserComponents.js/UserComponent'
 import HomePage from './Components/HomePage'
-import AddUserComponent from './Components/AddUserComponent';
-import OrganizationComponent from './Components/OrganizationComponent';
-import AddOrganizationComponent from './Components/AddOrganizationComponent';
-import ViewUserComponent from './Components/ViewUserComponent';
-import ViewOrganizationComponent from './Components/ViewOrganizationComponent';
-import EditUserComponent from './Components/EditUserComponent';
-import EditOrganizationComponent from './Components/EditOrganizationComponent';
+import AddUserComponent from './UserComponents.js/AddUserComponent';
+import OrganizationComponent from './OrganizationComponents.js/OrganizationComponent';
+import AddOrganizationComponent from './OrganizationComponents.js/AddOrganizationComponent';
+import ViewUserComponent from './UserComponents.js/ViewUserComponent';
+import ViewOrganizationComponent from './OrganizationComponents.js/ViewOrganizationComponent';
+import EditUserComponent from './UserComponents.js/EditUserComponent';
+import EditOrganizationComponent from './OrganizationComponents.js/EditOrganizationComponent';
 import ResourceComponent from './ResourceComponents/ResourceComponent';
 import EditResourceComponent from './ResourceComponents/EditResourceComponent';
 import ViewResourceComponent from './ResourceComponents/ViewResourceComponent';
@@ -32,6 +32,8 @@ import TenantComponent from './TenantComponents.js/TenantComponent';
 import AddTenantComponent from './TenantComponents.js/AddTenantComponent';
 import EditTenantComponent from './TenantComponents.js/EditTenantComponent';
 import AddResourceComponent from './ResourceComponents/AddResourceComponent';
+import UserRoleComponent from './UserRoleComponents.js/UserRoleComponent';
+import AddUserRoleComponent from './UserRoleComponents.js/AddUserRoleComponent';
 
 function App() {
   return (
@@ -71,6 +73,8 @@ function App() {
             <Route path="/tenantlist" component={TenantComponent}></Route>
             <Route path="/addtenant" component={AddTenantComponent}></Route>
             <Route path="/edittenant/:id" component={EditTenantComponent}></Route>
+            <Route path="/userrolelist" component={UserRoleComponent}></Route>
+            <Route path="/adduserrole" component={AddUserRoleComponent}></Route>
           </Switch>
         </div>
       </Router>

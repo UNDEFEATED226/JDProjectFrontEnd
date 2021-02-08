@@ -51,6 +51,9 @@ class HeaderComponent extends React.Component{
             <li className="nav-item font-weight-bold">
               <Link to="/tenantlist" className="text-white nav-link">租户管理</Link>
             </li>
+            <li className="nav-item font-weight-bold">
+              <Link to="/userrolelist" className="text-white nav-link">用户角色管理</Link>
+            </li>
           </ul>
         </nav>
        )

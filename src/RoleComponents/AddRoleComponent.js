@@ -53,7 +53,7 @@ class AddRoleComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">角色类型:</label>
-                        <select className="form-control" onChange={this.changeRoletypeHandler}>
+                        <select className="form-control" value={this.state.roletype} onChange={this.changeRoletypeHandler}>
                             <option defaultValue value=''>请选择角色类型</option>
                             <option value='1'>组织角色</option>
                             <option value='2'>业务角色</option>

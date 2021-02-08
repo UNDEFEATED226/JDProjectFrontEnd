@@ -30,17 +30,21 @@ class AddAuthComponent extends React.Component{
     }
     saveAuth=(a) =>{
         a.preventDefault();
+        var bool = false;
         this.setState({
             authnameformat:'',
             residformat:''
         });
         if(this.state.resid===''){
             this.setState({residformat:"请选择资源ID..."});
-            throw new Error("RESID IS EMPTY");
+            bool=true;
         }
         if(this.state.authname===''){
             this.setState({authnameformat:"请选择权限名称..."});
-            throw new Error("AUTHNAME IS EMPTY");
+            bool=true;
+        }
+        if(bool){
+            throw new Error("FORMAT ERROR");
         }
         let auth = {id:'',authname:this.state.authname,description:'',resid:this.state.resid,isdeleted:0,
         createtime:'',updatetime:''};
@@ -76,6 +80,7 @@ class AddAuthComponent extends React.Component{
                    <div className="form-group">
                         <label className="text-secondary font-weight-bold">权限:</label>
                         <select className="form-control" value={this.state.authname} onChange={this.changeAuthnameHandler}>
+                            <option defaultValue value=''>请选择权限:</option>
                             <option value='API_INVOKE_PERMISSION'>API调用权限</option>
                             <option value='CANCEL_JOB_PERMISSION'>取消任务</option>
                             <option value='CREATE_PERMISSION'>创建(CREATE_PERMISSION)</option>
@@ -91,6 +96,7 @@ class AddAuthComponent extends React.Component{
                             <option value='STOP_PERMISSION'>停止规则</option>
                             <option value='UPDATE_PERMISSION'>修改</option>
                         </select>
+                        <div style={{color:"#f44e3b"}}>{this.state.authnameformat}</div>    
                     </div>
                     <button className="btn btn-success" onClick={this.saveAuth}>保存</button>
                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"15px"}}>取消</button>

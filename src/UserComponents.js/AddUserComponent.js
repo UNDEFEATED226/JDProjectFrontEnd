@@ -79,10 +79,9 @@ class addUserComponent extends React.Component{
     }
     render(){
         return(
-            <div>
-                 <div className="card col-md-6 offset-md-3 offset-md-3" style={{marginTop:"5%"}}>
-                  <br></br>
-                   <h3 className="card-header text-center text-secondary font-weight-bold">添加新用户</h3>
+            <div style={{marginTop:"5%"}}>
+                 <div className="card bg-light mx-auto" style={{width:"45rem"}}>
+                   <h3 className="card-header text-center text-secondary font-weight-bold">添加用户</h3>
                     <div className="card-body">
                     <form>
                     <div className="form-group">

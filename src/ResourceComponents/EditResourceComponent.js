@@ -7,16 +7,22 @@ class EditResourceComponent extends React.Component{
         this.state={
             id:this.props.match.params.id,
             modulename:'',
+            modulenameformat:'',
             rescode:'',
             resname:'',
+            resnameformat:'',
             resuri:'',
+            resuriformat:'',
             restypeid:'',
             parentid:'',
             level:'',
+            levelformat:'',
             haschild:'',
             description:'',
+            descriptionformat:'',
             routecode:'',
             fullname:'',
+            fullnameformat:'',
             selected:'',
             isshow:'',
             title:'',
@@ -59,6 +65,14 @@ class EditResourceComponent extends React.Component{
 
     editResource=(r)=>{
         r.preventDefault();
+        this.setState({
+            modulenameformat:'',
+            resnameformat:'',
+            resuriformat:'',
+            levelformat:'',
+            descriptionformat:'',
+            fullnameformat:''
+        });
         let Resource= {id:this.state.id,modulename:this.state.modulename,rescode:this.state.rescode,
             resname:this.state.resname,resuri:this.state.resuri,restypeid:this.state.restypeid,
             parentid:this.state.parentid,level:this.state.level,haschild:this.state.haschild,
@@ -67,6 +81,25 @@ class EditResourceComponent extends React.Component{
             ,isdeleted:this.state.isdeleted,createtime:this.state.createtime,updatetime:this.state.updatetime};
         ResourceService.editResource(this.state.id,Resource).then(res =>{
             this.props.history.push("/resourcelist");
+        }).catch(err =>{
+            if(this.state.modulename!=null&&this.state.modulename!==''&&this.state.modulename.length>64){
+                this.setState({modulenameformat:"所属模块过长..."});
+            }
+            if(this.state.resname!=null&&this.state.resname!==''&&this.state.resname.length>512){
+                this.setState({resnameformat:"资源名称过长..."});
+            }
+            if(this.state.resuri!=null&&this.state.resuri!==''&&this.state.resuri.length>512){
+                this.setState({resuriformat:"资源对应URI..."});
+            }
+            if(this.state.level!=null&&this.state.level!==''&&(isNaN(this.state.level)||this.state.level.length>11)){
+                this.setState({levelformat:"资源层级为长度至多为11位的纯数字..."});
+            }
+            if(this.state.description!=null&&this.state.description!==''&&this.state.description.length>256){
+                this.setState({descriptionformat:"描述信息过长..."});
+            }
+            if(this.state.fullname!=null&&this.state.fullname!==''&&this.state.fullname.length>255){
+                this.setState({fullnameformat:"资源完整名称..."});
+            }
         });
     }
 
@@ -101,27 +134,33 @@ class EditResourceComponent extends React.Component{
                    <form>
                    <div className="form-group">
                         <label className="text-secondary font-weight-bold">所属模块:</label>
-                        <input placeholder="请输入所属模块..." className="form-control" value={this.state.modulename} onChange={this.changeModulenameHandler}/>     
+                        <input placeholder="请输入所属模块..." className="form-control" value={this.state.modulename} onChange={this.changeModulenameHandler}/>   
+                        <div style={{color:"#f44e3b"}}>{this.state.modulenameformat}</div>      
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">资源名称:</label>
                         <input placeholder="请输入资源名称..." className="form-control" value={this.state.resname} onChange={this.changeResnameHandler}/>
+                        <div style={{color:"#f44e3b"}}>{this.state.resnameformat}</div>    
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">资源对应URI:</label>
                         <input placeholder="请输入资源对应URI..." className="form-control" value={this.state.resuri} onChange={this.changeResuriHandler}/>
+                        <div style={{color:"#f44e3b"}}>{this.state.resuriformat}</div>    
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">资源层级:</label>
                         <input placeholder="请输入资源层级..." className="form-control" value={this.state.level} onChange={this.changeLevelHandler}/>
+                        <div style={{color:"#f44e3b"}}>{this.state.levelformat}</div>    
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">描述信息:</label>
                         <input placeholder="请输入描述信息..." className="form-control" value={this.state.description} onChange={this.changeDescriptionHandler}/>
+                        <div style={{color:"#f44e3b"}}>{this.state.descriptionformat}</div>    
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">资源完整名称:</label>
                         <input placeholder="请输入资源完整名称..." className="form-control" value={this.state.fullname} onChange={this.changeFullnameHandler}/>
+                        <div style={{color:"#f44e3b"}}>{this.state.fullnameformat}</div>    
                     </div>
                     <button className="btn btn-success" onClick={this.editResource}>保存</button>
                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"15px"}}>取消</button>

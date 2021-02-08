@@ -49,12 +49,9 @@ class AddOrganizationComponent extends React.Component{
     }
     render(){
         return(
-            <div>
-            <div className="container">
-                <div className="row">
-                    <div className="card col-md-6 offset-md-3 offset-md-3" style={{marginTop:"10%"}}>
-                        <br></br>
-                         <h3 className="text-center text-secondary font-weight-bold">添加新组织</h3>
+            <div style={{marginTop:"5%"}}>
+                    <div className="card mx-auto bg-light" style={{width:"45rem"}}>            
+                         <h3 className="card-header text-center text-secondary font-weight-bold">添加新组织</h3>
                          <div className="card-body">
                          <form>
                          <div className="form-group">
@@ -80,8 +77,6 @@ class AddOrganizationComponent extends React.Component{
                          </div>
                     </div>
                 </div>
-            </div>
-        </div>
         )
     }
 }

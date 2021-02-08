@@ -48,9 +48,11 @@ class EditAuthComponent extends React.Component{
 
     editAuth=(e)=>{
         e.preventDefault();
-        this.setState({authnameformat:''});
-        this.setState({descriptionformat:''});
-        this.setState({residformat:''});
+        this.setState({
+            authnameformat:'',
+            descriptionformat:'',
+            residformat:''
+        });
         let auth = {id:this.state.id,authname:this.state.authname,description:this.state.description,
             resid:this.state.resid,isdeleted:this.state.isdeleted,createtime:this.state.createtime,updatetime:''
         };
