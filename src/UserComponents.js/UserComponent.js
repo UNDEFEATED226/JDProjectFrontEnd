@@ -41,7 +41,7 @@ class UserComponent extends React.Component{
         <div>
         <br></br>
         <h1 className="text-center font-weight-bold text-secondary">用户列表</h1>
-        <button className="btn btn-secondary btn-lg text-white font-weight-bold" onClick={this.addUser}>添加用户</button>
+        <button className="btn btn-primary btn-lg text-white font-weight-bold" onClick={this.addUser}>添加用户</button>
         <table className="table table-striped table-boarder"> 
            <thead className="text-justify">
                 <tr>
@@ -66,8 +66,8 @@ class UserComponent extends React.Component{
                              <td>{user.email}</td>
                              <td>{user.mobile}</td>
                              <td>
-                                <button className="btn btn-secondary font-weight-bold" onClick={() => this.viewUser(user.id)}>查看详情</button>
-                                <button className="btn btn-secondary font-weight-bold" onClick={() => this.editUser(user.id)} style={{marginLeft:"10px"}}>编辑资料</button>
+                                <button className="btn btn-info font-weight-bold" onClick={() => this.viewUser(user.id)}>查看详情</button>
+                                <button className="btn btn-success font-weight-bold" onClick={() => this.editUser(user.id)} style={{marginLeft:"10px"}}>编辑资料</button>
                                 <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteUser(user.id)} style={{marginLeft:"10px"}}>删除</button>
                              </td>
                          </tr>

@@ -1,5 +1,6 @@
 import React from 'react'
 import AuthService from "../Service/AuthService"
+import ResourceService from '../Service/ResourceService';
 
 class EditAuthComponent extends React.Component{
     constructor(props){
@@ -7,13 +8,12 @@ class EditAuthComponent extends React.Component{
         this.state={
             id:this.props.match.params.id,
             authname:'',
-            authnameformat:'',
             description:'',
             descriptionformat:'',
             resid:'',
-            residformat:'',
             isdeleted:'',
-            createtime:''
+            createtime:'',
+            resources:[]
         }
         this.changeAuthnameHandler=this.changeAuthnameHandler.bind(this);
         this.changeDescriptionHandler=this.changeDescriptionHandler.bind(this);
@@ -32,6 +32,9 @@ class EditAuthComponent extends React.Component{
                 createtime:auth.createtime
             });
         });
+        ResourceService.findAllResource().then(res=>{
+            this.setState({resources:res.data});
+        });
     }
 
     changeAuthnameHandler=(event)=>{
@@ -48,10 +51,8 @@ class EditAuthComponent extends React.Component{
 
     editAuth=(e)=>{
         e.preventDefault();
-        this.setState({
-            authnameformat:'',
+        this.setState({  
             descriptionformat:'',
-            residformat:''
         });
         let auth = {id:this.state.id,authname:this.state.authname,description:this.state.description,
             resid:this.state.resid,isdeleted:this.state.isdeleted,createtime:this.state.createtime,updatetime:''
@@ -59,14 +60,8 @@ class EditAuthComponent extends React.Component{
         AuthService.editAuth(this.state.id,auth).then(res => {
             this.props.history.push("/authlist");
         }).catch(err =>{
-            if(this.state.authname!=null && this.state.authname.length>64){
-                this.setState({authnameformat:"权限名称过长..."});
-            }
             if(this.state.description != null && this.state.description.length>256){
                 this.setState({descriptionformat:"描述信息过长..."});
-            }
-            if(this.state.resid!=null && (isNaN(this.state.resid)||this.state.resid.length>11)){
-                this.setState({residformat:"资源ID为至多11位的纯数字..."});
             }
         })
     }
@@ -83,9 +78,24 @@ class EditAuthComponent extends React.Component{
                   <div className="card-body">
                    <form>
                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">权限名称:</label>
-                        <input placeholder="请输入权限名称..." className="form-control" value={this.state.authname} onChange={this.changeAuthnameHandler}/>    
-                        <div style={{color:"#f44e3b"}}>{this.state.authnameformat}</div>     
+                        <label className="text-secondary font-weight-bold">权限:</label>
+                        <select className="form-control" onChange={this.changeAuthnameHandler}>
+                            <option defaultValue value={this.state.authname}>请选择权限</option>
+                            <option value='API_INVOKE_PERMISSION'>API调用权限</option>
+                            <option value='CANCEL_JOB_PERMISSION'>取消任务</option>
+                            <option value='CREATE_PERMISSION'>创建(CREATE_PERMISSION)</option>
+                            <option value='DELETE_PERMISSION'>删除</option>
+                            <option value='DOWNLOAD_CERTIFICATE_PERMISSION'>下载证书</option>
+                            <option value='POST_MESSAGE'>创建(POST_MESSAGE)</option>
+                            <option value='PUBLIC_PERMISSION'>发布</option>
+                            <option value='QUERY_LOG_PERMISSION'>查看日志</option>
+                            <option value='QUERY_PERMISSION'>查询</option>
+                            <option value='START_JOB_PERMISSION'>启动任务</option>
+                            <option value='START_PERMISSION'>运行规则</option>
+                            <option value='STOP_JOB_PERMISSION'>暂停任务</option>
+                            <option value='STOP_PERMISSION'>停止规则</option>
+                            <option value='UPDATE_PERMISSION'>修改</option>
+                        </select>
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">描述信息:</label>
@@ -93,9 +103,16 @@ class EditAuthComponent extends React.Component{
                         <div style={{color:"#f44e3b"}}>{this.state.descriptionformat}</div>    
                     </div>
                     <div className="form-group">
-                        <label className="text-secondary font-weight-bold">资源ID:</label>
-                        <input placeholder="请输入资源ID..." className="form-control" value={this.state.resid} onChange={this.changeResidHandler}/>
-                        <div style={{color:"#f44e3b"}}>{this.state.residformat}</div>    
+                        <label className="text-secondary font-weight-bold">资源:</label>
+                        <select className="form-control" onChange={this.changeResidHandler}>
+                            <option defaultValue value={this.state.resid}>请选择资源</option>
+                            {
+                                this.state.resources.map(
+                                    resource =>
+                                    <option value={resource.id}>{resource.resname}</option>
+                                )
+                            }
+                        </select>
                     </div>
                     <button className="btn btn-success" onClick={this.editAuth}>保存</button>
                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"15px"}}>取消</button>

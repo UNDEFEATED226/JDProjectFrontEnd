@@ -1,5 +1,6 @@
 import React from 'react'
 import RoleService from '../Service/RoleService'
+import TenantService from '../Service/TenantService';
 
 class EditRoleComponent extends React.Component{
     constructor(props){
@@ -21,7 +22,8 @@ class EditRoleComponent extends React.Component{
             rolecode:'',
             rolecodeformat:'',
             isforbidden:'',
-            isdefault:''
+            isdefault:'',
+            tenants:[]
         }
         
     }
@@ -41,6 +43,9 @@ class EditRoleComponent extends React.Component{
                isforbidden:role.isforbidden,
                isdefault:role.isdefault
            });
+        });
+        TenantService.findAllTenant().then(res=>{
+            this.setState({tenants:res.data});
         });
     }
 
@@ -133,9 +138,16 @@ class EditRoleComponent extends React.Component{
                         <div style={{color:"#f44e3b"}}>{this.state.descriptionformat}</div>    
                     </div>
                     <div className="form-group">
-                        <label className="text-secondary font-weight-bold">租户ID:</label>
-                        <input placeholder="请输入租户ID..." className="form-control" value={this.state.tenantid} onChange={this.changeTenantidHandler}/>
-                        <div style={{color:"#f44e3b"}}>{this.state.tenantidformat}</div>    
+                        <label className="text-secondary font-weight-bold">租户:</label>
+                        <select className="form-control" onChange={this.changeTenantidHandler}>
+                            <option defaultValue value={this.state.tenantid}>请选择租户</option>
+                            {
+                                this.state.tenants.map(
+                                    tenant => 
+                                    <option value={tenant.id}>{tenant.name}</option>
+                                )
+                            }
+                        </select>
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">是否已删除:</label>

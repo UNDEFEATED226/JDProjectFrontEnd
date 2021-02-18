@@ -101,7 +101,7 @@ class addUserComponent extends React.Component{
                     </div>       
                     <div className="form-group">
                     <label className="text-secondary font-weight-bold">组织:</label>
-                    <select className="form-control" onClick={this.changeOrgidHandler}>
+                    <select className="form-control" value={this.state.orgid} onChange={this.changeOrgidHandler}>
                         <option className="text-secondary" defaultValue value=''>请选择组织</option>
                        {
                              this.state.organizations.map(

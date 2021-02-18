@@ -28,7 +28,9 @@ class ResourceComponent extends React.Component{
     }
 
     deleteResource(id){
-        this.props.history.push(`/deleteresource/${id}`);
+        ResourceService.deleteResource(id).then(res=>{
+            this.setState({resources:this.state.resources.filter(r => r.id!==id)});
+        });
     }
 
     addResource(){
@@ -40,7 +42,7 @@ class ResourceComponent extends React.Component{
         <div>
         <br></br>
         <h1 className="text-center font-weight-bold text-secondary">资源列表</h1>
-        <button className="btn btn-lg btn-secondary text-white font-weight-bold" onClick={this.addResource}>添加资源</button>
+        <button className="btn btn-lg btn-primary text-white font-weight-bold" onClick={this.addResource}>添加资源</button>
         <table className="table table-striped table-boarder"> 
            <thead className="text-justify">
                 <tr>
@@ -63,8 +65,9 @@ class ResourceComponent extends React.Component{
                              <td>{resource.createtime}</td>
                              <td>{resource.updatetime}</td>
                              <td>
-                                <button className="btn btn-secondary font-weight-bold" onClick={() => this.viewResource(resource.id)}>查看详情</button>
-                                <button className="btn btn-secondary font-weight-bold" onClick={() => this.editResource(resource.id)} style={{marginLeft:"10px"}}>编辑资料</button>
+                                <button className="btn btn-info font-weight-bold" onClick={() => this.viewResource(resource.id)}>查看详情</button>
+                                <button className="btn btn-success font-weight-bold" onClick={() => this.editResource(resource.id)} style={{marginLeft:"10px"}}>编辑资料</button>
+                                <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteResource(resource.id)} style={{marginLeft:"10px"}}>删除</button>
                              </td>
                          </tr>
                      )  

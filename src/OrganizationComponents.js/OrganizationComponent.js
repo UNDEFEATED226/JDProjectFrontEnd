@@ -42,7 +42,7 @@ class OrganizationComponent extends React.Component{
             <div>
             <br></br>
             <h1 className="text-center font-weight-bold text-secondary">组织列表</h1>
-            <button className="btn btn-secondary text-white btn-lg font-weight-bold" onClick={this.addOrganization}>添加组织</button>
+            <button className="btn btn-primary text-white btn-lg font-weight-bold" onClick={this.addOrganization}>添加组织</button>
             <div className="row">
             </div>
             <table className="table table-striped table-boarder"> 
@@ -73,8 +73,8 @@ class OrganizationComponent extends React.Component{
                                  <td>{organization.baseorgcode}</td>
                                  <td>{organization.tenantid}</td>
                                  <td>
-                                    <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-secondary font-weight-bold">查看详情</button>
-                                    <button  onClick={() => this.editOrganization(organization.id)} className="btn btn-secondary font-weight-bold" style={{marginLeft:"10px"}}>编辑资料</button>
+                                    <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-info font-weight-bold">查看详情</button>
+                                    <button  onClick={() => this.editOrganization(organization.id)} className="btn btn-success font-weight-bold" style={{marginLeft:"10px"}}>编辑资料</button>
                                     <button  onClick={() => this.deleteOrganization(organization.id)} className="btn btn-danger font-weight-bold" style={{marginLeft:"10px"}}>删除</button>
                                  </td>
                              </tr>

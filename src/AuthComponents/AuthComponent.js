@@ -37,7 +37,7 @@ class AuthComponent extends React.Component{
         <div>
         <br></br>
         <h1 className="text-center font-weight-bold text-secondary">权限列表</h1>
-        <button className="btn btn-secondary btn-lg text-white font-weight-bold" onClick={this.addAuth}>添加权限</button>
+        <button className="btn btn-primary btn-lg text-white font-weight-bold" onClick={this.addAuth}>添加权限</button>
         <table className="table table-striped table-boarder"> 
            <thead className="text-justify">
                 <tr>
@@ -62,7 +62,7 @@ class AuthComponent extends React.Component{
                              <td>{auth.createtime}</td>
                              <td>{auth.updatetime}</td>
                              <td>
-                                <button className="btn btn-secondary font-weight-bold" onClick={() => this.editAuth(auth.id)} style={{marginLeft:"10px"}}>编辑资料</button>
+                                <button className="btn btn-success font-weight-bold" onClick={() => this.editAuth(auth.id)} style={{marginLeft:"10px"}}>编辑资料</button>
                                 <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteAuth(auth.id)} style={{marginLeft:"10px"}}>删除</button>
                              </td>
                          </tr>

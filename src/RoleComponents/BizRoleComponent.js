@@ -42,7 +42,7 @@ class BizRoleComponent extends React.Component{
             <div>
             <br></br>
             <h1 className="text-center font-weight-bold text-secondary">业务角色列表</h1>
-            <button className="btn btn-secondary btn-lg text-white font-weight-bold" onClick={this.addRole}>添加角色</button>
+            <button className="btn btn-primary btn-lg text-white font-weight-bold" onClick={this.addRole}>添加角色</button>
             <table className="table table-striped table-boarder"> 
                <thead className="text-justify">
                     <tr>
@@ -65,8 +65,8 @@ class BizRoleComponent extends React.Component{
                                  <td>{role.createtime}</td>
                                  <td>{role.updatetime}</td>
                                  <td>
-                                    <button className="btn btn-secondary font-weight-bold" onClick={() => this.viewRole(role.id)}>查看详情</button>
-                                    <button className="btn btn-secondary font-weight-bold" onClick={() => this.editRole(role.id)} style={{marginLeft:"10px"}}>编辑资料</button>
+                                    <button className="btn btn-info font-weight-bold" onClick={() => this.viewRole(role.id)}>查看详情</button>
+                                    <button className="btn btn-success font-weight-bold" onClick={() => this.editRole(role.id)} style={{marginLeft:"10px"}}>编辑资料</button>
                                     <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteRole(role.id)} style={{marginLeft:"10px"}}>删除</button>
                                  </td>
                              </tr>

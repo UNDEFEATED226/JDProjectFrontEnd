@@ -36,7 +36,7 @@ class TenantComponent extends React.Component{
             <div>
             <br></br>
             <h1 className="text-center font-weight-bold text-secondary">租户列表</h1>
-            <button className="btn btn-secondary btn-lg text-white font-weight-bold" onClick={this.addTenant}>添加租户</button>
+            <button className="btn btn-primary btn-lg text-white font-weight-bold" onClick={this.addTenant}>添加租户</button>
             <table className="table table-striped table-boarder"> 
                <thead className="text-justify">
                     <tr>
@@ -61,7 +61,7 @@ class TenantComponent extends React.Component{
                                  <td>{tenant.updatetime}</td>
                                  <td>{tenant.adminuserid}</td>
                                  <td>
-                                    <button className="btn btn-secondary font-weight-bold" onClick={() => this.editTenant(tenant.id)} style={{marginLeft:"10px"}}>编辑资料</button>
+                                    <button className="btn btn-success font-weight-bold" onClick={() => this.editTenant(tenant.id)} style={{marginLeft:"10px"}}>编辑资料</button>
                                     <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteTenant(tenant.id)} style={{marginLeft:"10px"}}>删除</button>
                                  </td>
                              </tr>
