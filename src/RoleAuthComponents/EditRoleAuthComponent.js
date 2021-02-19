@@ -1,4 +1,5 @@
 import React from 'react'
+import AuthService from '../Service/AuthService';
 import RoleAuthService from '../Service/RoleAuthService'
 import RoleService from '../Service/RoleService';
 
@@ -9,10 +10,10 @@ class EditRoleAuthComponent extends React.Component{
             id:this.props.match.params.id,
             roleid:'',
             authid:'',
-            authidformat:'',
             isdeleted:'',
             createtime:'',
-            roles:[]
+            roles:[],
+            auths:[]
         }
         this.changeRoleidHandler=this.changeRoleidHandler.bind(this);
         this.changeAuthidHandler=this.changeAuthidHandler.bind(this);
@@ -31,6 +32,9 @@ class EditRoleAuthComponent extends React.Component{
         });
         RoleService.findAllRole().then(res=>{
             this.setState({roles:res.data});
+        });
+        AuthService.findAllAuth().then(res=>{
+            this.setState({auths:res.data});
         })
     }
 
@@ -43,18 +47,11 @@ class EditRoleAuthComponent extends React.Component{
 
     editRoleAuth=(r)=>{
         r.preventDefault();
-        this.setState({
-            authidformat:''
-        });
         let roleauth= {id:this.state.id,roleid:this.state.roleid,authid:this.state.authid,
             createtime:this.state.createtime,isdeleted:this.state.isdeleted,updatetime:''};
         RoleAuthService.editRoleAuth(this.state.id,roleauth).then(res =>{
             this.props.history.push("/roleauthlist");
-        }).catch(err => {
-            if(this.state.authid!=null && (isNaN(this.state.authid)||this.state.authid.length>11)){
-                this.setState({authidformat:" 权限ID为至多11位纯数字..."});
-            }
-        })
+        });
     }
 
     cancel(){
@@ -81,9 +78,16 @@ class EditRoleAuthComponent extends React.Component{
                         </select>
                     </div>
                     <div className="form-group">
-                        <label className="text-secondary font-weight-bold">权限ID:</label>
-                        <input placeholder="请输入权限ID..." className="form-control" value={this.state.authid} onChange={this.changeAuthidHandler}/> 
-                        <div style={{color:"#f44e3b"}}>{this.state.authidformat}</div>   
+                        <label className="text-secondary font-weight-bold">权限:</label>
+                        <select className="form-control" value={this.state.authid} onChange={this.changeAuthidHandler}>
+                            <option defaultValue value=''>请选择权限</option>
+                            {
+                                this.state.auths.map(
+                                    auth =>
+                                    <option value={auth.id}>{auth.authname},{auth.resid}</option>
+                                )
+                            }
+                        </select>
                     </div>
                     <button className="btn btn-success" onClick={this.editRoleAuth}>保存</button>
                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"15px"}}>取消</button>

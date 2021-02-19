@@ -7,6 +7,9 @@ class ViewRoleComponent extends React.Component{
         this.state={
             id:this.props.match.params.id,
             roletype:'',
+            isdeleted:'',
+            isdefault:'',
+            isforbidden:'',
             role:{}
         }
     }
@@ -19,6 +22,21 @@ class ViewRoleComponent extends React.Component{
             }
             if(this.state.role.roletype===2){
                 this.setState({roletype:"业务角色"});
+            }
+            if(this.state.role.isdeleted===1){
+                this.setState({isdeleted:"已删除"});
+            }else{
+                this.setState({isdeleted:"未删除"});
+            }
+            if(this.state.role.isdefault===1){
+                this.setState({isdefault:"非默认角色"});
+            }else{
+                this.setState({isdefault:"默认角色"});
+            }
+            if(this.state.role.isforbidden===1){
+                this.setState({isforbidden:"已禁用"});
+            }else{
+                this.setState({isforbidden:"未禁用"});
             }
         });
     }
@@ -51,7 +69,7 @@ class ViewRoleComponent extends React.Component{
                     </div>
                     <div className="row">
                         <label>是否已删除:</label>
-                        <div>{this.state.role.isdeleted}</div>
+                        <div>{this.state.isdeleted}</div>
                     </div>
                     <div className="row">
                         <label>是否为系统角色:</label>
@@ -71,11 +89,11 @@ class ViewRoleComponent extends React.Component{
                     </div>
                     <div className="row">
                         <label>是否被禁用:</label>
-                        <div>{this.state.role.isforbidden}</div>
+                        <div>{this.state.isforbidden}</div>
                     </div>
                     <div className="row">
                         <label>是否默认角色:</label>
-                        <div>{this.state.role.isdefault}</div>
+                        <div>{this.state.isdefault}</div>
                     </div>
                 </div>
               </div>
