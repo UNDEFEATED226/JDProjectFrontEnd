@@ -52,7 +52,11 @@
 }
 
 .color-btn{
-  background:linear-gradient(to left,#cfd9df,#e2ebf0);
+  background:linear-gradient(to left,#868f96,#596164);
+}
+
+.color-btn:hover{
+  background:darkgray;
 }
 
 .nav-item:hover{
