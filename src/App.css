@@ -70,3 +70,14 @@
   align-items: center;
 }
 
+.t-cell{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.t-cell:hover{
+  overflow: visible; 
+  white-space: normal; 
+}
+

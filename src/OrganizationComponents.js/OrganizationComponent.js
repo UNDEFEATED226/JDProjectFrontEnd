@@ -74,9 +74,12 @@ class OrganizationComponent extends React.Component{
 
     deleteOrganization(id){
         OrganizationService.deleteOrganization(id).then(res=>{
+            console.log(this.state.organizations);
             if(this.state.pageNo === this.state.totalPages && this.state.pageNo>1){
-                if(this.state.organization == null){
+                if(this.state.organizations.length === 1){
                     this.findAllOrganization(this.state.pageNo-1);
+                }else{
+                    this.findAllOrganization(this.state.pageNo);
                 }
             }else{
                 this.findAllOrganization(this.state.pageNo);
@@ -95,15 +98,15 @@ class OrganizationComponent extends React.Component{
             <table className="table table-boarder"> 
                <thead>
                     <tr>
-                      <th className="text-secondary" >id</th>  
-                      <th className="text-secondary">组织名称</th>     
-                      <th className="text-secondary">组织层级</th>  
-                      <th className="text-secondary">组织类型ID</th>  
-                      <th className="text-secondary">组织类型名称</th> 
-                      <th className="text-secondary">组织种类</th>  
-                      <th className="text-secondary">基准组织编码</th>  
-                      <th className="text-secondary">租户ID</th>  
-                      <th style={{width:"30"}} className="text-secondary">操作</th>
+                      <th className="text-secondary text-center" style={{columnWidth:"20px"}}>id</th>  
+                      <th className="text-secondary text-center" style={{columnWidth:"40px"}}>组织名称</th>     
+                      <th className="text-secondary text-center" style={{columnWidth:"40px"}}>组织层级</th>  
+                      <th className="text-secondary text-center" style={{columnWidth:"60px"}}>组织类型ID</th>  
+                      <th className="text-secondary text-center" style={{columnWidth:"60px"}}>组织类型名称</th> 
+                      <th className="text-secondary text-center" style={{columnWidth:"40px"}}>组织种类</th>  
+                      <th className="text-secondary text-center" style={{columnWidth:"80px"}}>基准组织编码</th>  
+                      <th className="text-secondary text-center" style={{columnWidth:"40px"}}>租户ID</th>  
+                      <th className="text-secondary text-center" style={{columnWidth:"300px"}}>操作</th>
                     </tr>
                     </thead>
                  <tbody>
@@ -111,15 +114,15 @@ class OrganizationComponent extends React.Component{
                          this.state.organizations.map(
                              organization =>
                              <tr key= {organization.id}>
-                                 <td>{organization.id}</td>
-                                 <td>{organization.orgname}</td>
-                                 <td>{organization.orglevel}</td>
-                                 <td>{organization.orgtype}</td>
-                                 <td>{organization.orgtypename}</td>
-                                 <td>{organization.orgcatlog}</td>
-                                 <td>{organization.baseorgcode}</td>
-                                 <td>{organization.tenantid}</td>
-                                 <td>
+                                 <td className="t-cell" style={{maxWidth:"20px"}}>{organization.id}</td>
+                                 <td className="t-cell" style={{maxWidth:"50px"}}>{organization.orgname}</td>
+                                 <td className="t-cell" style={{maxWidth:"50px"}}>{organization.orglevel}</td>
+                                 <td className="t-cell" style={{maxWidth:"70px"}}>{organization.orgtype}</td>
+                                 <td className="t-cell" style={{maxWidth:"80px"}}>{organization.orgtypename}</td>
+                                 <td className="t-cell" style={{maxWidth:"50px"}}>{organization.orgcatlog}</td>
+                                 <td className="t-cell" style={{maxWidth:"80px"}}>{organization.baseorgcode}</td>
+                                 <td className="t-cell" style={{maxWidth:"50px"}}>{organization.tenantid}</td>
+                                 <td className="t-cell" style={{maxWidth:"300px"}}>
                                     <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-info font-weight-bold">查看详情</button>
                                     <button  onClick={() => this.editOrganization(organization.id)} className="btn btn-success font-weight-bold" style={{marginLeft:"10px"}}>编辑资料</button>
                                     <button  onClick={() => this.deleteOrganization(organization.id)} className="btn btn-danger font-weight-bold" style={{marginLeft:"10px"}}>删除</button>
