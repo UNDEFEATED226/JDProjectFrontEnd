@@ -1,22 +1,63 @@
 import React from 'react'
 import OrganizationService from '../Service/OrganizationService';
+import axios from 'axios'
 
 class OrganizationComponent extends React.Component{
     constructor(props){
         super(props)
         this.state={
+            pageNo:1,
             organizations:[]
         }
+        this.firstPage=this.firstPage.bind(this);
+        this.pageUp=this.pageUp.bind(this);
+        this.pageDown=this.pageDown.bind(this);
+        this.lastPage=this.lastPage.bind(this);
         this.addOrganization=this.addOrganization.bind(this);
         this.viewOrganization=this.viewOrganization.bind(this);
         this.editOrganization=this.editOrganization.bind(this);
         this.deleteOrganization=this.deleteOrganization.bind(this);
+        this.findAllOrganization=this.findAllOrganization.bind(this);
     }
 
     componentDidMount(){
-        OrganizationService.findAllOrganization().then((response) => {
-            this.setState({organizations:response.data})
+            this.findAllOrganization(this.state.pageNo);
+    }
+
+    findAllOrganization(p){
+        axios.get("/organization/findallorganizationpaginated?pageNo="+p)
+        .then(res=>{
+            this.setState({
+                organizations:res.data.content,
+            });
         });
+        OrganizationService.count().then(res=>{
+            this.setState({
+                totalElements:res.data
+            });
+        });
+        OrganizationService.page().then(res=>{
+            this.setState({
+                totalPages:res.data
+            });
+        });
+        this.setState({pageNo:p});
+    }
+
+    firstPage=()=>{
+        this.findAllOrganization(1);
+    }
+
+    lastPage=()=>{
+        this.findAllOrganization(this.state.totalPages);
+    }
+
+    pageUp=()=>{
+        this.findAllOrganization(this.state.pageNo+1);
+    }
+
+    pageDown=()=>{
+        this.findAllOrganization(this.state.pageNo-1);
     }
 
     addOrganization(){
@@ -33,8 +74,14 @@ class OrganizationComponent extends React.Component{
 
     deleteOrganization(id){
         OrganizationService.deleteOrganization(id).then(res=>{
-            this.setState({organizations:this.state.organizations.filter(organization => organization.id!==id)});
-        })
+            if(this.state.pageNo === this.state.totalPages && this.state.pageNo>1){
+                if(this.state.organization == null){
+                    this.findAllOrganization(this.state.pageNo-1);
+                }
+            }else{
+                this.findAllOrganization(this.state.pageNo);
+            }
+        });
     }
 
     render(){
@@ -45,10 +92,10 @@ class OrganizationComponent extends React.Component{
             <button className="btn btn-primary text-white btn-lg font-weight-bold" onClick={this.addOrganization}>添加组织</button>
             <div className="row">
             </div>
-            <table className="table table-striped table-boarder"> 
+            <table className="table table-boarder"> 
                <thead>
                     <tr>
-                      <th className="text-secondary">id</th>  
+                      <th className="text-secondary" >id</th>  
                       <th className="text-secondary">组织名称</th>     
                       <th className="text-secondary">组织层级</th>  
                       <th className="text-secondary">组织类型ID</th>  
@@ -56,7 +103,7 @@ class OrganizationComponent extends React.Component{
                       <th className="text-secondary">组织种类</th>  
                       <th className="text-secondary">基准组织编码</th>  
                       <th className="text-secondary">租户ID</th>  
-                      <th className="text-secondary">操作</th>
+                      <th style={{width:"30"}} className="text-secondary">操作</th>
                     </tr>
                     </thead>
                  <tbody>
@@ -82,6 +129,14 @@ class OrganizationComponent extends React.Component{
                      }
                  </tbody>
             </table>
+            <div className="centered">
+            <button className="font-weight-bold btn btn-sm color-btn" onClick={this.firstPage} disabled={this.state.pageNo<=1 ? true : false}>first page</button>
+            <button className="font-weight-bold btn btn-sm color-btn" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={this.state.pageNo>=this.state.totalPages ? true : false}>next page</button>
+            <button className="font-weight-bold btn btn-sm color-btn" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={this.state.pageNo<=1 ? true : false}>previous page</button>
+            <button className="font-weight-bold btn btn-sm color-btn" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={this.state.pageNo>=this.state.totalPages ? true : false}>last page</button>
+            </div> 
+            <div className="text-center font-weight-bold customize-font" >{this.state.pageNo} of {this.state.totalPages} 页</div>
+            <div className="text-center font-weight-bold customize-font">共{this.state.totalElements}组织</div>
         </div>
         )
     }

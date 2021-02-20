@@ -6,6 +6,14 @@ class OrganizationService{
         return axios.get("/organization/findallorganization");
     }
   
+    count(){
+        return axios.get("/organization/count");
+    }
+
+    page(){
+        return axios.get("/organization/page");
+    }
+   
     findById(id){
         return axios.get("/organization/findbyid?id="+id);
     }

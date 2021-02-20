@@ -51,6 +51,22 @@
   opacity:0.9;
 }
 
+.color-btn{
+  background:linear-gradient(to left,#cfd9df,#e2ebf0);
+}
+
 .nav-item:hover{
  background:cornflowerblue;
 }
+
+.customize-font{
+  color:gray;
+  font-size:16px;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
