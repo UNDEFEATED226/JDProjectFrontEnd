@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import OrganizationService from '../Service/OrganizationService'
 import TenantService from '../Service/TenantService'
 
@@ -85,11 +86,11 @@ class ViewOrganizationComponent extends React.Component{
                     </div>
                     <div className="row">
                         <label>更新时间:</label>
-                        <div>{this.state.organization.updatetime}</div>
+                        <div>{moment(this.state.organization.updatetime).format('YYYY-MM-DD HH:mm:ss')}</div>
                     </div>
                     <div className="row">
                         <label>创建时间:</label>
-                        <div>{this.state.organization.createtime}</div>
+                        <div>{moment(this.state.organization.createtime).format('YYYY-MM-DD HH:mm:ss')}</div>
                     </div>
                     <div className="row">
                         <label>是否已删除:</label>

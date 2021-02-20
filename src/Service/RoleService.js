@@ -6,6 +6,14 @@ class RoleService{
         return axios.get("/role/findallrole");
     }
 
+    count(){
+        return axios.get("/role/count");
+    }
+
+    page(){
+        return axios.get("/role/page");
+    }
+
     roleMenu(roletype){
         return axios.get("/role/rolemenu?roletype="+roletype);
     }

@@ -21,6 +21,7 @@ class addUserComponent extends React.Component{
         this.changePasswordconfirmHandler=this.changePasswordconfirmHandler.bind(this);
         this.changeOrgidHandler=this.changeOrgidHandler.bind(this);
         this.saveUser=this.saveUser.bind(this);
+        this.cancel=this.cancel.bind(this);
     }
     componentDidMount(){
         OrganizationService.findAllOrganization().then((response) =>{
@@ -77,6 +78,7 @@ class addUserComponent extends React.Component{
     cancel(){
         this.props.history.push("/userlist");
     }
+
     render(){
         return(
             <div style={{marginTop:"5%"}}>
@@ -113,7 +115,7 @@ class addUserComponent extends React.Component{
                     <div style={{color:"#f44e3b"}}>{this.state.orgidformat}</div>
                     </div>
                                  <button className="btn btn-success" onClick={this.saveUser}>保存</button>
-                                <button className="btn btn-danger text-right" onClick={this.cancel.bind(this)} style={{marginLeft:"15px"}}>取消</button>
+                                <button className="btn btn-danger text-right" onClick={this.cancel} style={{marginLeft:"15px"}}>取消</button>
                              </form>
                          </div>
                     </div>

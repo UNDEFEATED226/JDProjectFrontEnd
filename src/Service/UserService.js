@@ -6,6 +6,14 @@ class UserService{
         return axios.get("/user/findalluser");
     }
 
+    count(){
+        return axios.get("/user/count");
+    }
+
+    page(){
+        return axios.get("/user/page");
+    }
+
     findById(id){
         return axios.get("/user/findbyid?id="+id);
     }

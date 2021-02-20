@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import RoleService from '../Service/RoleService'
 
 class ViewRoleComponent extends React.Component{
@@ -77,11 +78,11 @@ class ViewRoleComponent extends React.Component{
                     </div>
                     <div className="row">
                         <label>创建时间:</label>
-                        <div>{this.state.role.createtime}</div>
+                        <div>{moment(this.state.role.createtime).format('YYYY-MM-DD HH:mm:ss')}</div>
                     </div>
                     <div className="row">
                         <label>最后一次更新时间:</label>
-                        <div>{this.state.role.updatetime}</div>
+                        <div>{moment(this.state.role.updatetime).format('YYYY-MM-DD HH:mm:ss')}</div>
                     </div>
                     <div className="row">
                         <label>角色编码:</label>

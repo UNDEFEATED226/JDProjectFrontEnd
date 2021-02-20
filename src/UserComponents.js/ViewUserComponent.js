@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import UserService from '../Service/UserService'
 
 class ViewUserComponent extends React.Component{
@@ -90,11 +91,11 @@ class ViewUserComponent extends React.Component{
                     </div>
                     <div className="row">
                         <label>创建时间:</label>
-                        <div>{this.state.user.createtime}</div>
+                        <div>{moment(this.state.user.createtime).format('YYYY-MM-DD HH:mm:ss')}</div>
                     </div>
                     <div className="row">
                         <label>更新时间:</label>
-                        <div>{this.state.user.updatetime}</div>
+                        <div>{moment(this.state.user.updatetime).format('YYYY-MM-DD HH:mm:ss')}</div>
                     </div>
                     <div className="row">
                         <label>用户状态:</label>
