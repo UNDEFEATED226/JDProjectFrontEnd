@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import RoleService from '../Service/RoleService'
 
 class BizRoleComponent extends React.Component{
@@ -62,8 +63,8 @@ class BizRoleComponent extends React.Component{
                                  <td>{role.id}</td>
                                  <td>{role.rolename}</td>
                                  <td>{role.roletype}</td>
-                                 <td>{role.createtime}</td>
-                                 <td>{role.updatetime}</td>
+                                 <td>{moment(role.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
+                                 <td>{moment(role.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                                  <td>
                                     <button className="btn btn-info font-weight-bold" onClick={() => this.viewRole(role.id)}>查看详情</button>
                                     <button className="btn btn-success font-weight-bold" onClick={() => this.editRole(role.id)} style={{marginLeft:"10px"}}>编辑资料</button>

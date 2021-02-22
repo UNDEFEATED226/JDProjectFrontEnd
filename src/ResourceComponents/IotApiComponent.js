@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import ResourceService from '../Service/ResourceService'
 
 class IotApiResourceComponent extends React.Component{
@@ -62,8 +63,8 @@ class IotApiResourceComponent extends React.Component{
                              <td>{resource.id}</td>
                              <td>{resource.resname}</td>
                              <td>{resource.description}</td>
-                             <td>{resource.createtime}</td>
-                             <td>{resource.updatetime}</td>
+                             <td>{moment(resource.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
+                             <td>{moment(resource.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td>
                                 <button className="btn btn-info font-weight-bold" onClick={() => this.viewResource(resource.id)}>查看详情</button>
                                 <button className="btn btn-success font-weight-bold" onClick={() => this.editResource(resource.id)} style={{marginLeft:"10px"}}>编辑资料</button>

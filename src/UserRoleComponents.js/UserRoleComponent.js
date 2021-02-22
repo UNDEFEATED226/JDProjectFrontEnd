@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import UserRoleService from '../Service/UserRoleService';
 
 class UserRoleComponent extends React.Component{
@@ -52,8 +53,8 @@ class UserRoleComponent extends React.Component{
                              <td>{userrole.id}</td>
                              <td>{userrole.userid}</td>
                              <td>{userrole.roleid}</td>
-                             <td>{userrole.createtime}</td>
-                             <td>{userrole.updatetime}</td>
+                             <td>{moment(userrole.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
+                             <td>{moment(userrole.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td>
                                 <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteUserRole(userrole.id)} style={{marginLeft:"10px"}}>删除</button>
                              </td>

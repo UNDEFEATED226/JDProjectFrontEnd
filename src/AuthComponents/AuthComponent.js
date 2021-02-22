@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import AuthService from '../Service/AuthService'
 
 class AuthComponent extends React.Component{
@@ -59,8 +60,8 @@ class AuthComponent extends React.Component{
                              <td>{auth.authname}</td>
                              <td>{auth.description}</td>
                              <td>{auth.resid}</td>
-                             <td>{auth.createtime}</td>
-                             <td>{auth.updatetime}</td>
+                             <td>{moment(auth.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
+                             <td>{moment(auth.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td>
                                 <button className="btn btn-success font-weight-bold" onClick={() => this.editAuth(auth.id)} style={{marginLeft:"10px"}}>编辑资料</button>
                                 <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteAuth(auth.id)} style={{marginLeft:"10px"}}>删除</button>

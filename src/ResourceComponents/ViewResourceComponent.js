@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import ResourceService from '../Service/ResourceService'
 
 class ViewResourceComponent extends React.Component{
@@ -88,11 +89,11 @@ class ViewResourceComponent extends React.Component{
                     </div>
                     <div className="row">
                         <label>创建时间:</label>
-                        <div>{this.state.Resource.createtime}</div>
+                        <div>{moment(this.state.Resource.createtime).format('YYYY-MM-DD HH:mm:ss')}</div>
                     </div>
                     <div className="row">
                         <label>最后一次更新时间:</label>
-                        <div>{this.state.Resource.updatetime}</div>
+                        <div>{moment(this.state.Resource.updatetime).format('YYYY-MM-DD HH:mm:ss')}</div>
                     </div>
                 </div>
               </div>

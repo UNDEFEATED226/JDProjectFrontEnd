@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import RoleAuthService from '../Service/RoleAuthService'
 
 class RoleAuthComponent extends React.Component{
@@ -57,8 +58,8 @@ class RoleAuthComponent extends React.Component{
                              <td>{roleauth.id}</td>
                              <td>{roleauth.roleid}</td>
                              <td>{roleauth.authid}</td>
-                             <td>{roleauth.createtime}</td>
-                             <td>{roleauth.updatetime}</td>
+                             <td>{moment(roleauth.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
+                             <td>{moment(roleauth.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td>
                                 <button className="btn btn-success font-weight-bold" onClick={() => this.editRoleAuth(roleauth.id)} style={{marginLeft:"10px"}}>编辑资料</button>
                                 <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteRoleAuth(roleauth.id)} style={{marginLeft:"10px"}}>删除</button>

@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import TenantService from "../Service/TenantService"
 
 class TenantComponent extends React.Component{
@@ -57,8 +58,8 @@ class TenantComponent extends React.Component{
                                  <td>{tenant.id}</td>
                                  <td>{tenant.name}</td>
                                  <td>{tenant.businessassignment}</td>
-                                 <td>{tenant.createtime}</td>
-                                 <td>{tenant.updatetime}</td>
+                                 <td>{moment(tenant.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
+                                 <td>{moment(tenant.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                                  <td>{tenant.adminuserid}</td>
                                  <td>
                                     <button className="btn btn-success font-weight-bold" onClick={() => this.editTenant(tenant.id)} style={{marginLeft:"10px"}}>编辑资料</button>
