@@ -6,6 +6,10 @@ class UserService{
         return axios.get("/user/findalluser");
     }
 
+    findAllUserPaginated(p){
+        return axios.get("/user/findalluserpaginated?pageNo="+p);
+    }
+
     count(){
         return axios.get("/user/count");
     }

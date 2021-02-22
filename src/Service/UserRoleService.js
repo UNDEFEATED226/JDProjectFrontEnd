@@ -6,6 +6,18 @@ class UserRoleService{
         return axios.get("/userrole/findalluserrole");
     }
 
+    findAllUserRolePaginated(p){
+        return axios.get("/userrole/findalluserrolepaginated?pageNo="+p)
+    }
+
+    count(){
+        return axios.get("/userrole/count");
+    }
+
+    page(){
+        return axios.get("/userrole/page");
+    }
+
     findById(id){
         return axios.get("/userrole/findbyid?id="+id);
     }
