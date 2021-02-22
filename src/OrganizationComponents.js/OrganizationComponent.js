@@ -91,13 +91,13 @@ class OrganizationComponent extends React.Component{
                <thead>
                     <tr>
                       <th className="text-secondary" style={{columnWidth:"30px"}}>id</th>  
-                      <th className="text-secondary" style={{columnWidth:"125px"}}>组织名称</th>     
-                      <th className="text-secondary" style={{columnWidth:"70px"}}>组织层级</th>  
-                      <th className="text-secondary" style={{columnWidth:"75px"}}>组织类型ID</th>  
-                      <th className="text-secondary" style={{columnWidth:"110px"}}>组织类型名称</th> 
-                      <th className="text-secondary" style={{columnWidth:"70px"}}>组织种类</th>  
+                      <th className="text-secondary" style={{columnWidth:"100px"}}>组织名称</th>     
+                      <th className="text-secondary" style={{columnWidth:"80px"}}>组织层级</th>  
+                      <th className="text-secondary" style={{columnWidth:"100px"}}>组织类型ID</th>  
+                      <th className="text-secondary" style={{columnWidth:"140px"}}>组织类型名称</th> 
+                      <th className="text-secondary" style={{columnWidth:"80px"}}>组织种类</th>  
                       <th className="text-secondary" style={{columnWidth:"110px"}}>基准组织编码</th>  
-                      <th className="text-secondary" style={{columnWidth:"70px"}}>租户ID</th>  
+                      <th className="text-secondary" style={{columnWidth:"60px"}}>租户ID</th>  
                       <th className="text-secondary text-center" style={{columnWidth:"300px"}}>操作</th>
                     </tr>
                     </thead>
@@ -107,14 +107,14 @@ class OrganizationComponent extends React.Component{
                              organization =>
                              <tr key= {organization.id}>
                                  <td className="t-cell" style={{maxWidth:"30px"}}>{organization.id}</td>
-                                 <td className="t-cell" style={{maxWidth:"135px"}}>{organization.orgname}</td>
-                                 <td className="t-cell" style={{maxWidth:"70px"}}>{organization.orglevel}</td>
-                                 <td className="t-cell" style={{maxWidth:"75px"}}>{organization.orgtype}</td>
-                                 <td className="t-cell" style={{maxWidth:"110px"}}>{organization.orgtypename}</td>
-                                 <td className="t-cell" style={{maxWidth:"70px"}}>{organization.orgcatlog}</td>
+                                 <td className="t-cell" style={{maxWidth:"100px"}}>{organization.orgname}</td>
+                                 <td className="t-cell" style={{maxWidth:"80px"}}>{organization.orglevel}</td>
+                                 <td className="t-cell" style={{maxWidth:"100px"}}>{organization.orgtype}</td>
+                                 <td className="t-cell" style={{maxWidth:"140px"}}>{organization.orgtypename}</td>
+                                 <td className="t-cell" style={{maxWidth:"80px"}}>{organization.orgcatlog}</td>
                                  <td className="t-cell" style={{maxWidth:"110px"}}>{organization.baseorgcode}</td>
-                                 <td className="t-cell" style={{maxWidth:"70px"}}>{organization.tenantid}</td>
-                                 <td className="t-cell" style={{maxWidth:"300px"}}>
+                                 <td className="t-cell" style={{maxWidth:"60px"}}>{organization.tenantid}</td>
+                                 <td className="t-cell text-center" style={{maxWidth:"300px"}}>
                                     <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-info font-weight-bold">查看详情</button>
                                     <button  onClick={() => this.editOrganization(organization.id)} className="btn btn-success font-weight-bold" style={{marginLeft:"10px"}}>编辑资料</button>
                                     <button  onClick={() => this.deleteOrganization(organization.id)} className="btn btn-danger font-weight-bold" style={{marginLeft:"10px"}}>删除</button>
@@ -124,7 +124,7 @@ class OrganizationComponent extends React.Component{
                      }
                  </tbody>
             </table>
-            <div className="centered">
+            <div className="text-center">
             <button className="font-weight-bold btn btn-sm color-btn text-white" onClick={this.firstPage} disabled={this.state.pageNo<=1 ? true : false}>first page</button>
             <button className="font-weight-bold btn btn-sm color-btn text-white" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={this.state.pageNo<=1 ? true : false}>previous page</button>
             <button className="font-weight-bold btn btn-sm color-btn text-white" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={this.state.pageNo>=this.state.totalPages ? true : false}>next page</button>

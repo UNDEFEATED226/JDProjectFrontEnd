@@ -6,6 +6,14 @@ class TenantService{
         return axios.get("/tenant/findalltenant");
     }
 
+    count(){
+        return axios.get("/tenant/count");
+    }
+
+    page(){
+        return axios.get("/tenant/page");
+    }
+
     findById(id){
         return axios.get("/tenant/findbyid?id="+id);
     }

@@ -92,8 +92,8 @@ class RoleComponent extends React.Component{
                   <th  className="text-secondary" style={{columnWidth:"30px"}}>id</th>
                   <th  className="text-secondary" style={{columnWidth:"80px"}}>角色名称</th>  
                   <th  className="text-secondary" style={{columnWidth:"50px"}}>角色类型</th>  
-                  <th  className="text-secondary" style={{columnWidth:"200px"}}>创建时间</th> 
-                  <th  className="text-secondary" style={{columnWidth:"200px"}}>更新时间</th>  
+                  <th  className="text-secondary" style={{columnWidth:"190px"}}>创建时间</th> 
+                  <th  className="text-secondary" style={{columnWidth:"190px"}}>更新时间</th>  
                   <th  className="text-secondary text-center" style={{columnWidth:"300px"}}>操作</th>
                 </tr>
                 </thead>
@@ -107,7 +107,7 @@ class RoleComponent extends React.Component{
                              <td className="t-cell" style={{maxWidth:"50px"}}>{role.roletype}</td>
                              <td className="t-cell" style={{maxWidth:"200px"}}>{moment(role.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"200px"}}>{moment(role.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
-                             <td className="t-cell" style={{maxWidth:"300px"}}>
+                             <td className="t-cell text-center" style={{maxWidth:"300px"}}>
                                 <button className="btn btn-info font-weight-bold" onClick={()=>this.viewRole(role.id)}>查看详情</button>
                                 <button className="btn btn-success font-weight-bold" onClick={()=>this.editRole(role.id)} style={{marginLeft:"10px"}}>编辑资料</button>
                                 <button className="btn btn-danger font-weight-bold" onClick={()=>this.deleteRole(role.id)} style={{marginLeft:"10px"}}>删除</button>
@@ -117,7 +117,7 @@ class RoleComponent extends React.Component{
                  }
              </tbody>
         </table>
-        <div className="centered">
+        <div className="text-center">
             <button className="btn color-btn btn-sm font-weight-bold text-white" onClick={this.firstPage} disabled={this.state.pageNo<=1 ? true : false}>first page</button>
             <button className="btn color-btn btn-sm font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={this.state.pageNo<=1 ? true : false}>previous page</button>
             <button className="btn color-btn btn-sm font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={this.state.pageNo>=this.state.totalPages ? true : false}>next page</button>

@@ -84,13 +84,13 @@ class AuthComponent extends React.Component{
         <table className="table table-border"> 
            <thead className="text-justify">
                 <tr>
-                 <th  className="text-secondary">id</th>
-                  <th  className="text-secondary">权限名称</th>  
-                  <th  className="text-secondary">描述信息</th>  
-                  <th  className="text-secondary">资源ID</th> 
-                  <th className="text-secondary">创建时间</th>
-                  <th className="text-secondary">最后一次更新时间</th>
-                  <th  className="text-secondary">操作</th>
+                 <th  className="text-secondary" style={{columnWidth:"30px"}}>id</th>
+                  <th  className="text-secondary" style={{columnWidth:"200px"}}>权限名称</th>  
+                  <th  className="text-secondary" style={{columnWidth:"100px"}}>描述信息</th>  
+                  <th  className="text-secondary" style={{columnWidth:"60px"}}>资源ID</th> 
+                  <th className="text-secondary" style={{columnWidth:"190px"}}>创建时间</th>
+                  <th className="text-secondary" style={{columnWidth:"190px"}}>最后一次更新时间</th>
+                  <th  className="text-secondary text-center" style={{columnWidth:"300px"}}>操作</th>
                 </tr>
                 </thead>
              <tbody>
@@ -98,14 +98,14 @@ class AuthComponent extends React.Component{
                      this.state.auths.map(
                          auth =>
                          <tr key= {auth.id}>         
-                             <td>{auth.id}</td>
-                             <td>{auth.authname}</td>
-                             <td>{auth.description}</td>
-                             <td>{auth.resid}</td>
-                             <td>{moment(auth.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
-                             <td>{moment(auth.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
-                             <td>
-                                <button className="btn btn-success font-weight-bold" onClick={()=>this.editAuth(auth.id)} style={{marginLeft:"10px"}}>编辑资料</button>
+                             <td className="t-cell" style={{maxWidth:"30px"}}>{auth.id}</td>
+                             <td className="t-cell" style={{maxWidth:"200px"}}>{auth.authname}</td>
+                             <td className="t-cell" style={{maxWidth:"100px"}}>{auth.description}</td>
+                             <td className="t-cell" style={{maxWidth:"60px"}}>{auth.resid}</td>
+                             <td className="t-cell" style={{maxWidth:"190px"}}>{moment(auth.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
+                             <td className="t-cell" style={{maxWidth:"190px"}}>{moment(auth.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
+                             <td className="t-cell text-center" style={{maxWidth:"300px"}}>
+                                <button className="btn btn-success font-weight-bold" onClick={()=>this.editAuth(auth.id)}>编辑资料</button>
                                 <button className="btn btn-danger font-weight-bold" onClick={()=>this.deleteAuth(auth.id)} style={{marginLeft:"10px"}}>删除</button>
                              </td>
                          </tr>
@@ -113,11 +113,11 @@ class AuthComponent extends React.Component{
                  }
              </tbody>
         </table>
-        <div className="centered">
-            <button className="btn color-btn font-weight-bold text-white" onClick={this.firstPage} disabled={(this.state.pageNo == null || this.state.pageNo<=1) ? true : false}>first page</button>
-            <button className="btn color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={(this.state.pageNo == null || this.state.pageNo<=1) ? true :false}>previous page</button>
-            <button className="btn color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={(this.state.pageNo == null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>next page</button>
-            <button className="btn color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={(this.state.pageNo == null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>last page</button>
+        <div className="text-center">
+            <button className="btn btn-sm color-btn font-weight-bold text-white" onClick={this.firstPage} disabled={(this.state.pageNo == null || this.state.pageNo<=1) ? true : false}>first page</button>
+            <button className="btn btn-sm color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={(this.state.pageNo == null || this.state.pageNo<=1) ? true :false}>previous page</button>
+            <button className="btn btn-sm color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={(this.state.pageNo == null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>next page</button>
+            <button className="btn btn-sm color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={(this.state.pageNo == null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>last page</button>
         </div>
         <div className="color-font text-center font-weight-bold">{this.state.pageNo} of {this.state.totalPages} 页</div>
         <div className="color-font text-center font-weight-bold">共{this.state.totalElements}权限</div>

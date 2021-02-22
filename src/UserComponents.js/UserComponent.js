@@ -113,7 +113,7 @@ class UserComponent extends React.Component{
                              <td className="t-cell" style={{maxWidth:"100px"}}>{user.orgid}</td>
                              <td className="t-cell" style={{maxWidth:"100px"}}>{user.email}</td>
                              <td className="t-cell" style={{maxWidth:"100px"}}>{user.mobile}</td>
-                             <td className="t-cell" style={{maxWidth:"300px"}}>
+                             <td className="t-cell text-center" style={{maxWidth:"300px"}}>
                                 <button className="btn btn-info font-weight-bold" onClick={() => this.viewUser(user.id)}>查看详情</button>
                                 <button className="btn btn-success font-weight-bold" onClick={() => this.editUser(user.id)} style={{marginLeft:"10px"}}>编辑资料</button>
                                 <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteUser(user.id)} style={{marginLeft:"10px"}}>删除</button>
@@ -123,7 +123,7 @@ class UserComponent extends React.Component{
                  }
              </tbody>
         </table>
-        <div className="centered">
+        <div className="text-center">
             <button className="btn color-btn btn-sm font-weight-bold text-white" onClick={this.firstPage} disabled={this.state.pageNo<=1 ? true : false}>first page</button>
             <button className="btn color-btn btn-sm font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={this.state.pageNo<=1 ? true : false}>previous page</button>
             <button className="btn color-btn btn-sm font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={this.state.pageNo>=this.state.totalPages ? true : false}>next page</button>

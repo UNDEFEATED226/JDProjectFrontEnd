@@ -108,7 +108,7 @@ class ResourceComponent extends React.Component{
                              <td className="t-cell" style={{maxWidth:"80px"}}>{resource.description}</td>
                              <td className="t-cell" style={{maxWidth:"200px"}}>{moment(resource.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"200px"}}>{moment(resource.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
-                             <td className="t-cell" style={{maxWidth:"300px"}}>
+                             <td className="t-cell text-center" style={{maxWidth:"300px"}}>
                                 <button className="btn btn-info font-weight-bold" onClick={() => this.viewResource(resource.id)}>查看详情</button>
                                 <button className="btn btn-success font-weight-bold" onClick={() => this.editResource(resource.id)} style={{marginLeft:"10px"}}>编辑资料</button>
                                 <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteResource(resource.id)} style={{marginLeft:"10px"}}>删除</button>
@@ -118,7 +118,7 @@ class ResourceComponent extends React.Component{
                  }
              </tbody>
         </table>
-        <div className="centered">
+        <div className="text-center">
                 <button className="btn color-btn btn-sm font-weight-bold text-white" onClick={this.firstPage} disabled={this.state.pageNo<=1 ? true : false}>first page</button>
                 <button className="btn color-btn btn-sm font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={this.state.pageNo<=1 ? true : false}>previous page</button>
                 <button className="btn color-btn btn-sm font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={this.state.pageNo>=this.state.totalPages ? true : false}>next page</button>
