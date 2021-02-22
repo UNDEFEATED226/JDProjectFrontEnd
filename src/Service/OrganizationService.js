@@ -6,6 +6,10 @@ class OrganizationService{
         return axios.get("/organization/findallorganization");
     }
   
+    findAllOrganizationPaginated(p){
+        return axios.get("/organization/findallorganizationpaginated?pageNo="+p);
+    }
+
     count(){
         return axios.get("/organization/count");
     }

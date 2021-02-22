@@ -25,19 +25,13 @@ class UserComponent extends React.Component{
 
     findAllUser(p){
         UserService.findAllUserPaginated(p).then(res=>{
-            this.setState({
-                users:res.data.content
-            });
+            this.setState({users:res.data.content});
         });
         UserService.count().then(res=>{
-            this.setState({
-                totalElements:res.data
-            });
+            this.setState({totalElements:res.data});
         });
         UserService.page().then(res=>{
-            this.setState({
-                totalPages:res.data
-            });
+            this.setState({totalPages:res.data});
         });
         this.setState({pageNo:p});
     }

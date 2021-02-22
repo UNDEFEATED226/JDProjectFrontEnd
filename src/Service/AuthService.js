@@ -6,6 +6,10 @@ class AuthService{
         return axios.get("/auth/findallauth");
     }
 
+    findAllAuthPaginated(p){
+        return axios.get("/auth/findallauthpaginated?pageNo="+p);
+    }
+
     count(){
         return axios.get("/auth/count");
     }
@@ -13,7 +17,7 @@ class AuthService{
     page(){
         return axios.get("/auth/page");
     }
-    
+
     addAuth(auth){
         return axios.post("/auth/addauth",auth);
     }  

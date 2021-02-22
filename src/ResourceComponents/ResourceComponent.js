@@ -1,7 +1,6 @@
 import React from 'react'
 import moment from 'moment'
 import ResourceService from '../Service/ResourceService'
-import axios from 'axios'
 
 class ResourceComponent extends React.Component{
     constructor(props){
@@ -26,8 +25,7 @@ class ResourceComponent extends React.Component{
     }
 
     findAllResource(p){
-       
-        axios.get("/resource/findallresourcepaginated?pageNo="+p).then(res=>{
+        ResourceService.findAllResourcePaginated(p).then(res=>{
             this.setState({resources:res.data.content});
         });
         ResourceService.count().then(res=>{

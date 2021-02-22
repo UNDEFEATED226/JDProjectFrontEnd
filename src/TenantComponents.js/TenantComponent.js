@@ -1,7 +1,6 @@
 import React from 'react'
 import moment from 'moment'
 import TenantService from "../Service/TenantService"
-import axios from 'axios'
 
 class TenantComponent extends React.Component{
     constructor(props){
@@ -24,7 +23,7 @@ class TenantComponent extends React.Component{
     }
 
     findAllTenant(p){
-        axios.get("/tenant/findalltenantpaginated?pageNo="+p).then(res=>{
+        TenantService.findAllTenantPaginated(p).then(res=>{
             this.setState({tenants:res.data.content});
         });
         TenantService.count().then(res=>{

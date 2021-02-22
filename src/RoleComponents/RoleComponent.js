@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React from 'react'
 import moment from 'moment'
 import RoleService from '../Service/RoleService'
@@ -26,7 +25,7 @@ class RoleComponent extends React.Component{
     }
 
     findAllRole(p){
-        axios.get("/role/findallrolepaginated?pageNo="+p).then(res=>{
+        RoleService.findAllRolePaginated(p).then(res=>{
             this.setState({roles:res.data.content});
         });
         RoleService.count().then(res=>{

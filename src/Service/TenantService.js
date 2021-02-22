@@ -6,6 +6,10 @@ class TenantService{
         return axios.get("/tenant/findalltenant");
     }
 
+    findAllTenantPaginated(p){
+        return axios.get("/tenant/findalltenantpaginated?pageNo="+p);
+    }
+    
     count(){
         return axios.get("/tenant/count");
     }

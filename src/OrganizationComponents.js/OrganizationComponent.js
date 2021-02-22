@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 import OrganizationService from '../Service/OrganizationService';
 
 class OrganizationComponent extends React.Component{
@@ -25,7 +24,7 @@ class OrganizationComponent extends React.Component{
     }
 
     findAllOrganization(p){
-        axios.get("/organization/findallorganizationpaginated?pageNo="+p).then(res=>{
+        OrganizationService.findAllOrganizationPaginated(p).then(res=>{
             this.setState({organizations:res.data.content});
         });
         OrganizationService.count().then(res=>{

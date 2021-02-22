@@ -6,6 +6,18 @@ class RoleAuthService{
         return axios.get("/roleauth/findallroleauth");
     }
 
+    findAllRoleAuthPaginated(p){
+        return axios.get("/roleauth/findallroleauthpaginated?pageNo="+p);
+    }
+
+    count(){
+        return axios.get("/roleauth/count");
+    }
+
+    page(){
+        return axios.get("/roleauth/page");
+    }
+    
     findById(id){
         return axios.get("/roleauth/findbyid?id="+id);
     }

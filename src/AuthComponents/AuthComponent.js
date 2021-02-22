@@ -1,7 +1,6 @@
 import React from 'react'
 import moment from 'moment'
 import AuthService from '../Service/AuthService'
-import axios from 'axios'
 
 class AuthComponent extends React.Component{
     constructor(props){
@@ -25,7 +24,7 @@ class AuthComponent extends React.Component{
     }
 
     findAllAuth(p){
-        axios.get("/auth/findallauthpaginated?pageNo="+p).then(res=>{
+        AuthService.findAllAuthPaginated(p).then(res=>{
             this.setState({auths:res.data.content});
         });
         AuthService.page().then(res=>{

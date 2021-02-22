@@ -6,6 +6,10 @@ class ResourceService{
         return axios.get("/resource/findallresource");
     }
 
+    findAllResourcePaginated(p){
+        return axios.get("/resource/findallresourcepaginated?pageNo="+p);
+    }
+
     count(){
         return axios.get("/resource/count");
     }

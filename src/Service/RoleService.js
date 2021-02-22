@@ -6,6 +6,10 @@ class RoleService{
         return axios.get("/role/findallrole");
     }
 
+    findAllRolePaginated(p){
+        return axios.get("/role/findallrolepaginated?pageNo="+p);
+    }
+
     count(){
         return axios.get("/role/count");
     }
