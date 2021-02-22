@@ -1,22 +1,56 @@
 import React from 'react'
 import moment from 'moment'
 import AuthService from '../Service/AuthService'
+import axios from 'axios'
 
 class AuthComponent extends React.Component{
     constructor(props){
         super(props)
         this.state = {
+            pageNo:1,
             auths:[]
         }
+        this.firstPage=this.firstPage.bind(this);
+        this.lastPage=this.lastPage.bind(this);
+        this.pageUp=this.pageUp.bind(this);
+        this.pageDown=this.pageDown.bind(this);
         this.addAuth=this.addAuth.bind(this);
         this.editAuth=this.editAuth.bind(this);
         this.deleteAuth=this.deleteAuth.bind(this);
+        this.findAllAuth=this.findAllAuth.bind(this);
     }
     
     componentDidMount(){
-        AuthService.findAllAuth().then((response) => {
-            this.setState({auths:response.data})
+        this.findAllAuth(this.state.pageNo);
+    }
+
+    findAllAuth(p){
+        axios.get("/auth/findallauthpaginated?pageNo="+p).then(res=>{
+            this.setState({auths:res.data.content});
         });
+        AuthService.page().then(res=>{
+            this.setState({totalPages:res.data});
+        });
+        AuthService.count().then(res=>{
+            this.setState({totalElements:res.data});
+        });
+        this.setState({pageNo:p});
+    }
+
+    firstPage=()=>{
+        this.findAllAuth(1);
+    }
+    
+    lastPage=()=>{
+        this.findAllAuth(this.state.totalPages);
+    }
+
+    pageUp=()=>{
+        this.findAllAuth(this.state.pageNo+1);
+    }
+
+    pageDown=()=>{
+        this.findAllAuth(this.state.pageNo-1);
     }
 
     addAuth(){
@@ -29,7 +63,15 @@ class AuthComponent extends React.Component{
 
     deleteAuth(id){
         AuthService.deleteAuth(id).then(res => {
-            this.setState({auths:this.state.auths.filter(auth => auth.id!==id)});
+            if(this.state.pageNo === this.state.totalPages && this.state.pageNo>1){
+                if(this.state.auths.length === 1){
+                    this.findAllAuth(this.state.pageNo-1);
+                }else{
+                    this.findAllAuth(this.state.pageNo);
+                }
+            }else{
+                this.findAllAuth(this.state.pageNo);
+            }
         })
     }
 
@@ -63,14 +105,22 @@ class AuthComponent extends React.Component{
                              <td>{moment(auth.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td>{moment(auth.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td>
-                                <button className="btn btn-success font-weight-bold" onClick={() => this.editAuth(auth.id)} style={{marginLeft:"10px"}}>编辑资料</button>
-                                <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteAuth(auth.id)} style={{marginLeft:"10px"}}>删除</button>
+                                <button className="btn btn-success font-weight-bold" onClick={()=>this.editAuth(auth.id)} style={{marginLeft:"10px"}}>编辑资料</button>
+                                <button className="btn btn-danger font-weight-bold" onClick={()=>this.deleteAuth(auth.id)} style={{marginLeft:"10px"}}>删除</button>
                              </td>
                          </tr>
                      )  
                  }
              </tbody>
         </table>
+        <div className="centered">
+            <button className="btn color-btn font-weight-bold text-white" onClick={this.firstPage} disabled={(this.state.pageNo == null || this.state.pageNo<=1) ? true : false}>first page</button>
+            <button className="btn color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={(this.state.pageNo == null || this.state.pageNo<=1) ? true :false}>previous page</button>
+            <button className="btn color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={(this.state.pageNo == null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>next page</button>
+            <button className="btn color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={(this.state.pageNo == null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>last page</button>
+        </div>
+        <div className="color-font text-center font-weight-bold">{this.state.pageNo} of {this.state.totalPages} 页</div>
+        <div className="color-font text-center font-weight-bold">共{this.state.totalElements}权限</div>
     </div>
        )
     }

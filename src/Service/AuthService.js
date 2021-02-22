@@ -6,6 +6,14 @@ class AuthService{
         return axios.get("/auth/findallauth");
     }
 
+    count(){
+        return axios.get("/auth/count");
+    }
+    
+    page(){
+        return axios.get("/auth/page");
+    }
+    
     addAuth(auth){
         return axios.post("/auth/addauth",auth);
     }  

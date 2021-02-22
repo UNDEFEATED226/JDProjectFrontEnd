@@ -108,9 +108,9 @@ class RoleComponent extends React.Component{
                              <td className="t-cell" style={{maxWidth:"200px"}}>{moment(role.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"200px"}}>{moment(role.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"300px"}}>
-                                <button className="btn btn-info font-weight-bold" onClick={this.viewRole(role.id)}>查看详情</button>
-                                <button className="btn btn-success font-weight-bold" onClick={this.editRole(role.id)} style={{marginLeft:"10px"}}>编辑资料</button>
-                                <button className="btn btn-danger font-weight-bold" onClick={this.deleteRole(role.id)} style={{marginLeft:"10px"}}>删除</button>
+                                <button className="btn btn-info font-weight-bold" onClick={()=>this.viewRole(role.id)}>查看详情</button>
+                                <button className="btn btn-success font-weight-bold" onClick={()=>this.editRole(role.id)} style={{marginLeft:"10px"}}>编辑资料</button>
+                                <button className="btn btn-danger font-weight-bold" onClick={()=>this.deleteRole(role.id)} style={{marginLeft:"10px"}}>删除</button>
                              </td>
                          </tr>
                      )  

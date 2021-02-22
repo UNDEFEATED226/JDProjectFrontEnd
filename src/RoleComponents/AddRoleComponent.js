@@ -36,7 +36,7 @@ class AddRoleComponent extends React.Component{
             if(this.state.rolename.length>64){
                 this.setState({rolenameformat:"角色名称过长..."});
             }
-        })
+        });
     }
 
     cancel(){
