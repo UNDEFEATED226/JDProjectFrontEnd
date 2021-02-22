@@ -39,7 +39,7 @@ class RoleAuthComponent extends React.Component{
         <br></br>
         <h1 className="text-center font-weight-bold text-secondary">角色权限列表</h1>
         <button className="btn btn-primary btn-lg text-white font-weight-bold" onClick={this.addRoleAuth}>添加角色权限</button>
-        <table className="table table-striped table-boarder"> 
+        <table className="table table-boarder"> 
            <thead className="text-justify">
                 <tr>
                  <th  className="text-secondary">ID</th>

@@ -18,6 +18,7 @@ class RoleComponent extends React.Component{
         this.viewRole=this.viewRole.bind(this);
         this.editRole=this.editRole.bind(this);
         this.deleteRole=this.deleteRole.bind(this);
+        this.findAllRole=this.findAllRole.bind(this);
     }
     
     componentDidMount(){
@@ -85,14 +86,14 @@ class RoleComponent extends React.Component{
         <br></br>
         <h1 className="text-center font-weight-bold text-secondary">角色列表</h1>
         <button className="btn btn-primary btn-lg text-white font-weight-bold" onClick={this.addRole}>添加角色</button>
-        <table className="table table-striped table-boarder"> 
+        <table className="table table-boarder"> 
            <thead className="text-justify">
                 <tr>
-                  <th  className="text-secondary text-center" style={{columnWidth:"20px"}}>id</th>
-                  <th  className="text-secondary text-center" style={{columnWidth:"80px"}}>角色名称</th>  
-                  <th  className="text-secondary text-center" style={{columnWidth:"50px"}}>角色类型</th>  
-                  <th  className="text-secondary text-center" style={{columnWidth:"200px"}}>创建时间</th> 
-                  <th  className="text-secondary text-center" style={{columnWidth:"200px"}}>更新时间</th>  
+                  <th  className="text-secondary" style={{columnWidth:"30px"}}>id</th>
+                  <th  className="text-secondary" style={{columnWidth:"80px"}}>角色名称</th>  
+                  <th  className="text-secondary" style={{columnWidth:"50px"}}>角色类型</th>  
+                  <th  className="text-secondary" style={{columnWidth:"200px"}}>创建时间</th> 
+                  <th  className="text-secondary" style={{columnWidth:"200px"}}>更新时间</th>  
                   <th  className="text-secondary text-center" style={{columnWidth:"300px"}}>操作</th>
                 </tr>
                 </thead>
@@ -101,15 +102,15 @@ class RoleComponent extends React.Component{
                      this.state.roles.map(
                          role =>
                          <tr key= {role.id}>         
-                             <td className="t-cell" style={{maxWidth:"20px"}}>{role.id}</td>
+                             <td className="t-cell" style={{maxWidth:"30px"}}>{role.id}</td>
                              <td className="t-cell" style={{maxWidth:"80px"}}>{role.rolename}</td>
                              <td className="t-cell" style={{maxWidth:"50px"}}>{role.roletype}</td>
                              <td className="t-cell" style={{maxWidth:"200px"}}>{moment(role.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"200px"}}>{moment(role.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"300px"}}>
-                                <button className="btn btn-info font-weight-bold" onClick={() => this.viewRole(role.id)}>查看详情</button>
-                                <button className="btn btn-success font-weight-bold" onClick={() => this.editRole(role.id)} style={{marginLeft:"10px"}}>编辑资料</button>
-                                <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteRole(role.id)} style={{marginLeft:"10px"}}>删除</button>
+                                <button className="btn btn-info font-weight-bold" onClick={this.viewRole(role.id)}>查看详情</button>
+                                <button className="btn btn-success font-weight-bold" onClick={this.editRole(role.id)} style={{marginLeft:"10px"}}>编辑资料</button>
+                                <button className="btn btn-danger font-weight-bold" onClick={this.deleteRole(role.id)} style={{marginLeft:"10px"}}>删除</button>
                              </td>
                          </tr>
                      )  
@@ -117,10 +118,10 @@ class RoleComponent extends React.Component{
              </tbody>
         </table>
         <div className="centered">
-            <button className="btn color-btn btn-sm font-weight-bold" onClick={this.firstPage} disabled={this.state.pageNo<=1 ? true : false}>first page</button>
-            <button className="btn color-btn btn-sm font-weight-bold" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={this.state.pageNo<=1 ? true : false}>previous page</button>
-            <button className="btn color-btn btn-sm font-weight-bold" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={this.state.pageNo>=this.state.totalPages ? true : false}>next page</button>
-            <button className="btn color-btn btn-sm font-weight-bold" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={this.state.pageNo>=this.state.totalPages ? true : false}>last page</button>
+            <button className="btn color-btn btn-sm font-weight-bold text-white" onClick={this.firstPage} disabled={this.state.pageNo<=1 ? true : false}>first page</button>
+            <button className="btn color-btn btn-sm font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={this.state.pageNo<=1 ? true : false}>previous page</button>
+            <button className="btn color-btn btn-sm font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={this.state.pageNo>=this.state.totalPages ? true : false}>next page</button>
+            <button className="btn color-btn btn-sm font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={this.state.pageNo>=this.state.totalPages ? true : false}>last page</button>
         </div>
         <div className="font-weight-bold text-center color-font">{this.state.pageNo} of {this.state.totalPages} 页</div>
         <div className="font-weight-bold text-center color-font">共{this.state.totalElements}角色</div>

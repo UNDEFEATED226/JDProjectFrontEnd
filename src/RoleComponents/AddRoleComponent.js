@@ -24,6 +24,10 @@ class AddRoleComponent extends React.Component{
     saveRole=(r)=>{
         r.preventDefault();
         this.setState({rolenameformat:''});
+        if(this.state.rolename===''){
+            this.setState({rolenameformat:"角色名称不能为空..."});
+            throw new Error("Name is empty");
+        }
         let role= {id:'',rolename:this.state.rolename,roletype:this.state.roletype,description:'',
         tenantid:'',isdeleted:0,issystem:'',createtime:'',updatetime:'',rolecode:'',isforbidden:0,isdefault:0};
         RoleService.addRole(role).then(res =>{

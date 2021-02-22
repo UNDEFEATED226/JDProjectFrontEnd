@@ -90,14 +90,14 @@ class OrganizationComponent extends React.Component{
             <table className="table table-boarder"> 
                <thead>
                     <tr>
-                      <th className="text-secondary text-center" style={{columnWidth:"20px"}}>id</th>  
-                      <th className="text-secondary text-center" style={{columnWidth:"130px"}}>组织名称</th>     
-                      <th className="text-secondary text-center" style={{columnWidth:"40px"}}>组织层级</th>  
-                      <th className="text-secondary text-center" style={{columnWidth:"60px"}}>组织类型ID</th>  
-                      <th className="text-secondary text-center" style={{columnWidth:"60px"}}>组织类型名称</th> 
-                      <th className="text-secondary text-center" style={{columnWidth:"40px"}}>组织种类</th>  
-                      <th className="text-secondary text-center" style={{columnWidth:"80px"}}>基准组织编码</th>  
-                      <th className="text-secondary text-center" style={{columnWidth:"40px"}}>租户ID</th>  
+                      <th className="text-secondary" style={{columnWidth:"30px"}}>id</th>  
+                      <th className="text-secondary" style={{columnWidth:"125px"}}>组织名称</th>     
+                      <th className="text-secondary" style={{columnWidth:"70px"}}>组织层级</th>  
+                      <th className="text-secondary" style={{columnWidth:"75px"}}>组织类型ID</th>  
+                      <th className="text-secondary" style={{columnWidth:"110px"}}>组织类型名称</th> 
+                      <th className="text-secondary" style={{columnWidth:"70px"}}>组织种类</th>  
+                      <th className="text-secondary" style={{columnWidth:"110px"}}>基准组织编码</th>  
+                      <th className="text-secondary" style={{columnWidth:"70px"}}>租户ID</th>  
                       <th className="text-secondary text-center" style={{columnWidth:"300px"}}>操作</th>
                     </tr>
                     </thead>
@@ -106,14 +106,14 @@ class OrganizationComponent extends React.Component{
                          this.state.organizations.map(
                              organization =>
                              <tr key= {organization.id}>
-                                 <td className="t-cell" style={{maxWidth:"20px"}}>{organization.id}</td>
-                                 <td className="t-cell" style={{maxWidth:"130px"}}>{organization.orgname}</td>
-                                 <td className="t-cell" style={{maxWidth:"50px"}}>{organization.orglevel}</td>
-                                 <td className="t-cell" style={{maxWidth:"70px"}}>{organization.orgtype}</td>
-                                 <td className="t-cell" style={{maxWidth:"80px"}}>{organization.orgtypename}</td>
-                                 <td className="t-cell" style={{maxWidth:"50px"}}>{organization.orgcatlog}</td>
-                                 <td className="t-cell" style={{maxWidth:"80px"}}>{organization.baseorgcode}</td>
-                                 <td className="t-cell" style={{maxWidth:"50px"}}>{organization.tenantid}</td>
+                                 <td className="t-cell" style={{maxWidth:"30px"}}>{organization.id}</td>
+                                 <td className="t-cell" style={{maxWidth:"135px"}}>{organization.orgname}</td>
+                                 <td className="t-cell" style={{maxWidth:"70px"}}>{organization.orglevel}</td>
+                                 <td className="t-cell" style={{maxWidth:"75px"}}>{organization.orgtype}</td>
+                                 <td className="t-cell" style={{maxWidth:"110px"}}>{organization.orgtypename}</td>
+                                 <td className="t-cell" style={{maxWidth:"70px"}}>{organization.orgcatlog}</td>
+                                 <td className="t-cell" style={{maxWidth:"110px"}}>{organization.baseorgcode}</td>
+                                 <td className="t-cell" style={{maxWidth:"70px"}}>{organization.tenantid}</td>
                                  <td className="t-cell" style={{maxWidth:"300px"}}>
                                     <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-info font-weight-bold">查看详情</button>
                                     <button  onClick={() => this.editOrganization(organization.id)} className="btn btn-success font-weight-bold" style={{marginLeft:"10px"}}>编辑资料</button>

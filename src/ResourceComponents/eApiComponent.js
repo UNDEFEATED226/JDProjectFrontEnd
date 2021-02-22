@@ -44,7 +44,7 @@ class eApiComponent extends React.Component{
         <br></br>
         <h1 className="text-center font-weight-bold text-secondary">能源平台API</h1>
         <button className="btn btn-lg btn-primary text-white font-weight-bold" onClick={this.addResource}>添加资源</button>
-        <table className="table table-striped table-boarder"> 
+        <table className="table table-boarder"> 
            <thead className="text-justify">
                 <tr>
                  <th  className="text-secondary">id</th>

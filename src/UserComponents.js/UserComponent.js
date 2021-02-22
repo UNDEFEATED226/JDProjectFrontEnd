@@ -90,10 +90,10 @@ class UserComponent extends React.Component{
         <br></br>
         <h1 className="text-center font-weight-bold text-secondary">用户列表</h1>
         <button className="btn btn-primary btn-lg text-white font-weight-bold" onClick={this.addUser}>添加用户</button>
-        <table className="table table-striped table-boarder"> 
+        <table className="table table-boarder"> 
            <thead className="text-justify">
                 <tr>
-                  <th  className="text-secondary text-center" style={{columnWidth:"20px"}}>id</th>
+                  <th  className="text-secondary text-center" style={{columnWidth:"30px"}}>id</th>
                   <th  className="text-secondary text-center" style={{columnWidth:"100px"}}>登录用户名</th>  
                   <th  className="text-secondary text-center" style={{columnWidth:"100px"}}>名字</th>  
                   <th  className="text-secondary text-center" style={{columnWidth:"100px"}}>组织名称</th> 
@@ -107,7 +107,7 @@ class UserComponent extends React.Component{
                      this.state.users.map(
                          user =>
                          <tr key= {user.id}>         
-                             <td className="t-cell" style={{maxWidth:"20px"}}>{user.id}</td>
+                             <td className="t-cell" style={{maxWidth:"30px"}}>{user.id}</td>
                              <td className="t-cell" style={{maxWidth:"100px"}}>{user.loginname}</td>
                              <td className="t-cell" style={{maxWidth:"100px"}}>{user.realname}</td>
                              <td className="t-cell" style={{maxWidth:"100px"}}>{user.orgid}</td>

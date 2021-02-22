@@ -34,7 +34,7 @@ class UserRoleComponent extends React.Component{
         <br></br>
         <h1 className="text-center font-weight-bold text-secondary">用户角色列表</h1>
         <button className="btn btn-primary btn-lg text-white font-weight-bold" onClick={this.addUserRole}>添加用户角色</button>
-        <table className="table table-striped table-boarder"> 
+        <table className="table table-boarder"> 
            <thead className="text-justify">
                 <tr>
                  <th  className="text-secondary">id</th>

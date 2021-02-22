@@ -6,6 +6,14 @@ class ResourceService{
         return axios.get("/resource/findallresource");
     }
 
+    count(){
+        return axios.get("/resource/count");
+    }
+
+    page(){
+        return axios.get("/resource/page");
+    }
+
     resourceMenu(resourcetypeid){
         return axios.get("/resource/resourcemenu?resourcetypeid="+resourcetypeid);
     }

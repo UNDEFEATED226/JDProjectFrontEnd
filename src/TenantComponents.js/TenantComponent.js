@@ -38,7 +38,7 @@ class TenantComponent extends React.Component{
             <br></br>
             <h1 className="text-center font-weight-bold text-secondary">租户列表</h1>
             <button className="btn btn-primary btn-lg text-white font-weight-bold" onClick={this.addTenant}>添加租户</button>
-            <table className="table table-striped table-boarder"> 
+            <table className="table table-boarder"> 
                <thead className="text-justify">
                     <tr>
                      <th  className="text-secondary">id</th>
