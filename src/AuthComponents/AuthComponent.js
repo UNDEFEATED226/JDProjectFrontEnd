@@ -71,7 +71,7 @@ class AuthComponent extends React.Component{
             }else{
                 this.findAllAuth(this.state.pageNo);
             }
-        })
+        });
     }
 
     render(){
@@ -79,7 +79,7 @@ class AuthComponent extends React.Component{
         <div>
         <br></br>
         <h1 className="text-center font-weight-bold text-secondary">权限列表</h1>
-        <button className="btn btn-primary btn-lg text-white font-weight-bold" onClick={this.addAuth}>添加权限</button>
+        <button className="btn btn-outline-primary btn-lg font-weight-bold" onClick={this.addAuth}>添加权限</button>
         <table className="table table-border"> 
            <thead className="text-justify">
                 <tr>
@@ -104,8 +104,8 @@ class AuthComponent extends React.Component{
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(auth.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(auth.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell text-center" style={{maxWidth:"300px"}}>
-                                <button className="btn btn-success font-weight-bold" onClick={()=>this.editAuth(auth.id)}>编辑资料</button>
-                                <button className="btn btn-danger font-weight-bold" onClick={()=>this.deleteAuth(auth.id)} style={{marginLeft:"10px"}}>删除</button>
+                                <button className="btn btn-outline-success font-weight-bold" onClick={()=>this.editAuth(auth.id)}>编辑资料</button>
+                                <button className="btn btn-outline-danger font-weight-bold" onClick={()=>this.deleteAuth(auth.id)} style={{marginLeft:"10px"}}>删除</button>
                              </td>
                          </tr>
                      )  

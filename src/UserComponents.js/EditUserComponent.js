@@ -280,8 +280,10 @@ class EditUserComponent extends React.Component{
                             <option value="0">否</option>
                         </select>
                     </div>
-                    <button className="btn btn-success" onClick={this.editUser}>保存</button>
-                    <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"15px"}}>取消</button>
+                    <div className="text-center">
+                    <button className="btn btn-lg btn-outline-success" onClick={this.editUser}>保存</button>
+                    <button className="btn btn-lg btn-outline-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    </div>
                     </form>
                    </div>
                   </div>

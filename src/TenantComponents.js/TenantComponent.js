@@ -102,7 +102,7 @@ class TenantComponent extends React.Component{
                                  <td className="t-cell" style={{maxWidth:"190px"}}>{moment(tenant.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                                  <td className="t-cell" style={{maxWidth:"190px"}}>{moment(tenant.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                                  <td className="t-cell" style={{maxWidth:"170px"}}>{tenant.adminuserid}</td>
-                                 <td clsasName="t-cell text-center" style={{maxWidth:"300px"}}>
+                                 <td className="t-cell text-center" style={{maxWidth:"300px"}}>
                                     <button className="btn btn-success font-weight-bold" onClick={() => this.editTenant(tenant.id)} style={{marginLeft:"10px"}}>编辑资料</button>
                                     <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteTenant(tenant.id)} style={{marginLeft:"10px"}}>删除</button>
                                  </td>

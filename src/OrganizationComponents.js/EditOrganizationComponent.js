@@ -204,8 +204,8 @@ class EditOrganizationComponent extends React.Component{
                                 </select>
                             </div>
                             <div>
-                                <button className="btn btn-success" onClick={this.editOrganization}>保存</button>
-                                <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"15px"}}>取消</button>
+                                <button className="btn btn-outline-success" onClick={this.editOrganization}>保存</button>
+                                <button className="btn btn-outline-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"15px"}}>取消</button>
                             </div>
                         </form>
                     </div>

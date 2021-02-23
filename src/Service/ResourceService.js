@@ -14,12 +14,24 @@ class ResourceService{
         return axios.get("/resource/count");
     }
 
+    countByRestypeid(restypeid){
+        return axios.get("/resource/countbyrestypeid?restypeid="+restypeid);
+    }
+
     page(){
         return axios.get("/resource/page");
     }
 
-    resourceMenu(resourcetypeid){
-        return axios.get("/resource/resourcemenu?resourcetypeid="+resourcetypeid);
+    pageByRestypeid(restypeid){
+        return axios.get("/resource/pagebyrestypeid?restypeid="+restypeid);
+    }
+
+    resourceMenu(restypeid){
+        return axios.get("/resource/resourcemenu?restypeid="+restypeid);
+    }
+
+    resourceMenuPaginated(restypeid,p){
+        return axios.get("/resource/resourcemenupaginated?restypeid="+restypeid+"&pageNo="+p);
     }
 
     findById(id){

@@ -60,18 +60,12 @@
 }
 
 .nav-item:hover{
- background:cornflowerblue;
+  opacity: 0.88;
 }
 
 .color-font{
   color:gray;
   font-size:16px;
-}
-
-.centered {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .t-cell{

@@ -6,19 +6,52 @@ class OrgRoleComponent extends React.Component{
     constructor(props){
         super(props)
         this.state = {
+            pageNo:1,
             roles:[]
         }
+        this.firstPage=this.firstPage.bind(this);
+        this.lastPage=this.lastPage.bind(this);
+        this.pageUp=this.pageUp.bind(this);
+        this.pageDown=this.pageDown.bind(this);
         this.viewRole=this.viewRole.bind(this);
         this.addRole=this.addRole.bind(this);
         this.editRole=this.editRole.bind(this);
         this.deleteRole=this.deleteRole.bind(this);
+        this.findAllRole=this.findAllRole.bind(this);
     }
     
     componentDidMount(){
-        RoleService.roleMenu(1).then((response) => {
-            this.setState({roles:response.data})
-        });
-    }
+        this.findAllRole(this.state.pageNo);
+     }
+ 
+     findAllRole(p){
+         RoleService.roleMenuPaginated(1,p).then(res=>{
+             this.setState({roles:res.data.content});
+         });
+         RoleService.countByRoletype(1).then(res=>{
+             this.setState({totalElements:res.data});
+         });
+         RoleService.pageByRoletype(1).then(res=>{
+             this.setState({totalPages:res.data});
+         });
+         this.setState({pageNo:p});
+     }
+ 
+     firstPage=()=>{
+         this.findAllRole(1);
+     }
+     
+     lastPage=()=>{
+         this.findAllRole(this.state.totalPages);
+     }
+ 
+     pageUp=()=>{
+         this.findAllRole(this.state.pageNo+1);
+     }
+ 
+     pageDown=()=>{
+         this.findAllRole(this.state.pageNo-1);
+     }
 
     addRole(){
         this.props.history.push("/addrole");
@@ -34,7 +67,15 @@ class OrgRoleComponent extends React.Component{
 
     deleteRole(id){
         RoleService.deleteRole(id).then(res => {
-            this.setState({roles:this.state.roles.filter(roles => roles.id!==id)});
+            if(this.state.pageNo === this.state.totalPages && this.state.pageNo>1){
+                if(this.state.roles.length === 1){
+                    this.findAllRole(this.state.pageNo-1);
+                }else{
+                    this.findAllRole(this.state.pageNo);
+                }
+            }else{
+                this.findAllRole(this.state.pageNo);
+            }
         })
     }
 
@@ -47,12 +88,12 @@ class OrgRoleComponent extends React.Component{
             <table className="table table-boarder"> 
                <thead className="text-justify">
                     <tr>
-                     <th  className="text-secondary">id</th>
-                      <th  className="text-secondary">角色名称</th>  
-                      <th  className="text-secondary">角色类型ID</th>  
-                      <th  className="text-secondary">创建时间</th> 
-                      <th  className="text-secondary">更新时间</th>  
-                      <th  className="text-secondary">操作</th>
+                     <th  className="text-secondary" style={{columnWidth:"30px"}}>id</th>
+                      <th  className="text-secondary" style={{columnWidth:"80px"}}>角色名称</th>  
+                      <th  className="text-secondary" style={{columnWidth:"50px"}}>角色类型ID</th>  
+                      <th  className="text-secondary" style={{columnWidth:"190px"}}>创建时间</th> 
+                      <th  className="text-secondary" style={{columnWidth:"190px"}}>更新时间</th>  
+                      <th  className="text-secondary" style={{columnWidth:"300px"}}>操作</th>
                     </tr>
                     </thead>
                  <tbody>
@@ -60,12 +101,12 @@ class OrgRoleComponent extends React.Component{
                          this.state.roles.map(
                              role =>
                              <tr key= {role.id}>         
-                                 <td>{role.id}</td>
-                                 <td>{role.rolename}</td>
-                                 <td>{role.roletype}</td>
-                                 <td>{moment(role.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
-                                 <td>{moment(role.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
-                                 <td>
+                                 <td className="t-cell" style={{maxWidth:"30px"}}>{role.id}</td>
+                                 <td className="t-cell" style={{maxWidth:"80px"}}>{role.rolename}</td>
+                                 <td className="t-cell" style={{maxWidth:"50px"}}>{role.roletype}</td>
+                                 <td className="t-cell" style={{maxWidth:"190px"}}>{moment(role.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
+                                 <td className="t-cell" style={{maxWidth:"190px"}}>{moment(role.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
+                                 <td className="t-cell text-center" style={{maxWidth:"300px"}}>
                                     <button className="btn btn-info font-weight-bold" onClick={() => this.viewRole(role.id)}>查看详情</button>
                                     <button className="btn btn-success font-weight-bold" onClick={() => this.editRole(role.id)} style={{marginLeft:"10px"}}>编辑资料</button>
                                     <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteRole(role.id)} style={{marginLeft:"10px"}}>删除</button>
@@ -75,6 +116,14 @@ class OrgRoleComponent extends React.Component{
                      }
                  </tbody>
             </table>
+            <div className="text-center">
+            <button className="btn btn-sm color-btn font-weight-bold text-white" onClick={this.firstPage} disabled={(this.state.pageNo == null || this.state.pageNo<=1) ? true : false}>first page</button>
+            <button className="btn btn-sm color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={(this.state.pageNo == null || this.state.pageNo<=1) ? true :false}>previous page</button>
+            <button className="btn btn-sm color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={(this.state.pageNo == null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>next page</button>
+            <button className="btn btn-sm color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={(this.state.pageNo == null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>last page</button>
+        </div>
+        <div className="color-font text-center font-weight-bold">{this.state.pageNo} of {this.state.totalPages} 页</div>
+        <div className="color-font text-center font-weight-bold">共{this.state.totalElements}组织角色</div>
         </div>
            )
     }

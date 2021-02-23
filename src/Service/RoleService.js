@@ -14,12 +14,24 @@ class RoleService{
         return axios.get("/role/count");
     }
 
+    countByRoletype(roletype){
+        return axios.get("/role/countbyroletype?roletype="+roletype);
+    }
+
     page(){
         return axios.get("/role/page");
     }
 
+    pageByRoletype(roletype){
+        return axios.get("/role/pagebyroletype?roletype="+roletype);
+    }
+
     roleMenu(roletype){
         return axios.get("/role/rolemenu?roletype="+roletype);
+    }
+
+    roleMenuPaginated(roletype,pageNo){
+        return axios.get("/role/rolemenupaginated?roletype="+roletype+"&pageNo="+pageNo);
     }
 
     findById(id){

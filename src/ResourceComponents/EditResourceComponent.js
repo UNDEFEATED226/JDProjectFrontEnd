@@ -122,7 +122,7 @@ class EditResourceComponent extends React.Component{
         this.setState({fullname:event.target.value});
     }
     cancel(){
-        this.props.history.push('/resourcelist'); 
+        this.props.history.push("/resourcelist");
     }
                  
     render(){
@@ -162,8 +162,10 @@ class EditResourceComponent extends React.Component{
                         <input placeholder="请输入资源完整名称..." className="form-control" value={this.state.fullname} onChange={this.changeFullnameHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.fullnameformat}</div>    
                     </div>
-                    <button className="btn btn-success" onClick={this.editResource}>保存</button>
-                    <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"15px"}}>取消</button>
+                    <div className="text-center">
+                    <button className="btn btn-lg btn-outline-success" onClick={this.editResource}>保存</button>
+                    <button className="btn btn-lg btn-outline-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    </div>
                     </form>
                    </div>
                   </div>
