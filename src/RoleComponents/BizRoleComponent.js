@@ -83,9 +83,9 @@ class BizRoleComponent extends React.Component{
         return(
             <div>
             <br></br>
-            <h1 className="text-center font-weight-bold text-secondary">业务角色列表</h1>
-            <button className="btn btn-primary btn-lg text-white font-weight-bold" onClick={this.addRole}>添加角色</button>
-            <table className="table table-boarder"> 
+            <h3 className="text-center font-weight-bold text-secondary">业务角色列表</h3>
+            <button className="btn blue-btn btn-sm text-white font-weight-bold" onClick={this.addRole}>添加角色</button>
+            <table className="table f-size table-boarder"> 
                <thead className="text-justify">
                     <tr>
                      <th  className="text-secondary" style={{columnWidth:"30px"}}>id</th>
@@ -107,9 +107,9 @@ class BizRoleComponent extends React.Component{
                                  <td className="t-cell" style={{maxWidth:"190px"}}>{moment(role.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                                  <td className="t-cell" style={{maxWidth:"190px"}}>{moment(role.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                                  <td className="t-cell text-center" style={{maxWidth:"300px"}}>
-                                    <button className="btn btn-info font-weight-bold" onClick={() => this.viewRole(role.id)}>查看详情</button>
-                                    <button className="btn btn-success font-weight-bold" onClick={() => this.editRole(role.id)} style={{marginLeft:"10px"}}>编辑资料</button>
-                                    <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteRole(role.id)} style={{marginLeft:"10px"}}>删除</button>
+                                    <button className="btn btn-sm yellow-btn text-white font-weight-bold" onClick={() => this.viewRole(role.id)}>查看详情</button>
+                                    <button className="btn btn-sm green-btn text-white font-weight-bold" onClick={() => this.editRole(role.id)} style={{marginLeft:"10px"}}>编辑资料</button>
+                                    <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={() => this.deleteRole(role.id)} style={{marginLeft:"10px"}}>删除</button>
                                  </td>
                              </tr>
                          )  

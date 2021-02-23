@@ -44,9 +44,9 @@ class ViewOrganizationComponent extends React.Component{
     
     render(){
         return(
-            <div className="text-secondary" style={{marginTop:"5%"}}>
-              <div className="card bg-light mx-auto" style={{width:"45rem"}}>
-                <h3 className="text-center font-weight-bold card-header">组织详情</h3>
+            <div className="text-secondary f-size" style={{marginTop:"5%"}}>
+              <div className="card bg-light mx-auto" style={{width:"30rem"}}>
+                <h5 className="text-center font-weight-bold card-header">组织详情</h5>
                 <div className="card-body">
                     <div className="row">
                         <label>id:</label>

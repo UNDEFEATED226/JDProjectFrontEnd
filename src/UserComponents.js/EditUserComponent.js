@@ -187,28 +187,28 @@ class EditUserComponent extends React.Component{
     render(){
         return(
             <div style={{marginTop:"5%"}}>
-                <div className="card bg-light mx-auto" style={{width:"45rem"}}>
-                 <h3 className="card-header text-center font-weight-bold text-secondary">编辑用户资料</h3>
+                <div className="card f-size bg-light mx-auto" style={{width:"30rem"}}>
+                 <h5 className="card-header text-center font-weight-bold text-secondary">编辑用户资料</h5>
                   <div className="card-body">
                    <form>
                    <div className="form-group">
                         <label className="text-secondary font-weight-bold">登录用户名:</label>
-                        <input placeholder="请输入登录用户名..." className="form-control" value={this.state.loginname} onChange={this.changeLoginnameHandler}/>
+                        <input placeholder="请输入登录用户名..." style={{fontSize:"12px"}} className="form-control" value={this.state.loginname} onChange={this.changeLoginnameHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.loginnameformat}</div>
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">登录密码:</label>
-                        <input placeholder="请输入登录密码..." className="form-control" value={this.state.password} onChange={this.changePasswordHandler}/>
+                        <input placeholder="请输入登录密码..." style={{fontSize:"12px"}} className="form-control" value={this.state.password} onChange={this.changePasswordHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.passwordformat}</div>
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">名字:</label>
-                        <input placeholder="请输入名字..." className="form-control" value={this.state.realname} onChange={this.changeRealnameHandler}/>
+                        <input placeholder="请输入名字..." style={{fontSize:"12px"}} className="form-control" value={this.state.realname} onChange={this.changeRealnameHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.realnameformat}</div>
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">组织:</label>
-                        <select className="form-control" onChange={this.changeOrgidHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeOrgidHandler}>
                         <option defaultValue value={this.state.orgid}>请选择组织:</option>
                         {
                             this.state.organizations.map(
@@ -220,12 +220,12 @@ class EditUserComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">邮箱:</label>
-                        <input placeholder="请输入邮箱..." className="form-control" value={this.state.email} onChange={this.changeEmailHandler}/>
+                        <input placeholder="请输入邮箱..." style={{fontSize:"12px"}} className="form-control" value={this.state.email} onChange={this.changeEmailHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.emailformat}</div>
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">性别:</label>
-                        <select className="form-control" onChange={this.changeSexHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeSexHandler}>
                             <option defaultValue value={this.state.sex}>请选择性别</option>
                             <option value="1">男</option>
                             <option value="0">女</option>
@@ -233,32 +233,32 @@ class EditUserComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">备注:</label>
-                        <input placeholder="请输入备注..." className="form-control" value={this.state.comment} onChange={this.changeCommentHandler}/>
+                        <input placeholder="请输入备注..." style={{fontSize:"12px"}} className="form-control" value={this.state.comment} onChange={this.changeCommentHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.commentformat}</div>
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">用户状态:</label>
-                        <input placeholder="请输入用户状态..." className="form-control" value={this.state.userstatus} onChange={this.changeUserstatusHandler}/>
+                        <input placeholder="请输入用户状态..." style={{fontSize:"12px"}} className="form-control" value={this.state.userstatus} onChange={this.changeUserstatusHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.userstatusformat}</div>
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">用户分组ID:</label>
-                        <input placeholder="请输入用户分组ID..." className="form-control" value={this.state.usergroupid} onChange={this.changeUsergroupidHandler}/>
+                        <input placeholder="请输入用户分组ID..." style={{fontSize:"12px"}} className="form-control" value={this.state.usergroupid} onChange={this.changeUsergroupidHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.usergroupidformat}</div>
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">组织全路径:</label>
-                        <input placeholder="请输入组织全路径..." className="form-control" value={this.state.fullparentid} onChange={this.changeFullparentidHandler}/>
+                        <input placeholder="请输入组织全路径..." style={{fontSize:"12px"}} className="form-control" value={this.state.fullparentid} onChange={this.changeFullparentidHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.fullparentidformat}</div>
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">手机号:</label>
-                        <input placeholder="请输入手机号..." className="form-control" value={this.state.mobile} onChange={this.changeMobileHandler}/>
+                        <input placeholder="请输入手机号..." style={{fontSize:"12px"}} className="form-control" value={this.state.mobile} onChange={this.changeMobileHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.mobileformat}</div>
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">是否已删除</label>
-                        <select className="form-control" onChange={this.changeIsdeletedHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeIsdeletedHandler}>
                             <option defaultValue value={this.state.isdeleted}>请选择是否已删除</option>
                             <option value="1">是</option>
                             <option value="0">否</option>
@@ -266,7 +266,7 @@ class EditUserComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">是否为租户管理员</label>
-                        <select className="form-control" onChange={this.changeIstenantadminHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeIstenantadminHandler}>
                             <option defaultValue value={this.state.istenantadmin}>请选择是否为租户管理员</option>
                             <option value="1">是</option>
                             <option value="0">否</option>
@@ -274,15 +274,15 @@ class EditUserComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">是否被禁用</label>
-                        <select className="form-control" onChange={this.changeIsforbiddenHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeIsforbiddenHandler}>
                             <option defaultValue value={this.state.isforbidden}>请选择是否被禁用</option>
                             <option value="1">是</option>
                             <option value="0">否</option>
                         </select>
                     </div>
                     <div className="text-center">
-                    <button className="btn btn-lg btn-outline-success" onClick={this.editUser}>保存</button>
-                    <button className="btn btn-lg btn-outline-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    <button className="btn btn-sm green-btn text-white font-weight-bold" onClick={this.editUser}>保存</button>
+                    <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
                     </div>
                     </form>
                    </div>

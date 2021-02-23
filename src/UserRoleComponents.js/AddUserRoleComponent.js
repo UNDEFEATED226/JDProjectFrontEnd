@@ -71,13 +71,13 @@ class AddUserRoleComponent extends React.Component{
     render(){
         return(
             <div style={{marginTop:"5%"}}>
-                <div className="card bg-light mx-auto" style={{width:"45rem"}}>
-                 <h3 className="card-header text-center font-weight-bold text-secondary">添加用户角色</h3>
+                <div className="card f-size bg-light mx-auto" style={{width:"25rem"}}>
+                 <h5 className="card-header text-center font-weight-bold text-secondary">添加用户角色</h5>
                   <div className="card-body">
                    <form>
                    <div className="form-group">
                         <label className="text-secondary font-weight-bold">用户:</label>
-                        <select className="form-control" value={this.state.userid} onChange={this.changeUseridHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} value={this.state.userid} onChange={this.changeUseridHandler}>
                             <option defaultValue value=''>请选择用户</option>
                             {
                                 this.state.users.map(
@@ -90,7 +90,7 @@ class AddUserRoleComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">角色:</label>
-                        <select className="form-control" value={this.state.roleid} onChange={this.changeRoleidHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} value={this.state.roleid} onChange={this.changeRoleidHandler}>
                             <option defaultValue value=''>请选择角色</option>
                             {
                                 this.state.roles.map(
@@ -102,8 +102,8 @@ class AddUserRoleComponent extends React.Component{
                         <div style={{color:"#f44e3b"}}>{this.state.roleidformat}</div>    
                     </div>
                     <div className="text-center">
-                    <button className="btn btn-lg btn-success" onClick={this.saveUserRole}>保存</button>
-                    <button className="btn btn-lg btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.saveUserRole}>保存</button>
+                    <button className="btn btn-sm red-btn font-weight-bold text-white" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
                     </div>
                     </form>
                    </div>

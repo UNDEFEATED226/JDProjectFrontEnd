@@ -143,48 +143,48 @@ class EditOrganizationComponent extends React.Component{
     render(){
         return(
             <div style={{marginTop:"5%"}}>
-                <div className="card bg-light mx-auto" style={{width:"45rem"}}>
-                    <h3 className="card-header text-center font-weight-bold text-secondary">编辑组织资料</h3>
+                <div className="card bg-light mx-auto f-size" style={{width:"30rem"}}>
+                    <h5 className="card-header text-center font-weight-bold text-secondary">编辑组织资料</h5>
                     <div className="card-body">
                         <form>
                             <div className="form-group">
                                 <label className="text-secondary font-weight-bold">组织名称:</label>
-                                <input placeholder="请输入组织名称..."  className="form-control" value={this.state.orgname} onChange={this.changeOrgnameHandler}/>
+                                <input placeholder="请输入组织名称..." style={{fontSize:"12px"}} className="form-control" value={this.state.orgname} onChange={this.changeOrgnameHandler}/>
                                 <div style={{color:"#f44e3b"}}>{this.state.orgnameformat}</div>
                             </div>
                             <div className="form-group">
                                 <label className="text-secondary font-weight-bold">父级组织ID:</label>
-                                <input placeholder="请输入父级组织ID..."  className="form-control" value={this.state.parentorgid} onChange={this.changeParentorgidHandler}/>
+                                <input placeholder="请输入父级组织ID..." style={{fontSize:"12px"}}  className="form-control" value={this.state.parentorgid} onChange={this.changeParentorgidHandler}/>
                                 <div style={{color:"#f44e3b"}}>{this.state.parentorgidformat}</div>
                             </div>
                             <div className="form-group">
                                 <label className="text-secondary font-weight-bold">组织层级:</label>
-                                <input placeholder="请输入组织层级..."  className="form-control" value={this.state.orglevel} onChange={this.changeOrglevelHandler}/>
+                                <input placeholder="请输入组织层级..." style={{fontSize:"12px"}}  className="form-control" value={this.state.orglevel} onChange={this.changeOrglevelHandler}/>
                                 <div style={{color:"#f44e3b"}}>{this.state.orglevelformat}</div>
                             </div>
                             <div className="form-group">
                                 <label className="text-secondary font-weight-bold">组织类型ID:</label>
-                                <input placeholder="请输入组织类型ID..."  className="form-control" value={this.state.orgtype} onChange={this.changeOrgtypeHandler}/>
+                                <input placeholder="请输入组织类型ID..." style={{fontSize:"12px"}}  className="form-control" value={this.state.orgtype} onChange={this.changeOrgtypeHandler}/>
                                 <div style={{color:"#f44e3b"}}>{this.state.orgtypeformat}</div>
                             </div>
                             <div className="form-group">
                                 <label className="text-secondary font-weight-bold">组织类型名称:</label>
-                                <input placeholder="请输入组织类型名称..."  className="form-control" value={this.state.orgtypename} onChange={this.changeOrgtypenameHandler}/>
+                                <input placeholder="请输入组织类型名称..." style={{fontSize:"12px"}}  className="form-control" value={this.state.orgtypename} onChange={this.changeOrgtypenameHandler}/>
                                 <div style={{color:"#f44e3b"}}>{this.state.orgtypenameformat}</div>
                             </div>
                             <div className="form-group">
                                 <label className="text-secondary font-weight-bold">组织种类:</label>
-                                <input placeholder="请输入组织种类..."  className="form-control" value={this.state.orgcatlog} onChange={this.changeOrgcatlogHandler}/>
+                                <input placeholder="请输入组织种类..." style={{fontSize:"12px"}}  className="form-control" value={this.state.orgcatlog} onChange={this.changeOrgcatlogHandler}/>
                                 <div style={{color:"#f44e3b"}}>{this.state.orgcatlogformat}</div>
                             </div>
                             <div className="form-group">
                                 <label className="text-secondary font-weight-bold">基准组织编码:</label>
-                                <input placeholder="请输入基准组织编码..."  className="form-control" value={this.state.baseorgcode} onChange={this.changeBaseorgcodeHandler}/>
+                                <input placeholder="请输入基准组织编码..." style={{fontSize:"12px"}}  className="form-control" value={this.state.baseorgcode} onChange={this.changeBaseorgcodeHandler}/>
                                 <div style={{color:"#f44e3b"}}>{this.state.baseorgcodeformat}</div>
                             </div>
                             <div className="form-group">
                                 <label className="text-secondary font-weight-bold">是否已删除:</label>
-                                <select className="form-control" onChange={this.changeIsdeletedHandler}>
+                                <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeIsdeletedHandler}>
                                     <option defaultValue value={this.state.isdeleted}>请选择是否已删除</option>
                                     <option value="1">是</option>
                                     <option value="0">否</option>
@@ -192,20 +192,20 @@ class EditOrganizationComponent extends React.Component{
                             </div>
                             <div className="form-group">
                                 <label className="text-secondary font-weight-bold">路径:</label>
-                                <input placeholder="请输入路径..."  className="form-control" value={this.state.fullparentid} onChange={this.changeFullparentidHandler}/>
+                                <input placeholder="请输入路径..." style={{fontSize:"12px"}}  className="form-control" value={this.state.fullparentid} onChange={this.changeFullparentidHandler}/>
                                 <div style={{color:"#f44e3b"}}>{this.state.fullparentidformat}</div>
                             </div>
                             <div className="form-group">
                                 <label className="text-secondary font-weight-bold">是否有子节点:</label>
-                                <select className="form-control" onChange={this.changeIshavechildHandler}>
+                                <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeIshavechildHandler}>
                                     <option defaultValue value={this.state.ishavechild}>请选择是否有子节点</option>
                                     <option value="1">是</option>
                                     <option value="0">否</option>
                                 </select>
                             </div>
                             <div className="text-center">
-                                <button className="btn btn-lg btn-outline-success" onClick={this.editOrganization}>保存</button>
-                                <button className="btn btn-lg btn-outline-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                                <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.editOrganization}>保存</button>
+                                <button className="btn btn-sm red-btn font-weight-bold text-white" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
                             </div>
                         </form>
                     </div>

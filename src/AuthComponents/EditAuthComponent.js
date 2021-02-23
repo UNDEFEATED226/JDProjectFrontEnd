@@ -73,13 +73,13 @@ class EditAuthComponent extends React.Component{
     render(){
         return(
             <div style={{marginTop:"5%"}}>
-                <div className="card bg-light mx-auto" style={{width:"45rem"}}>
-                 <h3 className="card-header text-center font-weight-bold text-secondary">编辑权限资料</h3>
+                <div className="card f-size bg-light mx-auto" style={{width:"30rem"}}>
+                 <h5 className="card-header text-center font-weight-bold text-secondary">编辑权限资料</h5>
                   <div className="card-body">
                    <form>
                    <div className="form-group">
                         <label className="text-secondary font-weight-bold">权限:</label>
-                        <select className="form-control" onChange={this.changeAuthnameHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeAuthnameHandler}>
                             <option defaultValue value={this.state.authname}>请选择权限</option>
                             <option value='API_INVOKE_PERMISSION'>API调用权限</option>
                             <option value='CANCEL_JOB_PERMISSION'>取消任务</option>
@@ -99,12 +99,12 @@ class EditAuthComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">描述信息:</label>
-                        <input placeholder="请输入描述信息..." className="form-control" value={this.state.description} onChange={this.changeDescriptionHandler}/>
+                        <input placeholder="请输入描述信息..." style={{fontSize:"12px"}} className="form-control" value={this.state.description} onChange={this.changeDescriptionHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.descriptionformat}</div>    
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">资源:</label>
-                        <select className="form-control" onChange={this.changeResidHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeResidHandler}>
                             <option defaultValue value={this.state.resid}>请选择资源</option>
                             {
                                 this.state.resources.map(
@@ -115,8 +115,8 @@ class EditAuthComponent extends React.Component{
                         </select>
                     </div>
                     <div className="text-center">
-                    <button className="btn btn-lg btn-outline-success" onClick={this.editAuth}>保存</button>
-                    <button className="btn btn-lg btn-outline-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.editAuth}>保存</button>
+                    <button className="btn btn-sm red-btn font-weight-bold text-white" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
                     </div>
                     </form>
                    </div>

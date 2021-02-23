@@ -11,7 +11,7 @@ class HeaderComponent extends React.Component{
    
    render(){
        return(
-        <nav className="navbar navbar-expand-lg navbar-light color-nav">
+        <nav className="f-size navbar navbar-expand-lg navbar-light color-nav">
         <Link to="/" className="navbar-brand font-weight-bold text-white">
          IOT Core 物管平台
         </Link>
@@ -27,25 +27,25 @@ class HeaderComponent extends React.Component{
               </Link>
             </li>
             <li className="nav-item dropdown">
-            <button className="btn nav-item dropdown-toggle text-white font-weight-bold" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" 
-                 aria-expanded="false">资源管理</button>
+            <button className="btn btn-sm nav-item dropdown-toggle text-white font-weight-bold" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" 
+                 aria-expanded="false"><span className="f-size">资源管理</span></button>
             <div className="dropdown-menu color-dd1" aria-labelledby="dropdown1">
-              <Link to="/resourcelist" className="dropdown-item text-white font-weight-bold">资源列表</Link>
-              <Link to="/iotmenu" className="dropdown-item text-white font-weight-bold">物管平台菜单</Link>
-              <Link to="/iotapi" className="dropdown-item text-white font-weight-bold">物管平台API</Link>
-              <Link to="/emenu" className="dropdown-item text-white font-weight-bold">能源平台菜单</Link>
-              <Link to="/eapi" className="dropdown-item text-white font-weight-bold">能源平台API</Link>
-              <Link to="/govmenu" className="dropdown-item text-white font-weight-bold">能源平台政府侧菜单</Link>
-              <Link to="/govapi" className="dropdown-item text-white font-weight-bold">能源平台政府侧API</Link>
+              <Link to="/resourcelist" className="f-size dropdown-item text-white font-weight-bold">资源列表</Link>
+              <Link to="/iotmenu" className="f-size dropdown-item text-white font-weight-bold">物管平台菜单</Link>
+              <Link to="/iotapi" className="f-size dropdown-item text-white font-weight-bold">物管平台API</Link>
+              <Link to="/emenu" className="f-size dropdown-item text-white font-weight-bold">能源平台菜单</Link>
+              <Link to="/eapi" className="f-size dropdown-item text-white font-weight-bold">能源平台API</Link>
+              <Link to="/govmenu" className="f-size dropdown-item text-white font-weight-bold">能源平台政府侧菜单</Link>
+              <Link to="/govapi" className="f-size dropdown-item text-white font-weight-bold">能源平台政府侧API</Link>
             </div>
             </li>
             <li className="nav-item dropdown">
-            <button type="button" className="btn dropdown-toggle text-white font-weight-bold" id="dropdown2" data-toggle="dropdown" aria-haspopup="true" 
-                 aria-expanded="false">角色管理</button>
+            <button className="btn btn-sm dropdown-toggle text-white font-weight-bold" id="dropdown2" data-toggle="dropdown" aria-haspopup="true" 
+                 aria-expanded="false"><span className="f-size">角色管理</span></button>
             <div className="dropdown-menu color-dd1" aria-labelledby="dropdown2">
-              <Link to="/rolelist" className="dropdown-item text-white font-weight-bold">角色列表</Link>
-              <Link to="/orgrolelist" className="dropdown-item text-white font-weight-bold">组织角色列表</Link>
-              <Link to="/bizrolelist" className="dropdown-item text-white font-weight-bold">业务角色列表</Link>
+              <Link to="/rolelist" className="f-size dropdown-item text-white font-weight-bold">角色列表</Link>
+              <Link to="/orgrolelist" className="f-size dropdown-item text-white font-weight-bold">组织角色列表</Link>
+              <Link to="/bizrolelist" className="f-size dropdown-item text-white font-weight-bold">业务角色列表</Link>
             </div>
             </li>
             <li className="nav-item font-weight-bold">

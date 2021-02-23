@@ -128,43 +128,43 @@ class EditResourceComponent extends React.Component{
     render(){
         return(
             <div style={{marginTop:"5%"}}>
-                <div className="card bg-light mx-auto" style={{width:"45rem"}}>
-                 <h3 className="card-header text-center font-weight-bold text-secondary">编辑资源资料</h3>
+                <div className="card f-size bg-light mx-auto" style={{width:"30rem"}}>
+                 <h5 className="card-header text-center font-weight-bold text-secondary">编辑资源资料</h5>
                   <div className="card-body">
                    <form>
                    <div className="form-group">
                         <label className="text-secondary font-weight-bold">所属模块:</label>
-                        <input placeholder="请输入所属模块..." className="form-control" value={this.state.modulename} onChange={this.changeModulenameHandler}/>   
+                        <input placeholder="请输入所属模块..." style={{fontSize:"12px"}} className="form-control" value={this.state.modulename} onChange={this.changeModulenameHandler}/>   
                         <div style={{color:"#f44e3b"}}>{this.state.modulenameformat}</div>      
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">资源名称:</label>
-                        <input placeholder="请输入资源名称..." className="form-control" value={this.state.resname} onChange={this.changeResnameHandler}/>
+                        <input placeholder="请输入资源名称..." style={{fontSize:"12px"}} className="form-control" value={this.state.resname} onChange={this.changeResnameHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.resnameformat}</div>    
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">资源对应URI:</label>
-                        <input placeholder="请输入资源对应URI..." className="form-control" value={this.state.resuri} onChange={this.changeResuriHandler}/>
+                        <input placeholder="请输入资源对应URI..." style={{fontSize:"12px"}} className="form-control" value={this.state.resuri} onChange={this.changeResuriHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.resuriformat}</div>    
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">资源层级:</label>
-                        <input placeholder="请输入资源层级..." className="form-control" value={this.state.level} onChange={this.changeLevelHandler}/>
+                        <input placeholder="请输入资源层级..." style={{fontSize:"12px"}} className="form-control" value={this.state.level} onChange={this.changeLevelHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.levelformat}</div>    
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">描述信息:</label>
-                        <input placeholder="请输入描述信息..." className="form-control" value={this.state.description} onChange={this.changeDescriptionHandler}/>
+                        <input placeholder="请输入描述信息..." style={{fontSize:"12px"}} className="form-control" value={this.state.description} onChange={this.changeDescriptionHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.descriptionformat}</div>    
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">资源完整名称:</label>
-                        <input placeholder="请输入资源完整名称..." className="form-control" value={this.state.fullname} onChange={this.changeFullnameHandler}/>
+                        <input placeholder="请输入资源完整名称..." style={{fontSize:"12px"}} className="form-control" value={this.state.fullname} onChange={this.changeFullnameHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.fullnameformat}</div>    
                     </div>
                     <div className="text-center">
-                    <button className="btn btn-lg btn-outline-success" onClick={this.editResource}>保存</button>
-                    <button className="btn btn-lg btn-outline-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.editResource}>保存</button>
+                    <button className="btn btn-sm red-btn font-weight-bold text-white" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
                     </div>
                     </form>
                    </div>

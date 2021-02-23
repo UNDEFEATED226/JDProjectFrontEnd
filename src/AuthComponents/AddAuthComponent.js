@@ -60,13 +60,13 @@ class AddAuthComponent extends React.Component{
     render(){
         return(
             <div style={{marginTop:"5%"}}>
-                <div className="card bg-light mx-auto" style={{width:"45rem"}}>
-                 <h3 className="card-header text-center font-weight-bold text-secondary">添加权限</h3>
+                <div className="card f-size bg-light mx-auto" style={{width:"30rem"}}>
+                 <h5 className="card-header text-center font-weight-bold text-secondary">添加权限</h5>
                   <div className="card-body">
                    <form>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">资源:</label>
-                        <select className="form-control" value={this.state.resid} onChange={this.changeResidHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} value={this.state.resid} onChange={this.changeResidHandler}>
                             <option defaultValue value=''>请选择资源:</option>
                             {
                                 this.state.resources.map(
@@ -79,7 +79,7 @@ class AddAuthComponent extends React.Component{
                     </div>
                    <div className="form-group">
                         <label className="text-secondary font-weight-bold">权限:</label>
-                        <select className="form-control" value={this.state.authname} onChange={this.changeAuthnameHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} value={this.state.authname} onChange={this.changeAuthnameHandler}>
                             <option defaultValue value=''>请选择权限:</option>
                             <option value='API_INVOKE_PERMISSION'>API调用权限</option>
                             <option value='CANCEL_JOB_PERMISSION'>取消任务</option>
@@ -99,8 +99,8 @@ class AddAuthComponent extends React.Component{
                         <div style={{color:"#f44e3b"}}>{this.state.authnameformat}</div>    
                     </div>
                     <div className="text-center">
-                    <button className="btn btn-lg btn-outline-success" onClick={this.saveAuth}>保存</button>
-                    <button className="btn btn-lg btn-outline-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.saveAuth}>保存</button>
+                    <button className="btn btn-sm red-btn font-weight-bold text-white" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
                     </div>
                     </form>
                    </div>

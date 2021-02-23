@@ -46,26 +46,26 @@ class AddRoleComponent extends React.Component{
     render(){
         return(
             <div style={{marginTop:"5%"}}>
-                <div className="card bg-light mx-auto" style={{width:"45rem"}}>
-                 <h3 className="card-header text-center font-weight-bold text-secondary">添加角色</h3>
+                <div className="card f-size bg-light mx-auto" style={{width:"30rem"}}>
+                 <h5 className="card-header text-center font-weight-bold text-secondary">添加角色</h5>
                   <div className="card-body">
                    <form>
                    <div className="form-group">
                         <label className="text-secondary font-weight-bold">角色名称:</label>
-                        <input placeholder="请输入角色名称..." className="form-control" value={this.state.rolename} onChange={this.changeRolenameHandler}/> 
+                        <input placeholder="请输入角色名称..." style={{fontSize:"12px"}} className="form-control" value={this.state.rolename} onChange={this.changeRolenameHandler}/> 
                         <div style={{color:"#f44e3b"}}>{this.state.rolenameformat}</div>    
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">角色类型:</label>
-                        <select className="form-control" value={this.state.roletype} onChange={this.changeRoletypeHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} value={this.state.roletype} onChange={this.changeRoletypeHandler}>
                             <option defaultValue value=''>请选择角色类型</option>
                             <option value='1'>组织角色</option>
                             <option value='2'>业务角色</option>
                         </select>
                     </div>
                     <div className="text-center">
-                    <button className="btn btn-lg btn-success" onClick={this.saveRole}>保存</button>
-                    <button className="btn btn-lg btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.saveRole}>保存</button>
+                    <button className="btn btn-sm red-btn font-weight-bold text-white" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
                     </div>
                     </form>
                    </div>

@@ -73,9 +73,9 @@ class UserRoleComponent extends React.Component{
        return(
         <div>
         <br></br>
-        <h1 className="text-center font-weight-bold text-secondary">用户角色列表</h1>
-        <button className="btn btn-primary btn-lg text-white font-weight-bold" onClick={this.addUserRole}>添加用户角色</button>
-        <table className="table table-boarder"> 
+        <h3 className="text-center font-weight-bold text-secondary">用户角色列表</h3>
+        <button className="btn blue-btn btn-sm text-white font-weight-bold" onClick={this.addUserRole}>添加用户角色</button>
+        <table className="table f-size table-boarder"> 
            <thead className="text-justify">
                 <tr>
                  <th  className="text-secondary" style={{columnWidth:"30px"}}>id</th>
@@ -97,7 +97,7 @@ class UserRoleComponent extends React.Component{
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(userrole.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(userrole.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell text-center" style={{maxWidth:"150px"}}>
-                                <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteUserRole(userrole.id)} style={{marginLeft:"10px"}}>删除</button>
+                                <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={() => this.deleteUserRole(userrole.id)} style={{marginLeft:"10px"}}>删除</button>
                              </td>
                          </tr>
                      )  

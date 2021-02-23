@@ -78,9 +78,9 @@ class RoleAuthComponent extends React.Component{
        return(
         <div>
         <br></br>
-        <h1 className="text-center font-weight-bold text-secondary">角色权限列表</h1>
-        <button className="btn btn-primary btn-lg text-white font-weight-bold" onClick={this.addRoleAuth}>添加角色权限</button>
-        <table className="table table-boarder"> 
+        <h3 className="text-center font-weight-bold text-secondary">角色权限列表</h3>
+        <button className="btn blue-btn btn-sm text-white font-weight-bold" onClick={this.addRoleAuth}>添加角色权限</button>
+        <table className="table f-size table-boarder"> 
            <thead className="text-justify">
                 <tr>
                  <th  className="text-secondary" style={{columnWidth:"30px"}}>ID</th>
@@ -102,8 +102,8 @@ class RoleAuthComponent extends React.Component{
                              <td className="t-cell" style={{maxWidth:"190ox"}}>{moment(roleauth.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(roleauth.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell text-center" style={{maxWidth:"260px"}}>
-                                <button className="btn btn-success font-weight-bold" onClick={() => this.editRoleAuth(roleauth.id)} style={{marginLeft:"10px"}}>编辑资料</button>
-                                <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteRoleAuth(roleauth.id)} style={{marginLeft:"10px"}}>删除</button>
+                                <button className="btn btn-sm green-btn text-white font-weight-bold" onClick={() => this.editRoleAuth(roleauth.id)} style={{marginLeft:"10px"}}>编辑资料</button>
+                                <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={() => this.deleteRoleAuth(roleauth.id)} style={{marginLeft:"10px"}}>删除</button>
                              </td>
                          </tr>
                      )  

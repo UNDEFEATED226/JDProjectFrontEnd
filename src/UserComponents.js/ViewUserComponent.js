@@ -45,9 +45,9 @@ class ViewUserComponent extends React.Component{
 
     render(){
         return(
-            <div style={{marginTop:"5%"}} className="text-secondary">
-              <div className="card bg-light mx-auto" style={{width:"45rem"}}>
-                <h3 className="text-center font-weight-bold card-header">用户详情</h3>
+            <div style={{marginTop:"5%"}} className="text-secondary f-size">
+              <div className="card bg-light mx-auto" style={{width:"30rem"}}>
+                <h5 className="text-center font-weight-bold card-header">用户详情</h5>
                 <div className="card-body">
                     <div className="row">
                         <label>ID:</label>

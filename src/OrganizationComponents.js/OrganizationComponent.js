@@ -82,11 +82,11 @@ class OrganizationComponent extends React.Component{
         return(
             <div>
             <br></br>
-            <h1 className="text-center font-weight-bold text-secondary">组织列表</h1>
-            <button className="btn btn-outline-primary btn-lg font-weight-bold" onClick={this.addOrganization}>添加组织</button>
+            <h3 className="text-center font-weight-bold text-secondary">组织列表</h3>
+            <button className="btn blue-btn btn-sm font-weight-bold text-white" onClick={this.addOrganization}>添加组织</button>
             <div className="row">
             </div>
-            <table className="table table-boarder"> 
+            <table className="table table-boarder f-size"> 
                <thead>
                     <tr>
                       <th className="text-secondary" style={{columnWidth:"30px"}}>id</th>  
@@ -114,9 +114,9 @@ class OrganizationComponent extends React.Component{
                                  <td className="t-cell" style={{maxWidth:"110px"}}>{organization.baseorgcode}</td>
                                  <td className="t-cell" style={{maxWidth:"60px"}}>{organization.tenantid}</td>
                                  <td className="t-cell text-center" style={{maxWidth:"300px"}}>
-                                    <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-outline-info font-weight-bold">查看详情</button>
-                                    <button  onClick={() => this.editOrganization(organization.id)} className="btn btn-outline-success font-weight-bold" style={{marginLeft:"10px"}}>编辑资料</button>
-                                    <button  onClick={() => this.deleteOrganization(organization.id)} className="btn btn-outline-danger font-weight-bold" style={{marginLeft:"10px"}}>删除</button>
+                                    <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-sm yellow-btn font-weight-bold text-white">查看详情</button>
+                                    <button  onClick={() => this.editOrganization(organization.id)} className="btn btn-sm green-btn font-weight-bold text-white" style={{marginLeft:"10px"}}>编辑资料</button>
+                                    <button  onClick={() => this.deleteOrganization(organization.id)} className="btn btn-sm red-btn font-weight-bold text-white" style={{marginLeft:"10px"}}>删除</button>
                                  </td>
                              </tr>
                          )

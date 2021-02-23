@@ -57,13 +57,13 @@ class AddRoleAuthComponent extends React.Component{
     render(){
         return(
             <div style={{marginTop:"5%"}}>
-                <div className="card bg-light mx-auto" style={{width:"45rem"}}>
-                 <h3 className="card-header text-center font-weight-bold text-secondary">添加角色权限</h3>
+                <div className="card f-size bg-light mx-auto" style={{width:"30rem"}}>
+                 <h5 className="card-header text-center font-weight-bold text-secondary">添加角色权限</h5>
                   <div className="card-body">
                    <form>
                    <div className="form-group">
                         <label className="text-secondary font-weight-bold">角色:</label>
-                        <select className="form-control" value={this.state.roleid} onChange={this.changeRoleidHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} value={this.state.roleid} onChange={this.changeRoleidHandler}>
                             <option defaultValue value=''>请选择角色</option>
                             {
                                 this.state.roles.map(
@@ -75,7 +75,7 @@ class AddRoleAuthComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">权限:</label>
-                        <select className="form-control selectpicker" data-live-search="true" value={this.state.authid} onChange={this.changeAuthidHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} value={this.state.authid} onChange={this.changeAuthidHandler}>
                             <option defaultValue value=''>请选择权限</option>
                             {
                                 this.state.auths.map(
@@ -86,8 +86,8 @@ class AddRoleAuthComponent extends React.Component{
                         </select>
                     </div>
                     <div className="text-center">
-                    <button className="btn btn-lg btn-success" onClick={this.saveRoleAuth}>保存</button>
-                    <button className="btn btn-lg btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.saveRoleAuth}>保存</button>
+                    <button className="btn btn-sm red-btn font-weight-bold text-white" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
                     </div>
                     </form>
                    </div>

@@ -118,28 +118,28 @@ class EditRoleComponent extends React.Component{
     render(){
         return(
             <div style={{marginTop:"5%"}}>
-                <div className="card bg-light mx-auto" style={{width:"45rem"}}>
-                 <h3 className="card-header text-center font-weight-bold text-secondary">编辑角色资料</h3>
+                <div className="card f-size bg-light mx-auto" style={{width:"30rem"}}>
+                 <h5 className="card-header text-center font-weight-bold text-secondary">编辑角色资料</h5>
                   <div className="card-body">
                    <form>
                    <div className="form-group">
                         <label className="text-secondary font-weight-bold">角色名称:</label>
-                        <input placeholder="请输入角色名称..." className="form-control" value={this.state.rolename} onChange={this.changeRolenameHandler}/>    
+                        <input placeholder="请输入角色名称..." style={{fontSize:"12px"}} className="form-control" value={this.state.rolename} onChange={this.changeRolenameHandler}/>    
                         <div style={{color:"#f44e3b"}}>{this.state.rolenameformat}</div>     
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">角色类型ID:</label>
-                        <input placeholder="请输入角色类型ID..." className="form-control" value={this.state.roletype} onChange={this.changeRoletypeHandler}/>
+                        <input placeholder="请输入角色类型ID..." style={{fontSize:"12px"}} className="form-control" value={this.state.roletype} onChange={this.changeRoletypeHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.roletypeformat}</div>    
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">描述信息:</label>
-                        <input placeholder="请输入描述信息..." className="form-control" value={this.state.description} onChange={this.changeDescriptionHandler}/>
+                        <input placeholder="请输入描述信息..." style={{fontSize:"12px"}} className="form-control" value={this.state.description} onChange={this.changeDescriptionHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.descriptionformat}</div>    
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">租户:</label>
-                        <select className="form-control" onChange={this.changeTenantidHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeTenantidHandler}>
                             <option defaultValue value={this.state.tenantid}>请选择租户</option>
                             {
                                 this.state.tenants.map(
@@ -151,7 +151,7 @@ class EditRoleComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">是否已删除:</label>
-                        <select className="form-control" onChange={this.changeIsdeletedHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeIsdeletedHandler}>
                             <option value={this.state.isdeleted}>请选择是否已删除</option>
                             <option value='1'>是</option>
                             <option value='0'>否</option>
@@ -159,7 +159,7 @@ class EditRoleComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">是否为系统角色:</label>
-                        <select className="form-control" onChange={this.changeIssystemHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeIssystemHandler}>
                             <option value={this.state.issystem}>请选择是否为系统角色</option>
                             <option value='1'>是</option>
                             <option value='0'>否</option>
@@ -167,12 +167,12 @@ class EditRoleComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">角色编码:</label>
-                        <input placeholder="请输入角色编码..." className="form-control" value={this.state.rolecode} onChange={this.changeRolecodeHandler}/>
+                        <input placeholder="请输入角色编码..." style={{fontSize:"12px"}} className="form-control" value={this.state.rolecode} onChange={this.changeRolecodeHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.rolecodeformat}</div>    
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">是否被禁用:</label>
-                        <select className="form-control" onChange={this.changeIsforbiddenHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeIsforbiddenHandler}>
                             <option value={this.state.isforbidden}>请选择是否被禁用</option>
                             <option value='1'>是</option>
                             <option value='0'>否</option>
@@ -180,15 +180,15 @@ class EditRoleComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">是否默认角色:</label>
-                        <select className="form-control" onChange={this.changeIsdefaultHandler}>
+                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeIsdefaultHandler}>
                             <option value={this.state.isdefault}>请选择是否默认角色</option>
                             <option value='1'>是</option>
                             <option value='0'>否</option>
                         </select>
                     </div>
                     <div className="text-center">
-                    <button className="btn btn-lg btn-success" onClick={this.editRole}>保存</button>
-                    <button className="btn btn-lg btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.editRole}>保存</button>
+                    <button className="btn btn-sm red-btn font-weight-bold text-white" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
                     </div>
                     </form>
                    </div>

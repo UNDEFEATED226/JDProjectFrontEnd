@@ -83,9 +83,9 @@ class IotApiResourceComponent extends React.Component{
        return(
         <div>
         <br></br>
-        <h1 className="text-center font-weight-bold text-secondary">物管平台API</h1>
-        <button className="btn btn-lg btn-primary text-white font-weight-bold" onClick={this.addResource}>添加资源</button>
-        <table className="table table-boarder"> 
+        <h3 className="text-center font-weight-bold text-secondary">物管平台API</h3>
+        <button className="btn btn-sm blue-btn text-white font-weight-bold" onClick={this.addResource}>添加资源</button>
+        <table className="table f-size table-boarder"> 
            <thead className="text-justify">
                 <tr>
                  <th  className="text-secondary" style={{columnWidth:"30px"}}>id</th>
@@ -107,9 +107,9 @@ class IotApiResourceComponent extends React.Component{
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(resource.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(resource.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell text-center" style={{maxWidth:"300px"}}>
-                                <button className="btn btn-info font-weight-bold" onClick={() => this.viewResource(resource.id)}>查看详情</button>
-                                <button className="btn btn-success font-weight-bold" onClick={() => this.editResource(resource.id)} style={{marginLeft:"10px"}}>编辑资料</button>
-                                <button className="btn btn-danger font-weight-bold" onClick={() => this.deleteResource(resource.id)} style={{marginLeft:"10px"}}>删除</button>
+                                <button className="btn btn-sm yellow-btn text-white font-weight-bold" onClick={() => this.viewResource(resource.id)}>查看详情</button>
+                                <button className="btn btn-sm green-btn text-white font-weight-bold" onClick={() => this.editResource(resource.id)} style={{marginLeft:"10px"}}>编辑资料</button>
+                                <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={() => this.deleteResource(resource.id)} style={{marginLeft:"10px"}}>删除</button>
                              </td>
                          </tr>
                      )  
