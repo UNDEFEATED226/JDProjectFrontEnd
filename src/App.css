@@ -42,12 +42,12 @@
 }
 
 .color-dd1{
-  background:linear-gradient(to left,#00c6fb,#005bea);
+  background:linear-gradient(to top,#00c6fb,#005bea);
   opacity:0.8;
 }
 
 .color-dd2{
-  background:linear-gradient(to left,#48c6ef,#6f86d6);
+  background:linear-gradient(to bottom,#48c6ef,#6f86d6);
   opacity:0.9;
 }
 
@@ -64,8 +64,7 @@
 }
 
 .color-font{
-  color:gray;
-  font-size:16px;
+  color:darkgray;
 }
 
 .t-cell{
@@ -73,6 +72,12 @@
   text-overflow:ellipsis;
   white-space: nowrap;
 }
+
+.dropdown-item:hover{
+  background:linear-gradient(to right, #6a11cb 0%, #2575fc 100%);;
+}
+
+
 
 
 
