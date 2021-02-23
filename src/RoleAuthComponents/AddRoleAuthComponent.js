@@ -85,8 +85,10 @@ class AddRoleAuthComponent extends React.Component{
                             }
                         </select>
                     </div>
-                    <button className="btn btn-success" onClick={this.saveRoleAuth}>保存</button>
-                    <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"15px"}}>取消</button>
+                    <div className="text-center">
+                    <button className="btn btn-lg btn-success" onClick={this.saveRoleAuth}>保存</button>
+                    <button className="btn btn-lg btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    </div>
                     </form>
                    </div>
                   </div>

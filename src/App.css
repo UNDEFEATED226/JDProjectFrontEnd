@@ -52,11 +52,11 @@
 }
 
 .color-btn{
-  background:linear-gradient(to left,#868f96,#596164);
+  background-image: linear-gradient(to right, #868f96 0%, #596164 100%);
 }
 
 .color-btn:hover{
-  background:darkgray;
+  opacity:0.88;
 }
 
 .nav-item:hover{
@@ -73,5 +73,6 @@
   text-overflow:ellipsis;
   white-space: nowrap;
 }
+
 
 

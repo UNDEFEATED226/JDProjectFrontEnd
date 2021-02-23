@@ -63,8 +63,10 @@ class AddRoleComponent extends React.Component{
                             <option value='2'>业务角色</option>
                         </select>
                     </div>
-                    <button className="btn btn-success" onClick={this.saveRole}>保存</button>
-                    <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"15px"}}>取消</button>
+                    <div className="text-center">
+                    <button className="btn btn-lg btn-success" onClick={this.saveRole}>保存</button>
+                    <button className="btn btn-lg btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    </div>
                     </form>
                    </div>
                   </div>

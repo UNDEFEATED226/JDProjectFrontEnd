@@ -45,8 +45,10 @@ class AddTenantComponent extends React.Component{
                         <input placeholder="请输入租户名称..." className="form-control" value={this.state.name} onChange={this.changeNameHandler}/> 
                         <div style={{color:"#f44e3b"}}>{this.state.nameformat}</div>    
                     </div>
-                    <button className="btn btn-success" onClick={this.saveTenant}>保存</button>
-                    <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"15px"}}>取消</button>
+                    <div className="text-center">
+                    <button className="btn btn-lg btn-success" onClick={this.saveTenant}>保存</button>
+                    <button className="btn btn-lg btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    </div>
                     </form>
                    </div>
                   </div>

@@ -74,9 +74,11 @@ class AddOrganizationComponent extends React.Component{
                                     )
                                 }
                             </select>
-                        </div>
-                                 <button className="btn btn-outline-success" onClick={this.saveOrganzation}>保存</button>
-                                 <button className="btn btn-outline-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"15px"}}>取消</button>
+                            </div>
+                                 <div className="text-center">
+                                 <button className="btn btn-lg btn-outline-success" onClick={this.saveOrganzation}>保存</button>
+                                 <button className="btn btn-lg btn-outline-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                                 </div>
                              </form>
                          </div>
                     </div>
