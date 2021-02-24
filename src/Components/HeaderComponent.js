@@ -26,7 +26,7 @@ class HeaderComponent extends React.Component{
               组织管理
               </Link>
             </li>
-            <li className="nav-item dropdown">
+            <li className="nav-item dropdown" style={{zIndex:"1000"}}>
             <button className="btn btn-sm nav-item dropdown-toggle text-white font-weight-bold" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" 
                  aria-expanded="false"><span className="f-size">资源管理</span></button>
             <div className="dropdown-menu color-dd1" aria-labelledby="dropdown1">
@@ -39,7 +39,7 @@ class HeaderComponent extends React.Component{
               <Link to="/govapi" className="f-size dropdown-item text-white font-weight-bold">能源平台政府侧API</Link>
             </div>
             </li>
-            <li className="nav-item dropdown">
+            <li className="nav-item dropdown" style={{zIndex:"1000"}}>
             <button className="btn btn-sm dropdown-toggle text-white font-weight-bold" id="dropdown2" data-toggle="dropdown" aria-haspopup="true" 
                  aria-expanded="false"><span className="f-size">角色管理</span></button>
             <div className="dropdown-menu color-dd1" aria-labelledby="dropdown2">
