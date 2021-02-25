@@ -104,7 +104,7 @@ class TenantComponent extends React.Component{
                                  <td className="t-cell" style={{maxWidth:"170px"}}>{tenant.adminuserid}</td>
                                  <td className="t-cell text-center" style={{maxWidth:"300px"}}>
                                     <button className="btn btn-sm green-btn text-white font-weight-bold" onClick={() => this.editTenant(tenant.id)} style={{marginLeft:"10px"}}>编辑资料</button>
-                                    <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={() => this.deleteTenant(tenant.id)} style={{marginLeft:"10px"}}>删除</button>
+                                    <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={() => {if(window.confirm('确认删除此租户?')){this.deleteTenant(tenant.id)}}} style={{marginLeft:"10px"}}>删除</button>
                                  </td>
                              </tr>
                          )  

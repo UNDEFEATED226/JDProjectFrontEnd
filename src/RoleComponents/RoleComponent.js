@@ -109,7 +109,7 @@ class RoleComponent extends React.Component{
                              <td className="t-cell text-center" style={{maxWidth:"300px"}}>
                                 <button className="btn btn-sm yellow-btn text-white font-weight-bold" onClick={()=>this.viewRole(role.id)}>查看详情</button>
                                 <button className="btn btn-sm green-btn text-white font-weight-bold" onClick={()=>this.editRole(role.id)} style={{marginLeft:"10px"}}>编辑资料</button>
-                                <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={()=>this.deleteRole(role.id)} style={{marginLeft:"10px"}}>删除</button>
+                                <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={()=>{if(window.confirm('确认删除此角色?')){this.deleteRole(role.id)}}} style={{marginLeft:"10px"}}>删除</button>
                              </td>
                          </tr>
                      )  

@@ -13,7 +13,7 @@ class HeaderComponent extends React.Component{
        return(
         <nav className="f-size navbar navbar-expand-lg navbar-light color-nav">
         <Link to="/" className="navbar-brand font-weight-bold text-white">
-         IOT Core 物管平台
+         IOT Admin 物管平台
         </Link>
           <ul className="navbar-nav">
             <li className="nav-item">

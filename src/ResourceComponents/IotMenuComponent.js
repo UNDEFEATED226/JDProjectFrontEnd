@@ -109,7 +109,7 @@ class IotMenuResourceComponent extends React.Component{
                              <td className="t-cell text-center" style={{maxWidth:"300px"}}>
                                 <button className="btn btn-sm yellow-btn text-white font-weight-bold" onClick={() => this.viewResource(resource.id)}>查看详情</button>
                                 <button className="btn btn-sm green-btn text-white font-weight-bold" onClick={() => this.editResource(resource.id)} style={{marginLeft:"10px"}}>编辑资料</button>
-                                <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={() => this.deleteResource(resource.id)} style={{marginLeft:"10px"}}>删除</button>
+                                <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={() => {if(window.confirm('确认删除此资源?')){this.deleteResource(resource.id)}}} style={{marginLeft:"10px"}}>删除</button>
                              </td>
                          </tr>
                      )  

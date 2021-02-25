@@ -87,6 +87,7 @@ class AuthComponent extends React.Component{
                   <th  className="text-secondary" style={{columnWidth:"200px"}}>权限名称</th>  
                   <th  className="text-secondary" style={{columnWidth:"100px"}}>描述信息</th>  
                   <th  className="text-secondary" style={{columnWidth:"60px"}}>资源ID</th> 
+                  <th  className="text-secondary" style={{columnWidth:"60px"}}>资源名称</th> 
                   <th className="text-secondary" style={{columnWidth:"190px"}}>创建时间</th>
                   <th className="text-secondary" style={{columnWidth:"190px"}}>最后一次更新时间</th>
                   <th  className="text-secondary text-center" style={{columnWidth:"300px"}}>操作</th>
@@ -101,11 +102,12 @@ class AuthComponent extends React.Component{
                              <td className="t-cell" style={{maxWidth:"200px"}}>{auth.authname}</td>
                              <td className="t-cell" style={{maxWidth:"100px"}}>{auth.description}</td>
                              <td className="t-cell" style={{maxWidth:"60px"}}>{auth.resid}</td>
+                             <td className="t-cell" style={{maxWidth:"60px"}}>{auth.resname}</td>
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(auth.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(auth.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell text-center" style={{maxWidth:"300px"}}>
                                 <button className="btn btn-sm green-btn text-white font-weight-bold" onClick={()=>this.editAuth(auth.id)}>编辑资料</button>
-                                <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={()=>this.deleteAuth(auth.id)} style={{marginLeft:"10px"}}>删除</button>
+                                <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={()=>{if(window.confirm('确认删除此权限?')){this.deleteAuth(auth.id)}}} style={{marginLeft:"10px"}}>删除</button>
                              </td>
                          </tr>
                      )  

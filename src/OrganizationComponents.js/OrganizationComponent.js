@@ -116,7 +116,7 @@ class OrganizationComponent extends React.Component{
                                  <td className="t-cell text-center" style={{maxWidth:"300px"}}>
                                     <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-sm yellow-btn font-weight-bold text-white">查看详情</button>
                                     <button  onClick={() => this.editOrganization(organization.id)} className="btn btn-sm green-btn font-weight-bold text-white" style={{marginLeft:"10px"}}>编辑资料</button>
-                                    <button  onClick={() => this.deleteOrganization(organization.id)} className="btn btn-sm red-btn font-weight-bold text-white" style={{marginLeft:"10px"}}>删除</button>
+                                    <button  onClick={() => {if(window.confirm('确认删除此组织?')){this.deleteOrganization(organization.id)}}} className="btn btn-sm red-btn font-weight-bold text-white" style={{marginLeft:"10px"}}>删除</button>
                                  </td>
                              </tr>
                          )

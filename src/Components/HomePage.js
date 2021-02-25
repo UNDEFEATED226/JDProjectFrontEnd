@@ -9,8 +9,7 @@ class HomePage extends React.Component{
 
     render(){
         return(
-            <div className="color-nav" style={{height:"90%",position:"absolute",width:"100%",left:0}}>
-            </div>
+            <div  className="color-nav" style={{height:"90%",position:"absolute",width:"100%",left:0}}> </div>
         )
     }
 }

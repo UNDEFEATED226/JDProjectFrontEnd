@@ -54,7 +54,7 @@
   background: linear-gradient(to right, #868f96 0%, #596164 100%);
 }
 
-.color-btn:hover{
+.color-btn:enabled:hover{
   opacity:0.88;
 }
 
@@ -117,6 +117,10 @@
   font-size: 12px;
 }
 
+.t-cell:hover{
+  overflow:visible;
+  white-space: normal;
+}
 
 
 
