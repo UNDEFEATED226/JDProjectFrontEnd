@@ -37,6 +37,7 @@ import AddUserRoleComponent from './UserRoleComponents.js/AddUserRoleComponent';
 import RoleAuthComponent from './RoleAuthComponents/RoleAuthComponent';
 import AddRoleAuthComponent from './RoleAuthComponents/AddRoleAuthComponent'
 import EditRoleAuthComponent from './RoleAuthComponents/EditRoleAuthComponent';
+import RoleAuthComponentForUser from './RoleAuthComponents/RoleAuthComponentForUser';
 
 function App() {
   return (
@@ -81,6 +82,7 @@ function App() {
             <Route path="/roleauthlist" component={RoleAuthComponent}></Route>
             <Route path="/addroleauth" component={AddRoleAuthComponent}></Route>
             <Route path="/editroleauth/:id" component={EditRoleAuthComponent}></Route>
+            <Route path="/roleauth/:id" component={RoleAuthComponentForUser}></Route>
           </Switch>
         </div>
       </Router>

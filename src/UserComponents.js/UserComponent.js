@@ -86,13 +86,13 @@ class UserComponent extends React.Component{
         <table className="table table-boarder f-size"> 
            <thead className="text-justify">
                 <tr>
-                  <th  className="text-secondary text-center" style={{columnWidth:"30px"}}>id</th>
-                  <th  className="text-secondary text-center" style={{columnWidth:"100px"}}>登录用户名</th>  
-                  <th  className="text-secondary text-center" style={{columnWidth:"100px"}}>名字</th>  
-                  <th  className="text-secondary text-center" style={{columnWidth:"100px"}}>组织名称</th> 
-                  <th  className="text-secondary text-center" style={{columnWidth:"100px"}}>邮箱</th>  
-                  <th  className="text-secondary text-center" style={{columnWidth:"100px"}}>手机号</th> 
-                  <th  className="text-secondary text-center" style={{columnWidth:"300px"}}>操作</th>
+                  <th  className="text-secondary" style={{columnWidth:"30px"}}>id</th>
+                  <th  className="text-secondary" style={{columnWidth:"100px"}}>登录用户名</th>  
+                  <th  className="text-secondary" style={{columnWidth:"100px"}}>名字</th>  
+                  <th  className="text-secondary" style={{columnWidth:"100px"}}>组织名称</th> 
+                  <th  className="text-secondary" style={{columnWidth:"100px"}}>邮箱</th>  
+                  <th  className="text-secondary" style={{columnWidth:"100px"}}>手机号</th> 
+                  <th  className="text-secondary" style={{columnWidth:"300px"}}>操作</th>
                 </tr>
                 </thead>
              <tbody>
@@ -103,7 +103,7 @@ class UserComponent extends React.Component{
                              <td className="t-cell" style={{maxWidth:"30px"}}>{user.id}</td>
                              <td className="t-cell" style={{maxWidth:"100px"}}>{user.loginname}</td>
                              <td className="t-cell" style={{maxWidth:"100px"}}>{user.realname}</td>
-                             <td className="t-cell" style={{maxWidth:"100px"}}>{user.orgid}</td>
+                             <td className="t-cell" style={{maxWidth:"100px"}}>{user.orgname}</td>
                              <td className="t-cell" style={{maxWidth:"100px"}}>{user.email}</td>
                              <td className="t-cell" style={{maxWidth:"100px"}}>{user.mobile}</td>
                              <td className="t-cell text-center" style={{maxWidth:"300px"}}>

@@ -22,7 +22,7 @@ class AddRoleAuthComponent extends React.Component{
         RoleService.findAllRole().then(res=>{
             this.setState({roles:res.data});
         });
-        AuthService.findAllAuth().then(res=>{
+        AuthService.findAllAuthOrderbyresid().then(res=>{
             this.setState({auths:res.data});
         });
     }
@@ -80,7 +80,7 @@ class AddRoleAuthComponent extends React.Component{
                             {
                                 this.state.auths.map(
                                     auth =>
-                                    <option value={auth.id}>{auth.authname}</option>
+                                    <option value={auth.id}>{auth.authname},{auth.resname}</option>
                                 )
                             }
                         </select>

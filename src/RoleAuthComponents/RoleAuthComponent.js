@@ -1,12 +1,15 @@
 import React from 'react'
 import moment from 'moment'
 import RoleAuthService from '../Service/RoleAuthService'
+import RoleService from '../Service/RoleService'
 
 class RoleAuthComponent extends React.Component{
     constructor(props){
         super(props)
         this.state = {
             pageNo:1,
+            id:'',
+            roles:[],
             roleauths:[]
         }
         this.firstPage=this.firstPage.bind(this);
@@ -17,9 +20,14 @@ class RoleAuthComponent extends React.Component{
         this.editRoleAuth=this.editRoleAuth.bind(this);
         this.deleteRoleAuth=this.deleteRoleAuth.bind(this);
         this.findAllRoleAuth=this.findAllRoleAuth.bind(this);
+
+        this.roleauthForUser=this.roleauthForUser.bind(this);
     }
     
     componentDidMount(){
+        RoleService.findAllRole().then(res=>{
+            this.setState({roles:res.data});
+        });
         this.findAllRoleAuth(this.state.pageNo);
     }
 
@@ -52,6 +60,10 @@ class RoleAuthComponent extends React.Component{
         this.findAllRoleAuth(this.state.pageNo-1);
     }
 
+    roleauthForUser=(event)=>{
+        this.props.history.push("/roleauth/"+event.target.value);
+    }
+
     addRoleAuth(){
         this.props.history.push("/addroleauth");
     }
@@ -78,14 +90,23 @@ class RoleAuthComponent extends React.Component{
        return(
         <div>
         <br></br>
+        <select onChange={this.roleauthForUser} style={{width:"15rem",fontSize:"12px"}}>
+            <option>请选择指定角色修改权限</option>
+            {
+                this.state.roles.map(
+                    role=>
+                    <option value={role.id}>{role.rolename}</option>
+                )
+            }
+        </select>
         <h3 className="text-center font-weight-bold text-secondary">角色权限列表</h3>
         <button className="btn blue-btn btn-sm text-white font-weight-bold" onClick={this.addRoleAuth}>添加角色权限</button>
         <table className="table f-size table-boarder"> 
            <thead className="text-justify">
                 <tr>
                  <th  className="text-secondary" style={{columnWidth:"30px"}}>ID</th>
-                  <th  className="text-secondary" style={{columnWidth:"60px"}}>角色ID</th>  
-                  <th  className="text-secondary" style={{columnWidth:"60px"}}>权限ID</th>  
+                  <th  className="text-secondary" style={{columnWidth:"100px"}}>角色名称</th>  
+                  <th  className="text-secondary" style={{columnWidth:"200px"}}>权限名称</th>  
                   <th  className="text-secondary" style={{columnWidth:"190px"}}>创建时间</th> 
                   <th  className="text-secondary" style={{columnWidth:"190px"}}>更新时间</th>  
                   <th  className="text-secondary text-center" style={{columnWidth:"260px"}}>操作</th>
@@ -97,13 +118,13 @@ class RoleAuthComponent extends React.Component{
                          roleauth =>
                          <tr key= {roleauth.id}>         
                              <td className="t-cell" style={{maxWidth:"30px"}}>{roleauth.id}</td>
-                             <td className="t-cell" style={{maxWidth:"60px"}}>{roleauth.roleid}</td>
-                             <td className="t-cell" style={{maxWidth:"60px"}}>{roleauth.authid}</td>
+                             <td className="t-cell" style={{maxWidth:"100px"}}>{roleauth.rolename}</td>
+                             <td className="t-cell" style={{maxWidth:"200px"}}>{roleauth.authname}</td>
                              <td className="t-cell" style={{maxWidth:"190ox"}}>{moment(roleauth.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(roleauth.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell text-center" style={{maxWidth:"260px"}}>
                                 <button className="btn btn-sm green-btn text-white font-weight-bold" onClick={() => this.editRoleAuth(roleauth.id)} style={{marginLeft:"10px"}}>编辑资料</button>
-                                <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={() => this.deleteRoleAuth(roleauth.id)} style={{marginLeft:"10px"}}>删除</button>
+                                <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={() => {if(window.confirm('确认删除此角色权限?')){this.deleteRoleAuth(roleauth.id)}}} style={{marginLeft:"10px"}}>删除</button>
                              </td>
                          </tr>
                      )  

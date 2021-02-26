@@ -87,7 +87,7 @@ class TenantComponent extends React.Component{
                       <th  className="text-secondary" style={{columnWidth:"140px"}}>业务归属</th>  
                       <th  className="text-secondary" style={{columnWidth:"190px"}}>创建时间</th> 
                       <th  className="text-secondary" style={{columnWidth:"190px"}}>最后一次更新时间</th>  
-                      <th  className="text-secondary" style={{columnWidth:"170px"}}>租户管理员用户ID</th>  
+                      <th  className="text-secondary" style={{columnWidth:"170px"}}>租户管理员用户名字</th>  
                       <th  className="text-secondary text-center" style={{columnWidth:"300px"}}>操作</th>
                     </tr>
                     </thead>
@@ -101,7 +101,7 @@ class TenantComponent extends React.Component{
                                  <td className="t-cell" style={{maxWidth:"140px"}}>{tenant.businessassignment}</td>
                                  <td className="t-cell" style={{maxWidth:"190px"}}>{moment(tenant.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                                  <td className="t-cell" style={{maxWidth:"190px"}}>{moment(tenant.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
-                                 <td className="t-cell" style={{maxWidth:"170px"}}>{tenant.adminuserid}</td>
+                                 <td className="t-cell" style={{maxWidth:"170px"}}>{tenant.adminname}</td>
                                  <td className="t-cell text-center" style={{maxWidth:"300px"}}>
                                     <button className="btn btn-sm green-btn text-white font-weight-bold" onClick={() => this.editTenant(tenant.id)} style={{marginLeft:"10px"}}>编辑资料</button>
                                     <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={() => {if(window.confirm('确认删除此租户?')){this.deleteTenant(tenant.id)}}} style={{marginLeft:"10px"}}>删除</button>

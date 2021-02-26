@@ -74,6 +74,10 @@ class ViewUserComponent extends React.Component{
                         <div>{this.state.user.orgid}</div>
                     </div>
                     <div className="row">
+                        <label>组织名称:</label>
+                        <div>{this.state.user.orgname}</div>
+                    </div>
+                    <div className="row">
                         <label>是否已删除:</label>
                         <div>{this.state.isdeleted}</div>
                     </div>

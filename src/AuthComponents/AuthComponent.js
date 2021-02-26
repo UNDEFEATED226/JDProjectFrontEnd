@@ -84,10 +84,9 @@ class AuthComponent extends React.Component{
            <thead className="text-justify">
                 <tr>
                  <th  className="text-secondary" style={{columnWidth:"30px"}}>id</th>
-                  <th  className="text-secondary" style={{columnWidth:"200px"}}>权限名称</th>  
+                  <th  className="text-secondary" style={{columnWidth:"170px"}}>权限名称</th>  
                   <th  className="text-secondary" style={{columnWidth:"100px"}}>描述信息</th>  
-                  <th  className="text-secondary" style={{columnWidth:"60px"}}>资源ID</th> 
-                  <th  className="text-secondary" style={{columnWidth:"60px"}}>资源名称</th> 
+                  <th  className="text-secondary" style={{columnWidth:"90px"}}>资源名称</th> 
                   <th className="text-secondary" style={{columnWidth:"190px"}}>创建时间</th>
                   <th className="text-secondary" style={{columnWidth:"190px"}}>最后一次更新时间</th>
                   <th  className="text-secondary text-center" style={{columnWidth:"300px"}}>操作</th>
@@ -99,10 +98,9 @@ class AuthComponent extends React.Component{
                          auth =>
                          <tr key= {auth.id}>         
                              <td className="t-cell" style={{maxWidth:"30px"}}>{auth.id}</td>
-                             <td className="t-cell" style={{maxWidth:"200px"}}>{auth.authname}</td>
+                             <td className="t-cell" style={{maxWidth:"170px"}}>{auth.authname}</td>
                              <td className="t-cell" style={{maxWidth:"100px"}}>{auth.description}</td>
-                             <td className="t-cell" style={{maxWidth:"60px"}}>{auth.resid}</td>
-                             <td className="t-cell" style={{maxWidth:"60px"}}>{auth.resname}</td>
+                             <td className="t-cell" style={{maxWidth:"90px"}}>{auth.resname}</td>
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(auth.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(auth.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell text-center" style={{maxWidth:"300px"}}>

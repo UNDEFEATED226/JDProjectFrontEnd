@@ -94,9 +94,8 @@ class OrganizationComponent extends React.Component{
                       <th className="text-secondary" style={{columnWidth:"80px"}}>组织层级</th>  
                       <th className="text-secondary" style={{columnWidth:"100px"}}>组织类型ID</th>  
                       <th className="text-secondary" style={{columnWidth:"140px"}}>组织类型名称</th> 
-                      <th className="text-secondary" style={{columnWidth:"80px"}}>组织种类</th>  
-                      <th className="text-secondary" style={{columnWidth:"110px"}}>基准组织编码</th>  
-                      <th className="text-secondary" style={{columnWidth:"60px"}}>租户ID</th>  
+                      <th className="text-secondary" style={{columnWidth:"80px"}}>组织种类</th>   
+                      <th className="text-secondary" style={{columnWidth:"160px"}}>租户名称</th>  
                       <th className="text-secondary text-center" style={{columnWidth:"300px"}}>操作</th>
                     </tr>
                     </thead>
@@ -111,8 +110,7 @@ class OrganizationComponent extends React.Component{
                                  <td className="t-cell" style={{maxWidth:"100px"}}>{organization.orgtype}</td>
                                  <td className="t-cell" style={{maxWidth:"140px"}}>{organization.orgtypename}</td>
                                  <td className="t-cell" style={{maxWidth:"80px"}}>{organization.orgcatlog}</td>
-                                 <td className="t-cell" style={{maxWidth:"110px"}}>{organization.baseorgcode}</td>
-                                 <td className="t-cell" style={{maxWidth:"60px"}}>{organization.tenantid}</td>
+                                 <td className="t-cell" style={{maxWidth:"160px"}}>{organization.tenantname}</td>
                                  <td className="t-cell text-center" style={{maxWidth:"300px"}}>
                                     <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-sm yellow-btn font-weight-bold text-white">查看详情</button>
                                     <button  onClick={() => this.editOrganization(organization.id)} className="btn btn-sm green-btn font-weight-bold text-white" style={{marginLeft:"10px"}}>编辑资料</button>

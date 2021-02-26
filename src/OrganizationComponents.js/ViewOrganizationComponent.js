@@ -81,7 +81,11 @@ class ViewOrganizationComponent extends React.Component{
                         <div>{this.state.organization.baseorgcode}</div>
                     </div>
                     <div className="row">
-                        <label>租户:</label>
+                        <label>租户ID:</label>
+                        <div>{this.state.tenantid}</div>
+                    </div>
+                    <div className="row">
+                        <label>租户名称:</label>
                         <div>{this.state.tenantname}</div>
                     </div>
                     <div className="row">

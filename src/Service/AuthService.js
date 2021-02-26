@@ -6,6 +6,10 @@ class AuthService{
         return axios.get("/auth/findallauth");
     }
 
+    findAllAuthOrderbyresid(){
+        return axios.get("/auth/findallauthorderbyresid");
+    }
+
     findAllAuthPaginated(p){
         return axios.get("/auth/findallauthpaginated?pageNo="+p);
     }
