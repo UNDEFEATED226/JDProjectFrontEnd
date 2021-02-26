@@ -16,6 +16,7 @@ class RoleAuthComponentForUser extends React.Component{
             deleteRes:[]
      }  
      this.addAuthHandler=this.addAuthHandler.bind(this);
+     this.deleteAuthHandler=this.deleteAuthHandler.bind(this);
      this.multiselectRef=React.createRef();
      this.deleteRef=React.createRef();
     }
@@ -34,47 +35,38 @@ class RoleAuthComponentForUser extends React.Component{
 
     addAuthHandler=(a)=>{
         a.preventDefault();
-        console.log("arrive here");
         this.setState({addRes:this.multiselectRef.current.getSelectedItems()});
-        console.log(this.state.addRes);
-        this.state.addRes.forEach(r=>{
-            console.log(r);
+        this.multiselectRef.current.getSelectedItems().forEach(r=>{
             RoleAuthService.addRoleAuth({id:'',roleid:this.state.id,authid:r.id,isdeleted:0,createtime:'',updatetime:''}); 
         });
-        console.log("arrive here 3");
+        this.props.history.push("/roleauthlist");
     }
 
     deleteAuthHandler=(a)=>{
         a.preventDefault();
-        console.log("arrive here");
         this.setState({deleteRes:this.deleteRef.current.getSelectedItems()});
-        console.log(this.state.deleteRes);
-        this.state.deleteRes.forEach(r=>{
-            console.log(r);
+        this.deleteRef.current.getSelectedItems().forEach(r=>{
             RoleAuthService.deleteRoleAuth(r.id);
         });
-        console.log("arrive here 3");
+        this.props.history.push("/roleauthlist");
     }
 
     render(){  
         this.state.ownauths.forEach(a=>{
-            AuthService.findById(a.authid).then(res=>{
-                a.fullname="角色权限ID:"+a.id+", 资源名称:"+res.data.resname+", 权限名称:"+res.data.authname;
-            });
+            a.fullname="角色权限ID:"+a.id+", 资源名称:"+a.resname+", 权限名称:"+a.authname;
         });
         this.state.auths.forEach(a=>{
             a.fullname="权限ID:"+a.id+", 权限名称:"+a.authname;
         });
-        console.log(this.state.ownauths);
        return(
         <div>
         <br></br>
         <h3 className="font-weight-bold text-secondary text-center">角色ID:{this.state.role.id}</h3>
         <h3 className="font-weight-bold text-secondary text-center">角色名称:{this.state.role.rolename}</h3>
       
-        <label className="font-weight-bold color-font">请删除已有权限:</label>
+        <label className="font-weight-bold color-font">删除已有权限:</label>
        <div>
-           <Multiselect options={this.state.ownauths} displayValue='fullname' value='id' placeholder='请删除已有权限' emptyRecordMsg='无可选项' 
+           <Multiselect options={this.state.ownauths} displayValue='fullname' value='id' groupBy='resname' placeholder='请删除已有权限' emptyRecordMsg='无可选项' 
            hidePlaceholder={true} showCheckbox={true} closeOnSelect={false} ref={this.deleteRef}/>
        </div>
 
