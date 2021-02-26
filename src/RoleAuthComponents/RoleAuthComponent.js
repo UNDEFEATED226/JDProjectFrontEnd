@@ -90,15 +90,7 @@ class RoleAuthComponent extends React.Component{
        return(
         <div>
         <br></br>
-        <select onChange={this.roleauthForUser} style={{width:"15rem",fontSize:"12px"}}>
-            <option>请选择指定角色修改权限</option>
-            {
-                this.state.roles.map(
-                    role=>
-                    <option value={role.id}>{role.rolename}</option>
-                )
-            }
-        </select>
+        
         <h3 className="text-center font-weight-bold text-secondary">角色权限列表</h3>
         <button className="btn blue-btn btn-sm text-white font-weight-bold" onClick={this.addRoleAuth}>添加角色权限</button>
         <table className="table f-size table-boarder"> 
