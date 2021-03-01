@@ -84,7 +84,7 @@ class EditRoleAuthComponent extends React.Component{
                             {
                                 this.state.auths.map(
                                     auth =>
-                                    <option value={auth.id}>{auth.authname},{auth.resname}</option>
+                                    <option value={auth.id}>权限名称:{auth.authname}, 资源名称:{auth.resname}</option>
                                 )
                             }
                         </select>

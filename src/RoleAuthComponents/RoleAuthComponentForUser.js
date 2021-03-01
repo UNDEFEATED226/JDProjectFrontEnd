@@ -53,7 +53,7 @@ class RoleAuthComponentForUser extends React.Component{
 
     render(){  
         this.state.ownauths.forEach(a=>{
-            a.fullname="角色权限ID:"+a.id+", 资源名称:"+a.resname+", 权限名称:"+a.authname;
+            a.fullname="角色权限ID:"+a.id+",权限名称:"+a.authname;
         });
         this.state.auths.forEach(a=>{
             a.fullname="权限ID:"+a.id+", 权限名称:"+a.authname;
