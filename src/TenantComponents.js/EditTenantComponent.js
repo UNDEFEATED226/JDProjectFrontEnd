@@ -1,19 +1,20 @@
 import React from 'react'
 import TenantService from '../Service/TenantService'
+import UserService from '../Service/UserService';
 
 class EditTenantComponent extends React.Component{
     constructor(props){
         super(props)
         this.state={
             id:this.props.match.params.id,
+            users:[],
             name:'',
             nameformat:'',
             businessassignment:'',
             businessassignmentformat:'',
             isdeleted:'',
             createtime:'',
-            adminuserid:'',
-            adminuseridformat:''
+            adminuserid:''
         }
         this.changeNameHandler=this.changeNameHandler.bind(this);
         this.changeBusinessassignmentHandler=this.changeBusinessassignmentHandler.bind(this);
@@ -32,6 +33,9 @@ class EditTenantComponent extends React.Component{
                 adminuserid:tenant.adminuserid
            });
         });
+        UserService.findAllUser().then(res=>{
+            this.setState({users:res.data});
+        });
     }
 
     changeNameHandler=(event)=>{
@@ -49,7 +53,6 @@ class EditTenantComponent extends React.Component{
         this.setState({
             nameformat:'',
             businessassignmentformat:'',
-            adminuseridformat:''
         });
         let tenant= {id:this.state.id,name:this.state.name,businessassignment:this.state.businessassignment,
         isdeleted:this.state.isdeleted,createtime:this.state.createtime,updatetime:'',adminuserid:this.state.adminuserid};
@@ -61,9 +64,6 @@ class EditTenantComponent extends React.Component{
             }
             if(this.state.businessassignment!=null && this.state.businessassignment.length>255){
                 this.setState({businessassignmentformat:"业务归属过长..."});
-            }
-            if(this.state.adminuserid!=null && (isNaN(this.state.adminuserid)||this.state.adminuserid.length>11)){
-                this.setState({adminuseridformat:" 租户管理员用户ID为至多11位纯数字..."});
             }
         })
     }
@@ -90,9 +90,16 @@ class EditTenantComponent extends React.Component{
                         <div style={{color:"#f44e3b"}}>{this.state.businessassignmentformat}</div>    
                     </div>
                     <div className="form-group">
-                        <label className="text-secondary font-weight-bold">租户管理员用户ID:</label>
-                        <input placeholder="请输入租户管理员用户ID..." style={{fontSize:"12px"}} className="form-control" value={this.state.adminuserid} onChange={this.changeAdminuseridHandler}/>
-                        <div style={{color:"#f44e3b"}}>{this.state.adminuseridformat}</div>    
+                        <label className="text-secondary font-weight-bold">租户管理员用户:</label>
+                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeAdminuseridHandler}>
+                            <option defaultValue value={this.state.adminuserid}>请选择租户管理员用户</option>
+                            {
+                                this.state.users.map(
+                                    u =>
+                                    <option value={u.id}>{u.realname}</option>
+                                )
+                            }
+                        </select>
                     </div>
                     <div className="text-center">
                     <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.editTenant}>保存</button>

@@ -1,5 +1,6 @@
 import React from 'react'
 import OrganizationService from '../Service/OrganizationService'
+import TenantService from '../Service/TenantService'
 
 class EditOrganizationComponent extends React.Component{
     constructor(props){
@@ -26,7 +27,8 @@ class EditOrganizationComponent extends React.Component{
             isdeleted:'',
             fullparentid:'',
             fullparentidformat:'',
-            ishavechild:''
+            ishavechild:'',
+            tenants:[]
         }
         this.changeOrgnameHandler=this.changeOrgnameHandler.bind(this);
         this.changeParentorgidHandler=this.changeParentorgidHandler.bind(this);
@@ -38,6 +40,7 @@ class EditOrganizationComponent extends React.Component{
         this.changeIsdeletedHandler=this.changeIsdeletedHandler.bind(this);
         this.changeFullparentidHandler=this.changeFullparentidHandler.bind(this);
         this.changeIshavechildHandler=this.changeIshavechildHandler.bind(this);
+        this.changeTenantidHandler = this.changeTenantidHandler.bind(this);
         this.editOrganization=this.editOrganization.bind(this)
     }
 
@@ -59,6 +62,9 @@ class EditOrganizationComponent extends React.Component{
                 fullparentid:organization.fullparentid,
                 ishavechild:organization.ishavechild
             });
+        });
+        TenantService.findAllTenant().then(res=>{
+            this.setState({tenants:res.data});
         });
     }
 
@@ -91,6 +97,9 @@ class EditOrganizationComponent extends React.Component{
     }
     changeIshavechildHandler=(event)=>{
         this.setState({ishavechild:event.target.value});
+    }
+    changeTenantidHandler=(event)=>{
+        this.setState({tenantid:event.target.value});
     }
     cancel(){
         this.props.history.push("/organizationlist");
@@ -181,6 +190,18 @@ class EditOrganizationComponent extends React.Component{
                                 <label className="text-secondary font-weight-bold">基准组织编码:</label>
                                 <input placeholder="请输入基准组织编码..." style={{fontSize:"12px"}}  className="form-control" value={this.state.baseorgcode} onChange={this.changeBaseorgcodeHandler}/>
                                 <div style={{color:"#f44e3b"}}>{this.state.baseorgcodeformat}</div>
+                            </div>
+                            <div className="form-group">
+                                <label className="text-secondary font-weight-bold">租户:</label>
+                                <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeTenantidHandler}>
+                                    <option defaultValue value={this.state.tenantid}>请选择租户:</option>
+                                    {
+                                        this.state.tenants.map(
+                                            t => 
+                                            <option value={t.id}>{t.name}</option>
+                                        )
+                                    }
+                                </select>
                             </div>
                             <div className="form-group">
                                 <label className="text-secondary font-weight-bold">是否已删除:</label>
