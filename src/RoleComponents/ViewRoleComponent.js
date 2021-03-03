@@ -26,17 +26,20 @@ class ViewRoleComponent extends React.Component{
             }
             if(this.state.role.isdeleted===1){
                 this.setState({isdeleted:"已删除"});
-            }else{
+            }
+            if(this.state.role.isdeleted===0){
                 this.setState({isdeleted:"未删除"});
             }
             if(this.state.role.isdefault===1){
-                this.setState({isdefault:"非默认角色"});
-            }else{
                 this.setState({isdefault:"默认角色"});
+            }
+            if(this.state.role.isdefault===0){
+                this.setState({isdefault:"非默认角色"});
             }
             if(this.state.role.isforbidden===1){
                 this.setState({isforbidden:"已禁用"});
-            }else{
+            }
+            if(this.state.role.isforbidden===0){
                 this.setState({isforbidden:"未禁用"});
             }
         });
@@ -44,8 +47,9 @@ class ViewRoleComponent extends React.Component{
 
     render(){
         return(
-            <div style={{marginTop:"5%"}} className="text-secondary">
-              <div className="card f-size bg-light mx-auto" style={{width:"30rem"}}>
+            <div style={{marginTop:"2.5%"}} className="text-secondary">
+                 <button className="btn font-weight-bold text-white" onClick={()=>{this.props.history.goBack()}} style={{marginLeft:"28.5%",backgroundColor:"purple"}}>返回</button>
+              <div className="card f-size bg-light mx-auto" style={{width:"30rem",marginTop:"2.5%"}}>
                 <h5 className="text-center font-weight-bold card-header">角色详情</h5>
                 <div className="card-body">
                     <div className="row">

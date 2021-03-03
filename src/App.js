@@ -82,7 +82,7 @@ function App() {
             <Route path="/roleauthlist" component={RoleAuthComponent}></Route>
             <Route path="/addroleauth" component={AddRoleAuthComponent}></Route>
             <Route path="/editroleauth/:id" component={EditRoleAuthComponent}></Route>
-            <Route path="/roleauth/:id" component={RoleAuthComponentForUser}></Route>
+            <Route path="/roleauthforuser" component={RoleAuthComponentForUser}></Route>
           </Switch>
         </div>
       </Router>

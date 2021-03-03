@@ -26,12 +26,14 @@ class ViewUserComponent extends React.Component{
             }
             if(this.state.user.istenantadmin===1){
                 this.setState({istenantadmin:"是"})
-            }else{
+            }
+            if(this.state.user.istenantadmin===0){
                 this.setState({istenantadmin:"否"})
             }
             if(this.state.user.isforbidden===1){
                 this.setState({isforbidden:"已禁用"})
-            }else{
+            }
+            if(this.state.user.isforbidden===0){
                 this.setState({isforbidden:"未禁用"})
             }
             if(this.state.user.isdeleted===1){
@@ -45,8 +47,9 @@ class ViewUserComponent extends React.Component{
 
     render(){
         return(
-            <div style={{marginTop:"5%"}} className="text-secondary f-size">
-              <div className="card bg-light mx-auto" style={{width:"30rem"}}>
+            <div style={{marginTop:"2.5%"}} className="text-secondary f-size">     
+                  <button className="btn text-white font-weight-bold" onClick={e=>{this.props.history.push('/userlist')}} style={{marginLeft:'28.5%',backgroundColor:"purple"}}>返回</button>
+              <div className="card bg-light mx-auto" style={{width:"30rem",marginTop:'2.5%'}}>
                 <h5 className="text-center font-weight-bold card-header">用户详情</h5>
                 <div className="card-body">
                     <div className="row">

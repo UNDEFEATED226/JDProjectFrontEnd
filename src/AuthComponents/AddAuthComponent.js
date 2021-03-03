@@ -36,12 +36,12 @@ class AddAuthComponent extends React.Component{
             residformat:''
         });
         if(this.state.resid===''){
-            this.setState({residformat:"请选择资源ID..."});
             bool=true;
+            this.setState({residformat:"请选择资源ID..."});
         }
         if(this.state.authname===''){
-            this.setState({authnameformat:"请选择权限名称..."});
             bool=true;
+            this.setState({authnameformat:"请选择权限名称..."});
         }
         if(bool){
             throw new Error("FORMAT ERROR");
@@ -66,7 +66,7 @@ class AddAuthComponent extends React.Component{
                    <form>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">资源:</label>
-                        <select className="form-control" style={{fontSize:"12px"}} value={this.state.resid} onChange={this.changeResidHandler}>
+                        <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.resid} onChange={this.changeResidHandler}>
                             <option defaultValue value=''>请选择资源:</option>
                             {
                                 this.state.resources.map(
@@ -79,7 +79,7 @@ class AddAuthComponent extends React.Component{
                     </div>
                    <div className="form-group">
                         <label className="text-secondary font-weight-bold">权限:</label>
-                        <select className="form-control" style={{fontSize:"12px"}} value={this.state.authname} onChange={this.changeAuthnameHandler}>
+                        <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.authname} onChange={this.changeAuthnameHandler}>
                             <option defaultValue value=''>请选择权限:</option>
                             <option value='API_INVOKE_PERMISSION'>API调用权限</option>
                             <option value='CANCEL_JOB_PERMISSION'>取消任务</option>

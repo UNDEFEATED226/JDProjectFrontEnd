@@ -14,6 +14,10 @@ class RoleAuthService{
         return axios.get("/roleauth/findbyroleid?roleid="+roleid);
     }
 
+    changeAuth(roleid,l){
+         return axios.post("/roleauth/changeauth/"+roleid,l);
+    }
+
     count(){
         return axios.get("/roleauth/count");
     }

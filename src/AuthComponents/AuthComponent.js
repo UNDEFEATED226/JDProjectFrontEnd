@@ -80,16 +80,16 @@ class AuthComponent extends React.Component{
         <br></br>
         <h3 className="text-center font-weight-bold text-secondary">权限列表</h3>
         <button className="btn blue-btn text-white btn-sm font-weight-bold" onClick={this.addAuth}>添加权限</button>
-        <table className="table f-size table-border"> 
+        <table className="table f-size table-border" style={{color:"grey"}}> 
            <thead className="text-justify">
                 <tr>
-                 <th  className="text-secondary" style={{columnWidth:"30px"}}>id</th>
-                  <th  className="text-secondary" style={{columnWidth:"170px"}}>权限名称</th>  
-                  <th  className="text-secondary" style={{columnWidth:"100px"}}>描述信息</th>  
-                  <th  className="text-secondary" style={{columnWidth:"90px"}}>资源名称</th> 
-                  <th className="text-secondary" style={{columnWidth:"190px"}}>创建时间</th>
-                  <th className="text-secondary" style={{columnWidth:"190px"}}>最后一次更新时间</th>
-                  <th  className="text-secondary text-center" style={{columnWidth:"300px"}}>操作</th>
+                  <th style={{columnWidth:"30px"}}>id</th>
+                  <th style={{columnWidth:"170px"}}>权限名称</th>  
+                  <th style={{columnWidth:"170px"}}>描述信息</th>  
+                  <th style={{columnWidth:"170px"}}>资源名称</th> 
+                  <th style={{columnWidth:"190px"}}>创建时间</th>
+                  <th style={{columnWidth:"190px"}}>最后一次更新时间</th>
+                  <th className="text-center" style={{columnWidth:"300px"}}>操作</th>
                 </tr>
                 </thead>
              <tbody>
@@ -97,10 +97,10 @@ class AuthComponent extends React.Component{
                      this.state.auths.map(
                          auth =>
                          <tr key= {auth.id}>         
-                             <td className="t-cell" style={{maxWidth:"30px"}}>{auth.id}</td>
-                             <td className="t-cell" style={{maxWidth:"170px"}}>{auth.authname}</td>
-                             <td className="t-cell" style={{maxWidth:"100px"}}>{auth.description}</td>
-                             <td className="t-cell" style={{maxWidth:"90px"}}>{auth.resname}</td>
+                             <td className="t-cell" style={{maxWidth:"30px"}} data-toggle='tooltip' title={auth.id}>{auth.id}</td>
+                             <td className="t-cell" style={{maxWidth:"170px"}} data-toggle='tooltip' title={auth.authname}>{auth.authname}</td>
+                             <td className="t-cell" style={{maxWidth:"170px"}} data-toggle='tooltip' title={auth.description}>{auth.description}</td>
+                             <td className="t-cell" style={{maxWidth:"170px",color:auth.resname ==='资源不存在或已删除' ? 'red':undefined}} data-toggle='tooltip' title={auth.resname}>{auth.resname}</td>
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(auth.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(auth.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell text-center" style={{maxWidth:"300px"}}>

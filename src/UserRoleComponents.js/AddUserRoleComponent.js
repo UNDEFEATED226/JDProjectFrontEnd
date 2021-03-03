@@ -16,6 +16,7 @@ class AddUserRoleComponent extends React.Component{
         }
         this.changeUseridHandler=this.changeUseridHandler.bind(this);
         this.changeRoleidHandler=this.changeRoleidHandler.bind(this);
+        this.cancel=this.cancel.bind(this);
         this.saveUserRole=this.saveUserRole.bind(this);
     }
 
@@ -43,16 +44,12 @@ class AddUserRoleComponent extends React.Component{
             roleidformat:'',
         });
         if(this.state.userid === ''){
-            this.setState({
-                useridformat:"请选择用户...",
-            });
-            bool=true
+            bool=true;
+            this.setState({useridformat:"请选择用户..."});
         }
         if(this.state.roleid === ''){
-            this.setState({
-                roleidformat:"请选择角色...",
-            });
-            bool=true
+            bool=true;
+            this.setState({roleidformat:"请选择角色...",});     
         }
         if(bool){
             throw new Error("FORMAT ERROR");
@@ -77,7 +74,7 @@ class AddUserRoleComponent extends React.Component{
                    <form>
                    <div className="form-group">
                         <label className="text-secondary font-weight-bold">用户:</label>
-                        <select className="form-control" style={{fontSize:"12px"}} value={this.state.userid} onChange={this.changeUseridHandler}>
+                        <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.userid} onChange={this.changeUseridHandler}>
                             <option defaultValue value=''>请选择用户</option>
                             {
                                 this.state.users.map(
@@ -90,7 +87,7 @@ class AddUserRoleComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">角色:</label>
-                        <select className="form-control" style={{fontSize:"12px"}} value={this.state.roleid} onChange={this.changeRoleidHandler}>
+                        <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.roleid} onChange={this.changeRoleidHandler}>
                             <option defaultValue value=''>请选择角色</option>
                             {
                                 this.state.roles.map(
@@ -103,7 +100,7 @@ class AddUserRoleComponent extends React.Component{
                     </div>
                     <div className="text-center">
                     <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.saveUserRole}>保存</button>
-                    <button className="btn btn-sm red-btn font-weight-bold text-white" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    <button className="btn btn-sm red-btn font-weight-bold text-white" onClick={this.cancel} style={{marginLeft:"80px"}}>取消</button>
                     </div>
                     </form>
                    </div>

@@ -32,6 +32,10 @@ class AddTenantComponent extends React.Component{
     saveTenant=(t)=>{
         t.preventDefault();
         this.setState({nameformat:''});
+        if(this.state.name.trim() === ''){
+            this.setState({nameformat:'租户名称不能为空...'});
+            throw new Error('INPUT ERROR');
+        }
         let tenant= {id:'',name:this.state.name,businessassignment:'',isdeleted:0,createtime:'',updatetime:'',adminuserid:this.state.adminuserid};
         TenantService.addTenant(tenant).then(res =>{
             this.props.history.push("/tenantlist");
@@ -60,7 +64,7 @@ class AddTenantComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">租户管理员用户:</label>
-                        <select className="form-control" value={this.state.adminuserid} style={{fontSize:"12px"}} onChange={this.changeAdminuseridHandler}>
+                        <select className="text-secondary form-control" value={this.state.adminuserid} style={{fontSize:"12px"}} onChange={this.changeAdminuseridHandler}>
                             <option defaultValue value=''>请选择租户管理员用户</option>
                             {
                                 this.state.users.map(

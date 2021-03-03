@@ -75,17 +75,17 @@ class UserRoleComponent extends React.Component{
         <br></br>
         <h3 className="text-center font-weight-bold text-secondary">用户角色列表</h3>
         <button className="btn blue-btn btn-sm text-white font-weight-bold" onClick={this.addUserRole}>添加用户角色</button>
-        <table className="table f-size table-boarder"> 
+        <table className="table f-size table-boarder" style={{color:"grey"}}> 
            <thead className="text-justify">
                 <tr>
-                 <th  className="text-secondary" style={{columnWidth:"30px"}}>id</th>
-                  <th  className="text-secondary" style={{columnWidth:"60px"}}>用户ID</th>  
-                  <th  className="text-secondary" style={{columnWidth:"60px"}}>用户名字</th>  
-                  <th  className="text-secondary" style={{columnWidth:"60px"}}>角色ID</th>  
-                  <th  className="text-secondary" style={{columnWidth:"60px"}}>角色名称</th>  
-                  <th  className="text-secondary" style={{columnWidth:"190px"}}>创建时间</th> 
-                  <th  className="text-secondary" style={{maxcolumnWidthWidth:"190px"}}>更新时间</th>  
-                  <th  className="text-secondary text-center" style={{columnWidth:"150px"}}>操作</th>
+                  <th style={{columnWidth:"50px"}}>id</th>
+                  <th style={{columnWidth:"50px"}}>用户ID</th>  
+                  <th style={{columnWidth:"150px"}}>用户名字</th>  
+                  <th style={{columnWidth:"50px"}}>角色ID</th>  
+                  <th style={{columnWidth:"150px"}}>角色名称</th>  
+                  <th style={{columnWidth:"180px"}}>创建时间</th> 
+                  <th style={{maxcolumnWidthWidth:"180px"}}>更新时间</th>  
+                  <th className="text-center" style={{columnWidth:"150px"}}>操作</th>
                 </tr>
                 </thead>
              <tbody>
@@ -93,13 +93,13 @@ class UserRoleComponent extends React.Component{
                      this.state.userroles.map(
                         userrole =>
                          <tr key= {userrole.id}>         
-                             <td className="t-cell" style={{maxWidth:"30px"}}>{userrole.id}</td>
-                             <td className="t-cell" style={{maxWidth:"60px"}}>{userrole.userid}</td>
-                             <td className="t-cell" style={{maxWidth:"60px"}}>{userrole.username}</td>
-                             <td className="t-cell" style={{maxWidth:"60px"}}>{userrole.roleid}</td>
-                             <td className="t-cell" style={{maxWidth:"60px"}}>{userrole.rolename}</td>
-                             <td className="t-cell" style={{maxWidth:"190px"}}>{moment(userrole.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
-                             <td className="t-cell" style={{maxWidth:"190px"}}>{moment(userrole.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
+                             <td className="t-cell" style={{maxWidth:"50px"}} data-toggle='tooltip' title={userrole.id}>{userrole.id}</td>
+                             <td className="t-cell" style={{maxWidth:"50px"}} data-toggle='tooltip' title={userrole.userid}>{userrole.userid}</td>
+                             <td className="t-cell" style={{maxWidth:"150px",color:userrole.username ==='用户不存在或已删除' ? 'red':undefined}} data-toggle='tooltip' title={userrole.username}>{userrole.username}</td>
+                             <td className="t-cell" style={{maxWidth:"50px"}} data-toggle='tooltip' title={userrole.roleid}>{userrole.roleid}</td>
+                             <td className="t-cell" style={{maxWidth:"150px",color:userrole.rolename ==='角色不存在或已删除' ? 'red':undefined}} data-toggle='tooltip' title={userrole.rolename}>{userrole.rolename}</td>
+                             <td className="t-cell" style={{maxWidth:"180px"}}>{moment(userrole.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
+                             <td className="t-cell" style={{maxWidth:"180px"}}>{moment(userrole.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell text-center" style={{maxWidth:"150px"}}>
                                 <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={() => {if(window.confirm('确认删除此用户角色?')){ this.deleteUserRole(userrole.id)}}} style={{marginLeft:"10px"}}>删除</button>
                              </td>

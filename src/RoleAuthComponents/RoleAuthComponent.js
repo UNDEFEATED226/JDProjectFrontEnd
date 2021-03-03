@@ -1,7 +1,6 @@
 import React from 'react'
 import moment from 'moment'
 import RoleAuthService from '../Service/RoleAuthService'
-import RoleService from '../Service/RoleService'
 
 class RoleAuthComponent extends React.Component{
     constructor(props){
@@ -9,7 +8,6 @@ class RoleAuthComponent extends React.Component{
         this.state = {
             pageNo:1,
             id:'',
-            roles:[],
             roleauths:[]
         }
         this.firstPage=this.firstPage.bind(this);
@@ -25,9 +23,6 @@ class RoleAuthComponent extends React.Component{
     }
     
     componentDidMount(){
-        RoleService.findAllRole().then(res=>{
-            this.setState({roles:res.data});
-        });
         this.findAllRoleAuth(this.state.pageNo);
     }
 
@@ -90,26 +85,18 @@ class RoleAuthComponent extends React.Component{
        return(
         <div>
         <br></br>
-        <select onChange={this.roleauthForUser} style={{width:"15rem",fontSize:"12px"}}>
-            <option>请选择指定角色修改权限</option>
-            {
-                this.state.roles.map(
-                    role=>
-                    <option value={role.id}>{role.rolename}</option>
-                )
-            }
-        </select>
         <h3 className="text-center font-weight-bold text-secondary">角色权限列表</h3>
         <button className="btn blue-btn btn-sm text-white font-weight-bold" onClick={this.addRoleAuth}>添加角色权限</button>
-        <table className="table f-size table-boarder"> 
+        <table className="table f-size table-boarder" style={{color:"grey"}}> 
            <thead className="text-justify">
                 <tr>
-                 <th  className="text-secondary" style={{columnWidth:"30px"}}>ID</th>
-                  <th  className="text-secondary" style={{columnWidth:"100px"}}>角色名称</th>  
-                  <th  className="text-secondary" style={{columnWidth:"200px"}}>权限名称</th>  
-                  <th  className="text-secondary" style={{columnWidth:"190px"}}>创建时间</th> 
-                  <th  className="text-secondary" style={{columnWidth:"190px"}}>更新时间</th>  
-                  <th  className="text-secondary text-center" style={{columnWidth:"260px"}}>操作</th>
+                  <th style={{columnWidth:"50px"}}>ID</th>
+                  <th style={{columnWidth:"200px"}}>角色名称</th>  
+                  <th style={{columnWidth:"200px"}}>权限名称</th>  
+                  <th style={{columnWidth:"200px"}}>资源名称</th>  
+                  <th style={{columnWidth:"190px"}}>创建时间</th> 
+                  <th style={{columnWidth:"190px"}}>更新时间</th>  
+                  <th className="text-center" style={{columnWidth:"260px"}}>操作</th>
                 </tr>
                 </thead>
              <tbody>
@@ -117,9 +104,10 @@ class RoleAuthComponent extends React.Component{
                      this.state.roleauths.map(
                          roleauth =>
                          <tr key= {roleauth.id}>         
-                             <td className="t-cell" style={{maxWidth:"30px"}}>{roleauth.id}</td>
-                             <td className="t-cell" style={{maxWidth:"100px"}}>{roleauth.rolename}</td>
-                             <td className="t-cell" style={{maxWidth:"200px"}}>{roleauth.authname}</td>
+                             <td className="t-cell" style={{maxWidth:"50px"}} data-toggle='tooltip' title={roleauth.id}>{roleauth.id}</td>
+                             <td className="t-cell" style={{maxWidth:"200px",color:roleauth.rolename ==='角色不存在或已删除' ? 'red':undefined}} data-toggle='tooltip' title={roleauth.rolename}>{roleauth.rolename}</td>
+                             <td className="t-cell" style={{maxWidth:"200px"}} data-toggle='tooltip' title={roleauth.authname}>{roleauth.authname}</td>
+                             <td className="t-cell" style={{maxWidth:"200px"}} data-toggle='tooltip' title={roleauth.resname}>{roleauth.resname}</td>
                              <td className="t-cell" style={{maxWidth:"190ox"}}>{moment(roleauth.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(roleauth.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell text-center" style={{maxWidth:"260px"}}>

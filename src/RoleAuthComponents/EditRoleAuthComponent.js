@@ -9,7 +9,9 @@ class EditRoleAuthComponent extends React.Component{
         this.state={
             id:this.props.match.params.id,
             roleid:'',
+            roleidformat:'',
             authid:'',
+            authidformat:'',
             isdeleted:'',
             createtime:'',
             roles:[],
@@ -47,6 +49,22 @@ class EditRoleAuthComponent extends React.Component{
 
     editRoleAuth=(r)=>{
         r.preventDefault();
+        this.setState({
+            roleidformat:'',
+            authidformat:''
+        });
+        var bool = false;
+        if(this.state.authid === ''){
+            bool = true;
+            this.setState({authidformat:'请选择权限...'});
+        }
+        if(this.state.roleid === ''){
+            bool = true;
+            this.setState({roleidformat:'请选择角色...'});
+        }
+        if(bool){
+            throw new Error('INPUT ERROR');
+        }
         let roleauth= {id:this.state.id,roleid:this.state.roleid,authid:this.state.authid,
             createtime:this.state.createtime,isdeleted:this.state.isdeleted,updatetime:''};
         RoleAuthService.editRoleAuth(this.state.id,roleauth).then(res =>{
@@ -67,8 +85,8 @@ class EditRoleAuthComponent extends React.Component{
                    <form>
                    <div className="form-group">
                         <label className="text-secondary font-weight-bold">角色ID:</label>
-                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeRoleidHandler}>
-                            <option defaultValue value={this.state.roleid}>请选择角色</option>
+                        <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.roleid} onChange={this.changeRoleidHandler}>
+                            <option defaultValue value=''>请选择角色</option>
                             {
                                 this.state.roles.map(
                                     role =>
@@ -79,12 +97,12 @@ class EditRoleAuthComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">权限:</label>
-                        <select className="form-control" style={{fontSize:"12px"}} value={this.state.authid} onChange={this.changeAuthidHandler}>
+                        <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.authid} onChange={this.changeAuthidHandler}>
                             <option defaultValue value=''>请选择权限</option>
                             {
                                 this.state.auths.map(
                                     auth =>
-                                    <option value={auth.id}>权限名称:{auth.authname}, 资源名称:{auth.resname}</option>
+                                    <option value={auth.id}>权限名称:{auth.description}, 资源名称:{auth.resname}</option>
                                 )
                             }
                         </select>

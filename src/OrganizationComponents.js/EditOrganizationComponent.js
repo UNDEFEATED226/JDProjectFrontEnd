@@ -37,7 +37,6 @@ class EditOrganizationComponent extends React.Component{
         this.changeOrgtypenameHandler=this.changeOrgtypenameHandler.bind(this);
         this.changeOrgcatlogHandler=this.changeOrgcatlogHandler.bind(this);
         this.changeBaseorgcodeHandler=this.changeBaseorgcodeHandler.bind(this);
-        this.changeIsdeletedHandler=this.changeIsdeletedHandler.bind(this);
         this.changeFullparentidHandler=this.changeFullparentidHandler.bind(this);
         this.changeIshavechildHandler=this.changeIshavechildHandler.bind(this);
         this.changeTenantidHandler = this.changeTenantidHandler.bind(this);
@@ -89,9 +88,6 @@ class EditOrganizationComponent extends React.Component{
     changeBaseorgcodeHandler=(event)=>{
         this.setState({baseorgcode:event.target.value});
     }
-    changeIsdeletedHandler=(event)=>{
-        this.setState({isdeleted:event.target.value});
-    }
     changeFullparentidHandler=(event)=>{
         this.setState({fullparentid:event.target.value});
     }
@@ -116,6 +112,10 @@ class EditOrganizationComponent extends React.Component{
             baseorgcodeformat:'',
             fullparentidformat:''
         });
+        if(this.state.orgname.trim() === ''){
+            this.setState({orgnameformat:'组织名称不能为空...'});
+            throw new Error('EMPTY ORG NAME');
+        }
         let organization= {id:this.state.id,orgname:this.state.orgname,parentorgid:this.state.parentorgid,
         orglevel:this.state.orglevel,orgtype:this.state.orgtype,orgtypename:this.state.orgtypename,orgcatlog:this.state.orgcatlog,
         baseorgcode:this.state.baseorgcode,tenantid:this.state.tenantid,updatetime:this.state.updatetime,createtime:this.state.createtime,
@@ -193,8 +193,8 @@ class EditOrganizationComponent extends React.Component{
                             </div>
                             <div className="form-group">
                                 <label className="text-secondary font-weight-bold">租户:</label>
-                                <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeTenantidHandler}>
-                                    <option defaultValue value={this.state.tenantid}>请选择租户:</option>
+                                <select className="text-secondary form-control" style={{fontSize:"12px"}} onChange={this.changeTenantidHandler}>
+                                    <option defaultValue value={this.state.tenantid}>请选择租户...</option>
                                     {
                                         this.state.tenants.map(
                                             t => 
@@ -204,22 +204,14 @@ class EditOrganizationComponent extends React.Component{
                                 </select>
                             </div>
                             <div className="form-group">
-                                <label className="text-secondary font-weight-bold">是否已删除:</label>
-                                <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeIsdeletedHandler}>
-                                    <option defaultValue value={this.state.isdeleted}>请选择是否已删除</option>
-                                    <option value="1">是</option>
-                                    <option value="0">否</option>
-                                </select>
-                            </div>
-                            <div className="form-group">
                                 <label className="text-secondary font-weight-bold">路径:</label>
                                 <input placeholder="请输入路径..." style={{fontSize:"12px"}}  className="form-control" value={this.state.fullparentid} onChange={this.changeFullparentidHandler}/>
                                 <div style={{color:"#f44e3b"}}>{this.state.fullparentidformat}</div>
                             </div>
                             <div className="form-group">
                                 <label className="text-secondary font-weight-bold">是否有子节点:</label>
-                                <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeIshavechildHandler}>
-                                    <option defaultValue value={this.state.ishavechild}>请选择是否有子节点</option>
+                                <select className="text-secondary form-control" style={{fontSize:"12px"}} onChange={this.changeIshavechildHandler}>
+                                    <option defaultValue value={this.state.ishavechild}>请选择是否有子节点...</option>
                                     <option value="1">是</option>
                                     <option value="0">否</option>
                                 </select>

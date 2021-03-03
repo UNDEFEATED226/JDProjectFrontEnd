@@ -86,17 +86,17 @@ class OrganizationComponent extends React.Component{
             <button className="btn blue-btn btn-sm font-weight-bold text-white" onClick={this.addOrganization}>添加组织</button>
             <div className="row">
             </div>
-            <table className="table table-boarder f-size"> 
+            <table className="table table-boarder f-size" style={{color:"grey"}}> 
                <thead>
                     <tr>
-                      <th className="text-secondary" style={{columnWidth:"30px"}}>id</th>  
-                      <th className="text-secondary" style={{columnWidth:"100px"}}>组织名称</th>     
-                      <th className="text-secondary" style={{columnWidth:"80px"}}>组织层级</th>  
-                      <th className="text-secondary" style={{columnWidth:"100px"}}>组织类型ID</th>  
-                      <th className="text-secondary" style={{columnWidth:"140px"}}>组织类型名称</th> 
-                      <th className="text-secondary" style={{columnWidth:"80px"}}>组织种类</th>   
-                      <th className="text-secondary" style={{columnWidth:"160px"}}>租户名称</th>  
-                      <th className="text-secondary text-center" style={{columnWidth:"300px"}}>操作</th>
+                      <th style={{columnWidth:"30px"}}>id</th>  
+                      <th style={{columnWidth:"100px"}}>组织名称</th>     
+                      <th style={{columnWidth:"80px"}}>组织层级</th>  
+                      <th style={{columnWidth:"100px"}}>组织类型ID</th>  
+                      <th style={{columnWidth:"140px"}}>组织类型名称</th> 
+                      <th style={{columnWidth:"80px"}}>组织种类</th>   
+                      <th style={{columnWidth:"160px"}}>租户名称</th>  
+                      <th className="text-center" style={{columnWidth:"300px"}}>操作</th>
                     </tr>
                     </thead>
                  <tbody>
@@ -104,13 +104,13 @@ class OrganizationComponent extends React.Component{
                          this.state.organizations.map(
                              organization =>
                              <tr key= {organization.id}>
-                                 <td className="t-cell" style={{maxWidth:"30px"}}>{organization.id}</td>
-                                 <td className="t-cell" style={{maxWidth:"100px"}}>{organization.orgname}</td>
-                                 <td className="t-cell" style={{maxWidth:"80px"}}>{organization.orglevel}</td>
-                                 <td className="t-cell" style={{maxWidth:"100px"}}>{organization.orgtype}</td>
-                                 <td className="t-cell" style={{maxWidth:"140px"}}>{organization.orgtypename}</td>
-                                 <td className="t-cell" style={{maxWidth:"80px"}}>{organization.orgcatlog}</td>
-                                 <td className="t-cell" style={{maxWidth:"160px"}}>{organization.tenantname}</td>
+                                 <td className="t-cell" style={{maxWidth:"30px"}} data-toggle='tooltip' title={organization.id}>{organization.id}</td>
+                                 <td className="t-cell" style={{maxWidth:"100px"}} data-toggle='tooltip' title={organization.orgname}>{organization.orgname}</td>
+                                 <td className="t-cell" style={{maxWidth:"80px"}} data-toggle='tooltip' title={organization.orglevel}>{organization.orglevel}</td>
+                                 <td className="t-cell" style={{maxWidth:"100px"}} data-toggle='tooltip' title={organization.orgtype}>{organization.orgtype}</td>
+                                 <td className="t-cell" style={{maxWidth:"140px"}} data-toggle='tooltip' title={organization.orgtypename}>{organization.orgtypename}</td>
+                                 <td className="t-cell" style={{maxWidth:"80px"}} data-toggle='tooltip' title={organization.orgcatlog}>{organization.orgcatlog}</td>
+                                 <td className="t-cell" style={{maxWidth:"160px",color:organization.tenantname ==='租户不存在或已删除' ? 'red':undefined}} data-toggle='tooltip' title={organization.tenantname}>{organization.tenantname}</td>
                                  <td className="t-cell text-center" style={{maxWidth:"300px"}}>
                                     <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-sm yellow-btn font-weight-bold text-white">查看详情</button>
                                     <button  onClick={() => this.editOrganization(organization.id)} className="btn btn-sm green-btn font-weight-bold text-white" style={{marginLeft:"10px"}}>编辑资料</button>

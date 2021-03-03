@@ -19,8 +19,9 @@ class ViewResourceComponent extends React.Component{
 
     render(){
         return(
-            <div style={{marginTop:"5%"}} className="text-secondary">
-              <div className="card f-size bg-light mx-auto" style={{width:"30rem"}}>
+            <div style={{marginTop:"2.5%"}} className="text-secondary">
+                 <button className="btn font-weight-bold text-white" onClick={()=>{this.props.history.goBack()}} style={{marginLeft:"28.5%",backgroundColor:"purple"}}>返回</button>
+              <div className="card f-size bg-light mx-auto" style={{width:"30rem",marginTop:"2.5%"}}>
                 <h5 className="text-center font-weight-bold card-header">资源详情</h5>
                 <div className="card-body">
                     <div className="row">

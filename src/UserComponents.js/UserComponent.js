@@ -83,16 +83,16 @@ class UserComponent extends React.Component{
         <br></br>
         <h3 className="text-center font-weight-bold text-secondary">用户列表</h3>
         <button className="btn blue-btn text-white btn-sm font-weight-bold" onClick={this.addUser}>添加用户</button>
-        <table className="table table-boarder f-size"> 
+        <table className="table table-boarder f-size" style={{color:"grey"}}> 
            <thead className="text-justify">
                 <tr>
-                  <th  className="text-secondary" style={{columnWidth:"30px"}}>id</th>
-                  <th  className="text-secondary" style={{columnWidth:"100px"}}>登录用户名</th>  
-                  <th  className="text-secondary" style={{columnWidth:"100px"}}>名字</th>  
-                  <th  className="text-secondary" style={{columnWidth:"100px"}}>组织名称</th> 
-                  <th  className="text-secondary" style={{columnWidth:"100px"}}>邮箱</th>  
-                  <th  className="text-secondary" style={{columnWidth:"100px"}}>手机号</th> 
-                  <th  className="text-secondary" style={{columnWidth:"300px"}}>操作</th>
+                  <th style={{columnWidth:"30px"}}>id</th>
+                  <th style={{columnWidth:"100px"}}>登录用户名</th>  
+                  <th style={{columnWidth:"100px"}}>名字</th>  
+                  <th style={{columnWidth:"100px"}}>组织名称</th> 
+                  <th style={{columnWidth:"100px"}}>邮箱</th>  
+                  <th style={{columnWidth:"100px"}}>手机号</th> 
+                  <th  className="text-center" style={{columnWidth:"300px"}}>操作</th>
                 </tr>
                 </thead>
              <tbody>
@@ -100,12 +100,12 @@ class UserComponent extends React.Component{
                      this.state.users.map(
                          user =>
                          <tr key= {user.id}>         
-                             <td className="t-cell" style={{maxWidth:"30px"}}>{user.id}</td>
-                             <td className="t-cell" style={{maxWidth:"100px"}}>{user.loginname}</td>
-                             <td className="t-cell" style={{maxWidth:"100px"}}>{user.realname}</td>
-                             <td className="t-cell" style={{maxWidth:"100px"}}>{user.orgname}</td>
-                             <td className="t-cell" style={{maxWidth:"100px"}}>{user.email}</td>
-                             <td className="t-cell" style={{maxWidth:"100px"}}>{user.mobile}</td>
+                             <td className="t-cell" style={{maxWidth:"30px"}} data-toggle='tooltip' title={user.id}>{user.id}</td>
+                             <td className="t-cell" style={{maxWidth:"100px"}} data-toggle='tooltip' title={user.loginname}>{user.loginname}</td>
+                             <td className="t-cell" style={{maxWidth:"100px"}} data-toggle='tooltip' title={user.realname}>{user.realname}</td>
+                             <td className="t-cell" style={{maxWidth:"100px",color:user.orgname ==='公司不存在或已删除' ? 'red':undefined}} data-toggle='tooltip' title={user.orgname}>{user.orgname}</td>
+                             <td className="t-cell" style={{maxWidth:"100px"}} data-toggle='tooltip' title={user.email}>{user.email}</td>
+                             <td className="t-cell" style={{maxWidth:"100px"}} data-toggle='tooltip' title={user.mobile}>{user.mobile}</td>
                              <td className="t-cell text-center" style={{maxWidth:"300px"}}>
                                 <button className="btn btn-sm yellow-btn text-white font-weight-bold " onClick={() => this.viewUser(user.id)}>查看详情</button>
                                 <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={() => this.editUser(user.id)} style={{marginLeft:"10px"}}>编辑资料</button>

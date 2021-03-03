@@ -7,7 +7,8 @@ class AddRoleComponent extends React.Component{
         this.state={
             rolename:'',
             rolenameformat:'',
-            roletype:''
+            roletype:'',
+            roletypeformat:''
         }
         this.changeRolenameHandler=this.changeRolenameHandler.bind(this);
         this.changeRoletypeHandler=this.changeRoletypeHandler.bind(this);
@@ -24,9 +25,18 @@ class AddRoleComponent extends React.Component{
     saveRole=(r)=>{
         r.preventDefault();
         this.setState({rolenameformat:''});
-        if(this.state.rolename===''){
+        this.setState({roletypeformat:''});
+        var bool = false;
+        if(this.state.roletype===''){
+            bool = true;
+            this.setState({roletypeformat:'请选择角色类型...'});
+        }
+        if(this.state.rolename.trim()===''){
+            bool = true;
             this.setState({rolenameformat:"角色名称不能为空..."});
-            throw new Error("Name is empty");
+        }
+        if(bool){
+            throw new Error("INPUT ERROR");
         }
         let role= {id:'',rolename:this.state.rolename,roletype:this.state.roletype,description:'',
         tenantid:'',isdeleted:0,issystem:'',createtime:'',updatetime:'',rolecode:'',isforbidden:0,isdefault:0};
@@ -57,11 +67,12 @@ class AddRoleComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">角色类型:</label>
-                        <select className="form-control" style={{fontSize:"12px"}} value={this.state.roletype} onChange={this.changeRoletypeHandler}>
-                            <option defaultValue value=''>请选择角色类型</option>
+                        <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.roletype} onChange={this.changeRoletypeHandler}>
+                            <option defaultValue value=''>请选择角色类型...</option>
                             <option value='1'>组织角色</option>
                             <option value='2'>业务角色</option>
                         </select>
+                        <div style={{color:"#f44e3b"}}>{this.state.roletypeformat}</div>    
                     </div>
                     <div className="text-center">
                     <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.saveRole}>保存</button>

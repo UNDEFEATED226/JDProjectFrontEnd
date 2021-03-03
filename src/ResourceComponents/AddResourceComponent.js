@@ -49,9 +49,17 @@ class AddResourceComponent extends React.Component{
             resuriformat:'',
             restypeidformat:''
         });
+        var bool = false;
         if(this.state.restypeid === ''){
+            bool = true;
             this.setState({restypeidformat:"资源对应类型为必选..."});
-            throw new Error("MUST SELECT A RESTYPEID");
+        }
+        if(this.state.resname.trim() === ''){
+            bool = true;
+            this.setState({resnameformat:'资源名称不能为空...'});
+        }
+        if(bool){
+            throw new Error("INPUT ERROR");
         }
         let resource = {id:'',modulename:this.state.modulename,rescode:this.state.rescode,
             resname:this.state.resname,resuri:this.state.resuri,restypeid:this.state.restypeid,parentid:'',
@@ -87,6 +95,11 @@ class AddResourceComponent extends React.Component{
                   <div className="card-body">
                    <form>
                    <div className="form-group">
+                        <label className="text-secondary font-weight-bold">资源名称:</label>
+                        <input placeholder="请输入资源名称..." style={{fontSize:"12px"}} className="form-control" value={this.state.resname} onChange={this.changeResnameHandler}/> 
+                        <div style={{color:"#f44e3b"}}>{this.state.resnameformat}</div>    
+                    </div>
+                   <div className="form-group">
                         <label className="text-secondary font-weight-bold">所属模块:</label>
                         <input placeholder="请输入所属模块..." style={{fontSize:"12px"}} className="form-control" value={this.state.modulename} onChange={this.changeModulenameHandler}/> 
                         <div style={{color:"#f44e3b"}}>{this.state.modulenameformat}</div>    
@@ -97,19 +110,14 @@ class AddResourceComponent extends React.Component{
                         <div style={{color:"#f44e3b"}}>{this.state.rescodeformat}</div>    
                     </div>
                     <div className="form-group">
-                        <label className="text-secondary font-weight-bold">资源名称:</label>
-                        <input placeholder="请输入资源名称..." style={{fontSize:"12px"}} className="form-control" value={this.state.resname} onChange={this.changeResnameHandler}/> 
-                        <div style={{color:"#f44e3b"}}>{this.state.resnameformat}</div>    
-                    </div>
-                    <div className="form-group">
                         <label className="text-secondary font-weight-bold">资源对应URI:</label>
                         <input placeholder="请输入资源对应URI..." style={{fontSize:"12px"}} className="form-control" value={this.state.resuri} onChange={this.changeResuriHandler}/> 
                         <div style={{color:"#f44e3b"}}>{this.state.resuriformat}</div>    
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">资源对应类型ID:</label>
-                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeRestypeidHandler}>
-                            <option defaultValue value=''>请选择资源对应类型ID:</option>
+                        <select className="text-secondary form-control" style={{fontSize:"12px"}} onChange={this.changeRestypeidHandler}>
+                            <option defaultValue value=''>请选择资源对应类型ID...</option>
                             <option value='1'>物管平台菜单</option>
                             <option value='2'>物管平台API</option>
                             <option value='3'>能源平台菜单</option>

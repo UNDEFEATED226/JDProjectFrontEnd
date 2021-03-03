@@ -54,6 +54,10 @@ class EditTenantComponent extends React.Component{
             nameformat:'',
             businessassignmentformat:'',
         });
+        if(this.state.name.trim()===''){
+            this.setState({nameformat:'租户名称不能为空...'});
+            throw new Error('INPUT ERRO');
+        }
         let tenant= {id:this.state.id,name:this.state.name,businessassignment:this.state.businessassignment,
         isdeleted:this.state.isdeleted,createtime:this.state.createtime,updatetime:'',adminuserid:this.state.adminuserid};
         TenantService.editTenant(this.state.id,tenant).then(res =>{
@@ -91,8 +95,8 @@ class EditTenantComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">租户管理员用户:</label>
-                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeAdminuseridHandler}>
-                            <option defaultValue value={this.state.adminuserid}>请选择租户管理员用户</option>
+                        <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.adminuserid} onChange={this.changeAdminuseridHandler}>
+                            <option defaultValue value=''>请选择租户管理员用户</option>
                             {
                                 this.state.users.map(
                                     u =>

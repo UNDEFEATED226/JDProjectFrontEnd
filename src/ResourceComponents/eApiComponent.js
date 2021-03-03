@@ -85,15 +85,15 @@ class eApiComponent extends React.Component{
         <br></br>
         <h3 className="text-center font-weight-bold text-secondary">能源平台API</h3>
         <button className="btn btn-sm blue-btn text-white font-weight-bold" onClick={this.addResource}>添加资源</button>
-        <table className="table table-boarder f-size"> 
+        <table className="table table-boarder f-size" style={{color:"grey"}}> 
            <thead className="text-justify">
                 <tr>
-                 <th  className="text-secondary" style={{columnWidth:"30px"}}>id</th>
-                  <th  className="text-secondary" style={{columnWidth:"120px"}}>资源名称</th>  
-                  <th  className="text-secondary" style={{columnWidth:"80px"}}>描述信息</th>  
-                  <th  className="text-secondary" style={{columnWidth:"190px"}}>创建时间</th>  
-                  <th  className="text-secondary" style={{columnWidth:"190px"}}>最后一次更新时间</th> 
-                  <th  className="text-secondary text-center" style={{columnWidth:"300px"}}>操作</th>
+                  <th style={{columnWidth:"50px"}}>id</th>
+                  <th style={{columnWidth:"200px"}}>资源名称</th>  
+                  <th style={{columnWidth:"200px"}}>描述信息</th>  
+                  <th style={{columnWidth:"190px"}}>创建时间</th>  
+                  <th style={{columnWidth:"190px"}}>最后一次更新时间</th> 
+                  <th className=" text-center" style={{columnWidth:"300px"}}>操作</th>
                 </tr>
                 </thead>
              <tbody>
@@ -101,9 +101,9 @@ class eApiComponent extends React.Component{
                      this.state.resources.map(
                          resource =>
                          <tr key= {resource.id}>         
-                             <td className="t-cell" style={{maxWidth:"30px"}}>{resource.id}</td>
-                             <td className="t-cell" style={{maxWidth:"120px"}}>{resource.resname}</td>
-                             <td className="t-cell" style={{maxWidth:"80px"}}>{resource.description}</td>
+                             <td className="t-cell" style={{maxWidth:"50px"}}>{resource.id}</td>
+                             <td className="t-cell" style={{maxWidth:"200px"}}>{resource.resname}</td>
+                             <td className="t-cell" style={{maxWidth:"200px"}}>{resource.description}</td>
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(resource.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(resource.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell text-center" style={{maxWidth:"300px"}}>

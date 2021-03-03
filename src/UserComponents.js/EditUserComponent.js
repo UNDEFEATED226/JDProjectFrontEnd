@@ -46,9 +46,9 @@ class EditUserComponent extends React.Component{
         this.changeUsergroupidHandler=this.changeUsergroupidHandler.bind(this);
         this.changeFullparentidHandler=this.changeFullparentidHandler.bind(this);
         this.changeMobileHandler=this.changeMobileHandler.bind(this);
-        this.changeIsdeletedHandler=this.changeIsdeletedHandler.bind(this);
         this.changeIstenantadminHandler=this.changeIstenantadminHandler.bind(this);
         this.changeIsforbiddenHandler=this.changeIsforbiddenHandler.bind(this);
+        this.cancel=this.cancel.bind(this);
         this.editUser=this.editUser.bind(this)
     }
     
@@ -82,10 +82,14 @@ class EditUserComponent extends React.Component{
     }
 
     changeLoginnameHandler=(event) =>{
-        this.setState({loginname:event.target.value});
+        let value = event.target.value;
+        value = value.replace(/[^A-Za-z0-9+&@#/%?=~_|!:,.;$^*()-{}'"]/ig,'');
+        this.setState({loginname:value});
     }
     changePasswordHandler=(event) =>{
-        this.setState({password:event.target.value});
+        let value = event.target.value;
+        value = value.replace(/[^A-Za-z0-9+&@#/%?=~_|!:,.;$^*()-{}'"]/ig,'');
+        this.setState({password:value});
     }
     changeRealnameHandler=(event)=>{
         this.setState({realname:event.target.value});
@@ -114,9 +118,6 @@ class EditUserComponent extends React.Component{
     changeMobileHandler=(event)=>{
         this.setState({mobile:event.target.value});
     }
-    changeIsdeletedHandler=(event)=>{
-        this.setState({isdeleted:event.target.value});
-    }
     changeIstenantadminHandler=(event)=>{
         this.setState({istenantadmin:event.target.value});
     }
@@ -137,6 +138,18 @@ class EditUserComponent extends React.Component{
             fullparentidformat:'',
             mobileformat:''
         });
+        var bool = false;
+        if(this.state.loginname.trim() === ''){
+            bool = true;
+            this.setState({loginnameformat:'登录名不能为空...'});
+        }
+        if(this.state.password.trim() === ''){
+            bool = true;
+            this.setState({passwordformat:'登录密码不能为空...'});
+        }
+        if(bool){
+            throw new Error("INPUT ERROR");
+        }
         let user= {id:this.state.id,userid:this.state.userid,loginname:this.state.loginname,
             password:this.state.password,realname:this.state.realname,orgid:this.state.orgid,
             email:this.state.email,sex:this.state.sex,comment:this.state.comment,
@@ -146,11 +159,11 @@ class EditUserComponent extends React.Component{
         UserService.editUser(this.state.id,user).then(res =>{
             this.props.history.push("/userlist");
         }).catch(err => {
-            if(this.state.loginname === ''||this.state.loginname.length>64){
-                this.setState({loginnameformat:"登录用户名不能为空:1-64长度"});
+            if(this.state.loginname.length>64){
+                this.setState({loginnameformat:"登录用户名过长..."});
             }
-            if(this.state.password ==='' || this.state.password.length<8 || this.state.password.length >256){
-                this.setState({passwordformat:"登录密码不能为空:8-256长度"});
+            if(this.state.password.length<8 || this.state.password.length >256){
+                this.setState({passwordformat:"登录密码长度为8-256..."});
                 }
             if(this.state.realname!=null && this.state.realname!=='' && this.state.realname.length>64){
                 this.setState({realnameformat:"名字过长..."});
@@ -208,8 +221,8 @@ class EditUserComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">组织:</label>
-                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeOrgidHandler}>
-                        <option defaultValue value={this.state.orgid}>请选择组织:</option>
+                        <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.orgid} onChange={this.changeOrgidHandler}>
+                        <option defaultValue value=''>请选择组织...</option>
                         {
                             this.state.organizations.map(
                                 organization => 
@@ -225,8 +238,8 @@ class EditUserComponent extends React.Component{
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">性别:</label>
-                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeSexHandler}>
-                            <option defaultValue value={this.state.sex}>请选择性别</option>
+                        <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.sex} onChange={this.changeSexHandler}>
+                            <option value=''>请选择性别</option>
                             <option value="1">男</option>
                             <option value="0">女</option>
                         </select>
@@ -257,32 +270,24 @@ class EditUserComponent extends React.Component{
                         <div style={{color:"#f44e3b"}}>{this.state.mobileformat}</div>
                     </div>
                     <div className="form-group">
-                        <label className="text-secondary font-weight-bold">是否已删除</label>
-                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeIsdeletedHandler}>
-                            <option defaultValue value={this.state.isdeleted}>请选择是否已删除</option>
-                            <option value="1">是</option>
-                            <option value="0">否</option>
-                        </select>
-                    </div>
-                    <div className="form-group">
                         <label className="text-secondary font-weight-bold">是否为租户管理员</label>
-                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeIstenantadminHandler}>
-                            <option defaultValue value={this.state.istenantadmin}>请选择是否为租户管理员</option>
+                        <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.istenantadmin} onChange={this.changeIstenantadminHandler}>
+                            <option defaultValue value=''>请选择是否为租户管理员</option>
                             <option value="1">是</option>
                             <option value="0">否</option>
                         </select>
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">是否被禁用</label>
-                        <select className="form-control" style={{fontSize:"12px"}} onChange={this.changeIsforbiddenHandler}>
-                            <option defaultValue value={this.state.isforbidden}>请选择是否被禁用</option>
+                        <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.isforbidden} onChange={this.changeIsforbiddenHandler}>
+                            <option defaultValue value=''>请选择是否被禁用</option>
                             <option value="1">是</option>
                             <option value="0">否</option>
                         </select>
                     </div>
                     <div className="text-center">
                     <button className="btn btn-sm green-btn text-white font-weight-bold" onClick={this.editUser}>保存</button>
-                    <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={this.cancel} style={{marginLeft:"80px"}}>取消</button>
                     </div>
                     </form>
                    </div>

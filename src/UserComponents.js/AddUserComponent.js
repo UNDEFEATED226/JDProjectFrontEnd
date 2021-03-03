@@ -13,7 +13,6 @@ class addUserComponent extends React.Component{
             passwordconfirm:'',
             passwordconfirmformat:'',
             orgid:'',
-            orgidformat:'',
             organizations:[]
         }
         this.changeLoginnameHandler=this.changeLoginnameHandler.bind(this);
@@ -29,13 +28,19 @@ class addUserComponent extends React.Component{
         })
     }
     changeLoginnameHandler=(event)=>{
-        this.setState({loginname:event.target.value});
+        let value = event.target.value;
+        value = value.replace(/[^A-Za-z0-9+&@#/%?=~_|!:,.;$^*()-{}'"]/ig,'');
+        this.setState({loginname:value});
     }
     changePasswordHandler=(event) =>{
-        this.setState({password: event.target.value});
+        let value = event.target.value;
+        value = value.replace(/[^A-Za-z0-9+&@#/%?=~_|!:,.;$^*()-{}'"]/ig,'');
+        this.setState({password: value});
     }
     changePasswordconfirmHandler=(event) =>{
-        this.setState({passwordconfirm:event.target.value});
+        let value = event.target.value;
+        value = value.replace(/[^A-Za-z0-9+&@#/%?=~_|!:,.;$^*()-{}'"]/ig,'');
+        this.setState({passwordconfirm:value});
     }
     changeOrgidHandler=(event) =>{
         this.setState({orgid: event.target.value});
@@ -46,28 +51,36 @@ class addUserComponent extends React.Component{
             loginnameformat:'',
             passwordformat:'',
             passwordconfirmformat:'',
-            orgidformat:''
         });
+        var bool = false;
+        if(this.state.loginname.trim()==='' || this.state.loginname.length>64){
+            bool = true;
+            this.setState({loginnameformat:"登录名长度为1-64位"});     
+        }
+        if(this.state.password.trim()==='' || this.state.password.length <8 || this.state.password.length>64){
+            bool = true;
+            this.setState({passwordformat:"登录密码长度为8-64位"});
+        }
+        if(this.state.password !== this.state.passwordconfirm){
+            bool = true;
+            this.setState({passwordconfirmformat:"两次密码输入不一致,请重新输入"});
+        }   
+        if(bool){
+            throw new Error("INPUT ERROR");
+        }
         let user = {id:'',userid:'',loginname:this.state.loginname,
             password:this.state.password,realname:'',orgid:this.state.orgid,
             isdeleted:0,email:'',sex:'',comment:'',
             createtime:'',updatetime:'',userstatus:'',
             usergroupid:'',tenantid:'',istenantadmin:0,isforbidden:0,fullparentid:''
             ,mobile:''};
-            if(this.state.password !== this.state.passwordconfirm){
-                this.setState({passwordconfirmformat:"两次密码输入不一致,请重新输入"});
-                throw new Error("Password confirmation failure!");
-            }   
             UserService.addUser(user).then(res => {
                 this.props.history.push("/userlist")}).catch(err =>{
-                    if(this.state.loginname === ''||this.state.loginname.length>64){
-                        this.setState({loginnameformat:"登录名不能为空:1-64长度"});
+                    if(this.state.loginname.length>64){
+                        this.setState({loginnameformat:"登录名过长..."});
                     }
-                    if(this.state.password ==='' || this.state.password.length<8 || this.state.password.length >256){
-                        this.setState({passwordformat:"密码不能为空:8-256长度"});
-                    }
-                    if(this.state.orgid === ''){
-                        this.setState({orgidformat:"请选择组织,如无可选项请先添加组织..."});
+                    if(this.state.password.length<8 || this.state.password.length >256){
+                        this.setState({passwordformat:"登录密码长度应为8-256"});
                     }
                     if(this.state.password !== this.state.passwordconfirm){
                         this.setState({passwordconfirmformat:"两次密码输入不一致,请重新输入"});
@@ -103,8 +116,8 @@ class addUserComponent extends React.Component{
                     </div>       
                     <div className="form-group">
                     <label className="text-secondary font-weight-bold">组织:</label>
-                    <select className="form-control" style={{fontSize:"12px"}} value={this.state.orgid} onChange={this.changeOrgidHandler}>
-                        <option className="text-secondary" defaultValue value=''>请选择组织</option>
+                    <select className="form-control" style={{fontSize:"12px",color:"grey"}} value={this.state.orgid} onChange={this.changeOrgidHandler}>
+                        <option defaultValue value=''>请选择组织</option>
                        {
                              this.state.organizations.map(
                                 organization =>
@@ -112,7 +125,6 @@ class addUserComponent extends React.Component{
                              )
                      }
                     </select>
-                    <div style={{color:"#f44e3b"}}>{this.state.orgidformat}</div>
                     </div>
                             <div className="text-center">
                                  <button className="btn btn-sm green-btn text-white font-weight-bold" onClick={this.saveUser}>保存</button>

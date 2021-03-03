@@ -8,6 +8,7 @@ class AddRoleAuthComponent extends React.Component{
         super(props)
         this.state={
             roleid:'',
+            roleidformat:'',
             authid:'',
             authidformat:'',
             roles:[],
@@ -38,15 +39,26 @@ class AddRoleAuthComponent extends React.Component{
     saveRoleAuth=(r)=>{
         r.preventDefault();
         this.setState({
+            roleidformat:'',
             authidformat:''
         });
+        var bool = false;
+        if(this.state.roleid===''){
+            bool = true;
+            this.setState({roleidformat:'请选择角色...'});
+        }
+        if(this.state.authid===''){
+            bool = true;
+            this.setState({authidformat:'请选择权限...'});
+        }
+        if(bool){
+            throw new Error('INPUT ERROR');
+        }
         let roleauth= {id:'',roleid:this.state.roleid,authid:this.state.authid,isdeleted:0,createtime:'',updatetime:''};
+        console.log(roleauth);
         RoleAuthService.addRoleAuth(roleauth).then(res =>{
             this.props.history.push("/roleauthlist");
         }).catch(err =>{
-            if(isNaN(this.state.authid) || this.state.authid.length>11){
-                this.setState({authidformat:"角色id为至多11位的纯数字..."});
-            }
         });
     }
 
@@ -63,8 +75,8 @@ class AddRoleAuthComponent extends React.Component{
                    <form>
                    <div className="form-group">
                         <label className="text-secondary font-weight-bold">角色:</label>
-                        <select className="form-control" style={{fontSize:"12px"}} value={this.state.roleid} onChange={this.changeRoleidHandler}>
-                            <option defaultValue value=''>请选择角色</option>
+                        <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.roleid} onChange={this.changeRoleidHandler}>
+                            <option defaultValue value=''>请选择角色...</option>
                             {
                                 this.state.roles.map(
                                     role =>
@@ -72,18 +84,20 @@ class AddRoleAuthComponent extends React.Component{
                                 )
                             }
                         </select>
+                        <div style={{color:"#f44e3b"}}>{this.state.roleidformat}</div>
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">权限:</label>
-                        <select className="form-control" style={{fontSize:"12px"}} value={this.state.authid} onChange={this.changeAuthidHandler}>
-                            <option defaultValue value=''>请选择权限</option>
+                        <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.authid} onChange={this.changeAuthidHandler}>
+                            <option defaultValue value=''>请选择权限...</option>
                             {
                                 this.state.auths.map(
                                     auth =>
-                                    <option value={auth.id}>权限名称:{auth.authname}, 资源名称:{auth.resname}</option>
+                                    <option value={auth.id}>权限名称:{auth.description}, 资源名称:{auth.resname}</option>
                                 )
                             }
                         </select>
+                        <div style={{color:"#f44e3b"}}>{this.state.authidformat}</div>
                     </div>
                     <div className="text-center">
                     <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.saveRoleAuth}>保存</button>

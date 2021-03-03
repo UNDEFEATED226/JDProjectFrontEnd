@@ -31,9 +31,9 @@ class AddOrganizationComponent extends React.Component{
     saveOrganzation = (o) => {
         o.preventDefault();
         this.setState({orgnameformat:''});
-        if(this.state.orgname == null || this.state.orgname === ''){
-            this.setState({orgnameformat:"组织名称不能为空..."});
-            throw new Error("ORGNAME IS EMPTY"); 
+        if(this.state.orgname.trim() === ''){
+            this.setState({orgnameformat:'组织名称不能为空...'});
+            throw new Error('EMPTY ORG NAME');
         }
         let organization = {id:'',orgname:this.state.orgname,parentorgid:'',
         orglevel:'',orgtype:'',orgtypename:'',orgcatlog:'',

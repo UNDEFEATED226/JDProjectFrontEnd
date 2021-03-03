@@ -2,88 +2,86 @@ import React from 'react';
 import RoleAuthService from '../Service/RoleAuthService';
 import AuthService from '../Service/AuthService';
 import RoleService from '../Service/RoleService';
-import {Multiselect} from  'multiselect-react-dropdown'
+import ToDoList from '../Dropdown/ToDoList'
 
 class RoleAuthComponentForUser extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            id:this.props.match.params.id,
+            id:'',
             role:{},
-            ownauths:[],
-            auths:[],
-            addRes:[],
-            deleteRes:[]
+            roles:[],
+            auths:[]
      }  
-     this.addAuthHandler=this.addAuthHandler.bind(this);
-     this.deleteAuthHandler=this.deleteAuthHandler.bind(this);
-     this.multiselectRef=React.createRef();
-     this.deleteRef=React.createRef();
+     this.onSubmit=this.onSubmit.bind(this);
     }
     
     componentDidMount(){
-       RoleService.findById(this.state.id).then(res=>{
-           this.setState({role:res.data});
+       RoleService.findAllRole().then(res=>{
+           this.setState({roles:res.data});
        });
-       RoleAuthService.findByRoleid(this.state.id).then(res=>{
-        this.setState({ownauths:res.data});
-        });
-        AuthService.findAllAuthOrderbyresid().then(res=>{
-            this.setState({auths:res.data});
+       AuthService.findAuthByRoleid(this.state.id).then(res=>{
+        this.setState({auths:res.data});
         });
      }
 
-    addAuthHandler=(a)=>{
-        a.preventDefault();
-        this.setState({addRes:this.multiselectRef.current.getSelectedItems()});
-        this.multiselectRef.current.getSelectedItems().forEach(r=>{
-            RoleAuthService.addRoleAuth({id:'',roleid:this.state.id,authid:r.id,isdeleted:0,createtime:'',updatetime:''}); 
+     roleauthForUser=(e)=>{
+        AuthService.findAuthByRoleid(e.target.value).then(res=>{
+            this.setState({
+                id:e.target.value,
+                auths:res.data
+            });
         });
-        this.props.history.push("/roleauthlist");
+        RoleService.findById(e.target.value).then(res=>{
+            this.setState({role:res.data});
+        })
+     }
+
+    onSubmit(){
+            RoleAuthService.changeAuth(this.state.id,this.state.auths).catch(err=>{
+                    console.error("INPUT ERROR")
+        });
     }
 
-    deleteAuthHandler=(a)=>{
-        a.preventDefault();
-        this.setState({deleteRes:this.deleteRef.current.getSelectedItems()});
-        this.deleteRef.current.getSelectedItems().forEach(r=>{
-            RoleAuthService.deleteRoleAuth(r.id);
+     handleToggle = (id) => {
+        let mapped = this.state.auths.map(task => {
+         return task.map(a =>{
+              return a.id === id ? { ...a, selected: !a.selected } : { ...a};
+          }
+          )
         });
-        this.props.history.push("/roleauthlist");
-    }
+        this.setState({auths:mapped});
+      }
 
     render(){  
-        this.state.ownauths.forEach(a=>{
-            a.fullname="角色权限ID:"+a.id+",权限名称:"+a.authname;
-        });
-        this.state.auths.forEach(a=>{
-            a.fullname="权限ID:"+a.id+", 权限名称:"+a.authname;
-        });
        return(
+           
         <div>
         <br></br>
-        <h3 className="font-weight-bold text-secondary text-center">角色ID:{this.state.role.id}</h3>
-        <h3 className="font-weight-bold text-secondary text-center">角色名称:{this.state.role.rolename}</h3>
-      
-        <label className="font-weight-bold color-font">删除已有权限:</label>
-       <div>
-           <Multiselect options={this.state.ownauths} displayValue='fullname' value='id' groupBy='resname' placeholder='请删除已有权限' emptyRecordMsg='无可选项' 
-           hidePlaceholder={true} showCheckbox={true} closeOnSelect={false} ref={this.deleteRef}/>
-       </div>
-
-       <div className="text-center">
-       <button className="btn red-btn text-white font-weight-bold" onClick={this.deleteAuthHandler}>删除</button>
-       </div>
-
-       <label className="font-weight-bold color-font">添加权限:</label>
-       <div>
-        <Multiselect options={this.state.auths} displayValue='fullname' value='id' groupBy='resname' placeholder='请添加权限' emptyRecordMsg='无可选项'
-         hidePlaceholder={true} showCheckbox={true} closeOnSelect={false} ref={this.multiselectRef}/>
-        </div>
-
+        <h3 className="text-center font-weight-bold text-secondary" data-toggle='tooltip' title='请通过勾选框以修改权限'>角色权限管理(User-Friendly)</h3>
+        <h5 className="text-center font-weight-bold text-secondary">角色ID:{this.state.role.id}</h5>
+        <h5 className="text-center font-weight-bold text-secondary">角色名称:{this.state.role.rolename}</h5>
         <div className="text-center">
-       <button className="btn green-btn text-white font-weight-bold" onClick={this.addAuthHandler}>添加</button>
-       </div>
-
+        <select className="text-secondary" onChange={this.roleauthForUser} style={{width:"15rem",fontSize:"16px"}}>
+        <option defaultValue value=''>请选择指定角色修改权限</option>
+        {
+            this.state.roles.map(
+                role=>
+                <option value={role.id}>{role.rolename}</option>
+            )
+        }
+        </select>
+        </div>
+        <br></br>
+        {
+            this.state.auths.map(a=>{
+                return <ToDoList toDoList={a} handleToggle={this.handleToggle}/>
+            }
+            )
+        }
+        <div className="text-center">
+            <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.onSubmit}>submit</button>
+        </div>
         </div>
        )
     }

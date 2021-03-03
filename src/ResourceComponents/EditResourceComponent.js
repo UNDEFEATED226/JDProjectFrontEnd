@@ -73,6 +73,10 @@ class EditResourceComponent extends React.Component{
             descriptionformat:'',
             fullnameformat:''
         });
+        if(this.state.resname.trim() === ''){
+            this.setState({resnameformat:'资源名称不能为空...'});
+            throw new Error('INPUT ERROR');
+        }
         let Resource= {id:this.state.id,modulename:this.state.modulename,rescode:this.state.rescode,
             resname:this.state.resname,resuri:this.state.resuri,restypeid:this.state.restypeid,
             parentid:this.state.parentid,level:this.state.level,haschild:this.state.haschild,
@@ -133,14 +137,14 @@ class EditResourceComponent extends React.Component{
                   <div className="card-body">
                    <form>
                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">所属模块:</label>
-                        <input placeholder="请输入所属模块..." style={{fontSize:"12px"}} className="form-control" value={this.state.modulename} onChange={this.changeModulenameHandler}/>   
-                        <div style={{color:"#f44e3b"}}>{this.state.modulenameformat}</div>      
-                    </div>
-                    <div className="form-group">
                         <label className="text-secondary font-weight-bold">资源名称:</label>
                         <input placeholder="请输入资源名称..." style={{fontSize:"12px"}} className="form-control" value={this.state.resname} onChange={this.changeResnameHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.resnameformat}</div>    
+                    </div>
+                   <div className="form-group">
+                        <label className="text-secondary font-weight-bold">所属模块:</label>
+                        <input placeholder="请输入所属模块..." style={{fontSize:"12px"}} className="form-control" value={this.state.modulename} onChange={this.changeModulenameHandler}/>   
+                        <div style={{color:"#f44e3b"}}>{this.state.modulenameformat}</div>      
                     </div>
                     <div className="form-group">
                         <label className="text-secondary font-weight-bold">资源对应URI:</label>
