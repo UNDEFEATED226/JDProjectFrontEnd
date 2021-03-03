@@ -115,9 +115,9 @@ class AddResourceComponent extends React.Component{
                         <div style={{color:"#f44e3b"}}>{this.state.resuriformat}</div>    
                     </div>
                     <div className="form-group">
-                        <label className="text-secondary font-weight-bold">资源对应类型ID:</label>
+                        <label className="text-secondary font-weight-bold">资源对应类型:</label>
                         <select className="text-secondary form-control" style={{fontSize:"12px"}} onChange={this.changeRestypeidHandler}>
-                            <option defaultValue value=''>请选择资源对应类型ID...</option>
+                            <option defaultValue value=''>请选择资源对应类型...</option>
                             <option value='1'>物管平台菜单</option>
                             <option value='2'>物管平台API</option>
                             <option value='3'>能源平台菜单</option>

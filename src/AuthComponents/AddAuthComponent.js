@@ -71,7 +71,7 @@ class AddAuthComponent extends React.Component{
                             {
                                 this.state.resources.map(
                                     resource =>
-                                    <option value={resource.id}>{resource.resname}</option>
+                                    <option value={resource.id}>{resource.id}   {resource.resname}</option>
                                 )
                             }
                         </select>
