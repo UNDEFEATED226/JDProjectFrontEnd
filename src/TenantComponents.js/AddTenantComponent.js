@@ -69,7 +69,7 @@ class AddTenantComponent extends React.Component{
                             {
                                 this.state.users.map(
                                     u =>
-                                    <option value={u.id}>{u.realname}</option>
+                                    <option value={u.id}>{u.loginname}</option>
                                 )
                             }
                         </select>

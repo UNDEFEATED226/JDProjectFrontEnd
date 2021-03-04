@@ -83,7 +83,7 @@ class AuthComponent extends React.Component{
         <table className="table f-size table-border" style={{color:"grey"}}> 
            <thead className="text-justify">
                 <tr>
-                  <th style={{columnWidth:"30px"}}>id</th>
+                  <th style={{columnWidth:"50px"}}>id</th>
                   <th style={{columnWidth:"170px"}}>权限名称</th>  
                   <th style={{columnWidth:"170px"}}>描述信息</th>  
                   <th style={{columnWidth:"170px"}}>资源名称</th> 
@@ -97,7 +97,7 @@ class AuthComponent extends React.Component{
                      this.state.auths.map(
                          auth =>
                          <tr key= {auth.id}>         
-                             <td className="t-cell" style={{maxWidth:"30px"}} data-toggle='tooltip' title={auth.id}>{auth.id}</td>
+                             <td className="t-cell" style={{maxWidth:"50px"}} data-toggle='tooltip' title={auth.id}>{auth.id}</td>
                              <td className="t-cell" style={{maxWidth:"170px"}} data-toggle='tooltip' title={auth.authname}>{auth.authname}</td>
                              <td className="t-cell" style={{maxWidth:"170px"}} data-toggle='tooltip' title={auth.description}>{auth.description}</td>
                              <td className="t-cell" style={{maxWidth:"170px",color:auth.resname ==='资源不存在或已删除' ? 'red':undefined}} data-toggle='tooltip' title={auth.resname}>{auth.resname}</td>
