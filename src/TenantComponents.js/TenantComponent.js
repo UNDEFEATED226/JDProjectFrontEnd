@@ -84,8 +84,8 @@ class TenantComponent extends React.Component{
                     <tr>
                       <th style={{columnWidth:"30px"}}>id</th>
                       <th style={{columnWidth:"200px"}}>租户名称</th>  
-                      <th style={{columnWidth:"140px"}}>业务归属</th>  
-                      <th style={{columnWidth:"170px"}}>租户管理员用户名字</th>  
+                      <th style={{columnWidth:"200px"}}>业务归属</th>  
+                      <th style={{columnWidth:"200px"}}>租户管理员用户名字</th>  
                       <th style={{columnWidth:"190px"}}>创建时间</th> 
                       <th style={{columnWidth:"190px"}}>最后一次更新时间</th>  
                       <th className="text-center" style={{columnWidth:"300px"}}>操作</th>
@@ -98,8 +98,8 @@ class TenantComponent extends React.Component{
                              <tr key= {tenant.id}>         
                                  <td className="t-cell" style={{maxWidth:"30px"}} data-toggle='tooltip' title={tenant.id}>{tenant.id}</td>
                                  <td className="t-cell" style={{maxWidth:"200px"}} data-toggle='tooltip' title={tenant.name}>{tenant.name}</td>
-                                 <td className="t-cell" style={{maxWidth:"140px"}} data-toggle='tooltip' title={tenant.businessassignment}>{tenant.businessassignment}</td>
-                                 <td className="t-cell" style={{maxWidth:"170px",color:tenant.adminname ==='租户管理员用户不存在或已删除' ? 'red':undefined}} data-toggle='tooltip' title={tenant.adminname}>{tenant.adminname}</td>
+                                 <td className="t-cell" style={{maxWidth:"200px"}} data-toggle='tooltip' title={tenant.businessassignment}>{tenant.businessassignment}</td>
+                                 <td className="t-cell" style={{maxWidth:"200px",color:tenant.adminname ==='租户管理员用户不存在或已删除' ? 'red':undefined}} data-toggle='tooltip' title={tenant.adminname}>{tenant.adminname}</td>
                                  <td className="t-cell" style={{maxWidth:"190px"}}>{moment(tenant.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                                  <td className="t-cell" style={{maxWidth:"190px"}}>{moment(tenant.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                                  <td className="t-cell text-center" style={{maxWidth:"300px"}}>

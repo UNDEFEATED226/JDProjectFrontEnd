@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment'
 import OrganizationService from '../Service/OrganizationService';
 
 class OrganizationComponent extends React.Component{
@@ -90,12 +91,10 @@ class OrganizationComponent extends React.Component{
                <thead>
                     <tr>
                       <th style={{columnWidth:"30px"}}>id</th>  
-                      <th style={{columnWidth:"100px"}}>组织名称</th>     
-                      <th style={{columnWidth:"80px"}}>组织层级</th>  
-                      <th style={{columnWidth:"100px"}}>组织类型ID</th>  
-                      <th style={{columnWidth:"140px"}}>组织类型名称</th> 
-                      <th style={{columnWidth:"80px"}}>组织种类</th>   
-                      <th style={{columnWidth:"160px"}}>租户名称</th>  
+                      <th style={{columnWidth:"200px"}}>组织名称</th>     
+                      <th style={{columnWidth:"200px"}}>租户名称</th>  
+                      <th style={{columnWidth:"190px"}}>创建时间</th>  
+                      <th style={{columnWidth:"190px"}}>更新时间</th>  
                       <th className="text-center" style={{columnWidth:"300px"}}>操作</th>
                     </tr>
                     </thead>
@@ -105,12 +104,10 @@ class OrganizationComponent extends React.Component{
                              organization =>
                              <tr key= {organization.id}>
                                  <td className="t-cell" style={{maxWidth:"30px"}} data-toggle='tooltip' title={organization.id}>{organization.id}</td>
-                                 <td className="t-cell" style={{maxWidth:"100px"}} data-toggle='tooltip' title={organization.orgname}>{organization.orgname}</td>
-                                 <td className="t-cell" style={{maxWidth:"80px"}} data-toggle='tooltip' title={organization.orglevel}>{organization.orglevel}</td>
-                                 <td className="t-cell" style={{maxWidth:"100px"}} data-toggle='tooltip' title={organization.orgtype}>{organization.orgtype}</td>
-                                 <td className="t-cell" style={{maxWidth:"140px"}} data-toggle='tooltip' title={organization.orgtypename}>{organization.orgtypename}</td>
-                                 <td className="t-cell" style={{maxWidth:"80px"}} data-toggle='tooltip' title={organization.orgcatlog}>{organization.orgcatlog}</td>
-                                 <td className="t-cell" style={{maxWidth:"160px",color:organization.tenantname ==='租户不存在或已删除' ? 'red':undefined}} data-toggle='tooltip' title={organization.tenantname}>{organization.tenantname}</td>
+                                 <td className="t-cell" style={{maxWidth:"200px"}} data-toggle='tooltip' title={organization.orgname}>{organization.orgname}</td>
+                                 <td className="t-cell" style={{maxWidth:"200px",color:organization.tenantname ==='租户不存在或已删除' ? 'red':undefined}} data-toggle='tooltip' title={organization.tenantname}>{organization.tenantname}</td>
+                                 <td className="t-cell" style={{maxWidth:"190px"}} data-toggle='tooltip' title={organization.createtime}>{moment(organization.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
+                                 <td className="t-cell" style={{maxWidth:"190px"}} data-toggle='tooltip' title={organization.updatetime}>{moment(organization.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                                  <td className="t-cell text-center" style={{maxWidth:"300px"}}>
                                     <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-sm yellow-btn font-weight-bold text-white">查看详情</button>
                                     <button  onClick={() => this.editOrganization(organization.id)} className="btn btn-sm green-btn font-weight-bold text-white" style={{marginLeft:"10px"}}>编辑资料</button>

@@ -2,13 +2,15 @@ import React from 'react';
 import RoleAuthService from '../Service/RoleAuthService';
 import AuthService from '../Service/AuthService';
 import RoleService from '../Service/RoleService';
-import ToDoList from '../Dropdown/ToDoList'
+import ToDoList from '../Dropdown/ToDoList';
+import Loader from 'react-loader-spinner';
 
 class RoleAuthComponentForUser extends React.Component{
     constructor(props){
         super(props)
         this.state = {
             id:'',
+            visible:true,
             role:{},
             roles:[],
             auths:[]
@@ -26,6 +28,8 @@ class RoleAuthComponentForUser extends React.Component{
      }
 
      roleauthForUser=(e)=>{
+        e.preventDefault();
+        this.setState({visible:true});
         AuthService.findAuthByRoleid(e.target.value).then(res=>{
             this.setState({
                 id:e.target.value,
@@ -34,7 +38,9 @@ class RoleAuthComponentForUser extends React.Component{
         });
         RoleService.findById(e.target.value).then(res=>{
             this.setState({role:res.data});
-        })
+        });
+        this.setState({visible:false});
+        console.log(this.state.visible);
      }
 
     onSubmit(){
@@ -54,8 +60,7 @@ class RoleAuthComponentForUser extends React.Component{
       }
 
     render(){  
-       return(
-           
+       return( 
         <div>
         <br></br>
         <h3 className="text-center font-weight-bold text-secondary" data-toggle='tooltip' title='请通过勾选框以修改权限'>角色权限管理(修改用)</h3>
@@ -71,6 +76,7 @@ class RoleAuthComponentForUser extends React.Component{
             )
         }
         </select>
+        <Loader visible={this.state.visible} type="ThreeDots" color="#00BFFF"/>
         </div>
         <br></br>
         {
