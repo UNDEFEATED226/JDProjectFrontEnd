@@ -2,7 +2,7 @@ import React from 'react';
 import RoleAuthService from '../Service/RoleAuthService';
 import AuthService from '../Service/AuthService';
 import RoleService from '../Service/RoleService';
-import ToDoList from '../Dropdown/ToDoList';
+import AuthList from '../Dropdown/AuthList';
 import Loader from 'react-loader-spinner';
 
 class RoleAuthComponentForUser extends React.Component{
@@ -26,26 +26,35 @@ class RoleAuthComponentForUser extends React.Component{
         this.setState({auths:res.data});
         });
      }
-    roleauthForUser=(e)=>{
-        e.preventDefault();
-        this.setState({visible:!this.state.visible});
-        AuthService.findAuthByRoleid(e.target.value).then(res=>{
-            this.setState({
-                id:e.target.value,
-                auths:res.data
-            });
-        });
+
+     componentDidUpdate(prevProps, prevState) {
+        Object.entries(this.props).forEach(([key, val]) =>
+          prevProps[key] !== val && console.log(`Prop '${key}' changed`)
+        );
+        if (this.state) {
+          Object.entries(this.state).forEach(([key, val]) =>
+            prevState[key] !== val && console.log(`State '${key}' changed`)
+          );
+        }
+      }
+    
+      roleauthForUser=(e)=>{ 
+          e.preventDefault();
+          this.setState({visible:!this.state.visible}); 
+          AuthService.findAuthByRoleid(e.target.value).then(res=>{
+            this.setState({i:e.target.value,auths:res.data}); 
+            }); 
         RoleService.findById(e.target.value).then(res=>{
-            this.setState({role:res.data});
-        });
-        setTimeout(()=>{
-            this.setState({visible:!this.state.visible});
-        });
-     }
+           this.setState({role:res.data}); 
+        }); 
+        setTimeout(() =>{
+          this.setState({visible:!this.state.visible}); 
+         }, 2500);
+        }
 
 
     onSubmit(){
-            RoleAuthService.changeAuth(this.state.id,this.state.auths).catch(err=>{
+        RoleAuthService.changeAuth(this.state.id,this.state.auths).catch(err=>{
                     console.error("INPUT ERROR")
         });
     }
@@ -61,7 +70,7 @@ class RoleAuthComponentForUser extends React.Component{
       }
 
     render(){  
-           return( 
+        return( 
         <div>
         <br></br>
         <h3 className="text-center font-weight-bold text-secondary" data-toggle='tooltip' title='请通过勾选框以修改权限'>角色权限管理(修改用)</h3>
@@ -73,19 +82,20 @@ class RoleAuthComponentForUser extends React.Component{
         {
             this.state.roles.map(
                 role=>
-                <option value={role.id}>{role.rolename}</option>
+                <option key={role.id} value={role.id}>{role.rolename}</option>
             )
         }
         </select>
         </div>
         <div className="text-center"><Loader visible={this.state.visible} type="ThreeDots" color="#00BFFF"/></div>
         <br></br>
+        {console.log(Date.now())}
         {
-            this.state.auths.map(a=>{
-                return <ToDoList toDoList={a} handleToggle={this.handleToggle}/>
-            }
-            )
+             this.state.auths.map(a=>{
+                return <AuthList key={a[0].id} AuthList={a} handleToggle={this.handleToggle}/>
+            })
         }
+        {console.log(Date.now())}
         <div className="text-center">
             <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.onSubmit}>submit</button>
         </div>
