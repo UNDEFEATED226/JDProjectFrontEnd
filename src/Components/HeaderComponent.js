@@ -61,7 +61,7 @@ class HeaderComponent extends React.Component{
               <Link to="/roleauthlist" className="text-white nav-link">角色权限管理</Link>
             </li>
             <li className="nav-item font-weight-bold">
-              <Link to="/roleauthforuser" className="text-white nav-link">角色权限管理(User-Friendly)</Link>
+              <Link to="/roleauthforuser" className="text-white nav-link">角色权限管理(修改用)</Link>
             </li>
           </ul>
         </nav>

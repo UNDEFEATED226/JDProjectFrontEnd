@@ -58,7 +58,7 @@ class RoleAuthComponentForUser extends React.Component{
            
         <div>
         <br></br>
-        <h3 className="text-center font-weight-bold text-secondary" data-toggle='tooltip' title='请通过勾选框以修改权限'>角色权限管理(User-Friendly)</h3>
+        <h3 className="text-center font-weight-bold text-secondary" data-toggle='tooltip' title='请通过勾选框以修改权限'>角色权限管理(修改用)</h3>
         <h5 className="text-center font-weight-bold text-secondary">角色ID:{this.state.role.id}</h5>
         <h5 className="text-center font-weight-bold text-secondary">角色名称:{this.state.role.rolename}</h5>
         <div className="text-center">

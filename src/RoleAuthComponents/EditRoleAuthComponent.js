@@ -84,7 +84,7 @@ class EditRoleAuthComponent extends React.Component{
                   <div className="card-body">
                    <form>
                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">角色ID:</label>
+                        <label className="text-secondary font-weight-bold">角色:</label>
                         <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.roleid} onChange={this.changeRoleidHandler}>
                             <option defaultValue value=''>请选择角色</option>
                             {
