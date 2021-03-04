@@ -193,8 +193,8 @@ class EditOrganizationComponent extends React.Component{
                             </div>
                             <div className="form-group">
                                 <label className="text-secondary font-weight-bold">租户:</label>
-                                <select className="text-secondary form-control" style={{fontSize:"12px"}} onChange={this.changeTenantidHandler}>
-                                    <option defaultValue value={this.state.tenantid}>请选择租户...</option>
+                                <select className="text-secondary form-control" value={this.state.tenantid} style={{fontSize:"12px"}} onChange={this.changeTenantidHandler}>
+                                    <option defaultValue value=''>请选择租户...</option>
                                     {
                                         this.state.tenants.map(
                                             t => 
