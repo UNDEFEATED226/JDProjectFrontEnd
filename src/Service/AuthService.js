@@ -14,10 +14,6 @@ class AuthService{
         return axios.get("/auth/findallauthpaginated?pageNo="+p);
     }
 
-    findAuthByRoleid(roleid){
-        return axios.get("/auth/findauthbyroleid?roleid="+roleid);
-    }
-
     count(){
         return axios.get("/auth/count");
     }

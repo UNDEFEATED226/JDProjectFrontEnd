@@ -10,6 +10,10 @@ class RoleAuthService{
         return axios.get("/roleauth/findallroleauthpaginated?pageNo="+p);
     }
 
+    findAuthByRoleid(roleid){   
+        return axios.get("/roleauth/findauthbyroleid?roleid="+roleid);
+    }
+
     changeAuth(roleid,l){
          return axios.post("/roleauth/changeauth/"+roleid,l);
     }

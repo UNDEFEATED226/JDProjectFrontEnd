@@ -1,6 +1,5 @@
 import React from 'react';
 import RoleAuthService from '../Service/RoleAuthService';
-import AuthService from '../Service/AuthService';
 import RoleService from '../Service/RoleService';
 import AuthList from '../Dropdown/AuthList';
 import Loader from 'react-loader-spinner';
@@ -30,7 +29,7 @@ class RoleAuthComponentForUser extends React.Component{
           RoleService.findById(e.target.value).then(res=>{
             this.setState({role:res.data}); 
          }); 
-          AuthService.findAuthByRoleid(e.target.value).then(res=>{
+          RoleAuthService.findAuthByRoleid(e.target.value).then(res=>{
             this.setState({auths:res.data}); 
             }); 
             setTimeout(() => {
