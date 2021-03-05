@@ -22,39 +22,25 @@ class RoleAuthComponentForUser extends React.Component{
        RoleService.findAllRole().then(res=>{
            this.setState({roles:res.data});
        });
-       AuthService.findAuthByRoleid(this.state.id).then(res=>{
-        this.setState({auths:res.data});
-        });
      }
-
-     componentDidUpdate(prevProps, prevState) {
-        Object.entries(this.props).forEach(([key, val]) =>
-          prevProps[key] !== val && console.log(`Prop '${key}' changed`)
-        );
-        if (this.state) {
-          Object.entries(this.state).forEach(([key, val]) =>
-            prevState[key] !== val && console.log(`State '${key}' changed`)
-          );
-        }
-      }
     
       roleauthForUser=(e)=>{ 
           e.preventDefault();
           this.setState({visible:!this.state.visible}); 
+          RoleService.findById(e.target.value).then(res=>{
+            this.setState({role:res.data}); 
+         }); 
           AuthService.findAuthByRoleid(e.target.value).then(res=>{
-            this.setState({i:e.target.value,auths:res.data}); 
+            this.setState({auths:res.data}); 
             }); 
-        RoleService.findById(e.target.value).then(res=>{
-           this.setState({role:res.data}); 
-        }); 
-        setTimeout(() =>{
-          this.setState({visible:!this.state.visible}); 
-         }, 2500);
+            setTimeout(() => {
+               this.setState({visible:!this.state.visible}); 
+            },0);
         }
 
 
     onSubmit(){
-        RoleAuthService.changeAuth(this.state.id,this.state.auths).catch(err=>{
+        RoleAuthService.changeAuth(this.state.role.id,this.state.auths).catch(err=>{
                     console.error("INPUT ERROR")
         });
     }
@@ -87,18 +73,17 @@ class RoleAuthComponentForUser extends React.Component{
         }
         </select>
         </div>
-        <div className="text-center"><Loader visible={this.state.visible} type="ThreeDots" color="#00BFFF"/></div>
+        <Loader visible={this.state.visible} type="ThreeDots" color="#00BFFF"/>
         <br></br>
-        {console.log(Date.now())}
         {
              this.state.auths.map(a=>{
                 return <AuthList key={a[0].id} AuthList={a} handleToggle={this.handleToggle}/>
             })
         }
-        {console.log(Date.now())}
+        
         <div className="text-center">
             <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.onSubmit}>submit</button>
-        </div>
+        </div>     
         </div>
        )
     }
