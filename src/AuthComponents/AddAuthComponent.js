@@ -14,6 +14,7 @@ class AddAuthComponent extends React.Component{
         }
         this.changeAuthnameHandler=this.changeAuthnameHandler.bind(this);
         this.changeResidHandler=this.changeResidHandler.bind(this);
+        this.cancel=this.cancel.bind(this);
         this.saveAuth=this.saveAuth.bind(this);
     }
 
@@ -37,7 +38,7 @@ class AddAuthComponent extends React.Component{
         });
         if(this.state.resid===''){
             bool=true;
-            this.setState({residformat:"请选择资源ID..."});
+            this.setState({residformat:"请选择资源..."});
         }
         if(this.state.authname===''){
             bool=true;
@@ -54,20 +55,20 @@ class AddAuthComponent extends React.Component{
     }
 
     cancel(){
-        this.props.history.push("/authlist");
+        this.props.history.goBack();
     }
 
     render(){
         return(
-            <div style={{marginTop:"5%"}}>
-                <div className="card f-size bg-light mx-auto" style={{width:"30rem"}}>
-                 <h5 className="card-header text-center font-weight-bold text-secondary">添加权限</h5>
+            <div style={{marginTop:"5%",fontSize:"12px",fontFamily:"sans-serif",color:"666669"}}>
+                <div className="card bg-light mx-auto" style={{width:"30rem"}}>
+                 <h5 className="card-header text-center" style={{color:"#666669"}}>添加权限</h5>
                   <div className="card-body">
                    <form>
                     <div className="form-group">
-                        <label className="text-secondary font-weight-bold">资源:</label>
+                        <label className="text-secondary font-weight-bold">*资源:</label>
                         <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.resid} onChange={this.changeResidHandler}>
-                            <option defaultValue value=''>请选择资源:</option>
+                            <option defaultValue value=''>请选择资源...</option>
                             {
                                 this.state.resources.map(
                                     resource =>
@@ -78,9 +79,9 @@ class AddAuthComponent extends React.Component{
                         <div style={{color:"#f44e3b"}}>{this.state.residformat}</div>    
                     </div>
                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">权限:</label>
+                        <label className="text-secondary font-weight-bold">*权限:</label>
                         <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.authname} onChange={this.changeAuthnameHandler}>
-                            <option defaultValue value=''>请选择权限:</option>
+                            <option defaultValue value=''>请选择权限...</option>
                             <option value='API_INVOKE_PERMISSION'>API调用权限</option>
                             <option value='CANCEL_JOB_PERMISSION'>取消任务</option>
                             <option value='CREATE_PERMISSION'>创建(CREATE_PERMISSION)</option>
@@ -99,8 +100,8 @@ class AddAuthComponent extends React.Component{
                         <div style={{color:"#f44e3b"}}>{this.state.authnameformat}</div>    
                     </div>
                     <div className="text-center">
-                    <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.saveAuth}>保存</button>
-                    <button className="btn btn-sm red-btn font-weight-bold text-white" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    <button className="btn btn-sm btn-outline-success" onClick={this.saveAuth}>保存</button>
+                    <button className="btn btn-sm btn-outline-danger" onClick={this.cancel} style={{marginLeft:"80px"}}>取消</button>
                     </div>
                     </form>
                    </div>

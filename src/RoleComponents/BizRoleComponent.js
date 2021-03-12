@@ -83,13 +83,14 @@ class BizRoleComponent extends React.Component{
         return(
             <div>
             <br></br>
-            <h3 className="text-center font-weight-bold text-secondary">业务角色列表</h3>
-            <button className="btn blue-btn btn-sm text-white font-weight-bold" onClick={this.addRole}>添加角色</button>
-            <table className="table f-size table-boarder" style={{color:"grey"}}> 
+            <h3 className="text-center" style={{color:"#666669"}}>业务角色列表</h3>
+            <button className="btn btn-sm btn-outline-primary" onClick={this.addRole}>添加角色</button>
+            <table className="table f-size table-boarder" style={{color:"#666669",fontFamily:'Sans-Serif'}}> 
                <thead className="text-justify">
                     <tr>
                       <th style={{columnWidth:"100px"}}>id</th>
                       <th style={{columnWidth:"200px"}}>角色名称</th>  
+                      <th style={{columnWidth:"200px"}}>租户名称</th>  
                       <th style={{columnWidth:"190px"}}>创建时间</th> 
                       <th style={{columnWidth:"190px"}}>更新时间</th>  
                       <th className="text-center" style={{columnWidth:"300px"}}>操作</th>
@@ -102,12 +103,13 @@ class BizRoleComponent extends React.Component{
                              <tr key= {role.id}>         
                                  <td className="t-cell" style={{maxWidth:"100px"}} data-toggle='tooltip' title={role.id}>{role.id}</td>
                                  <td className="t-cell" style={{maxWidth:"200px"}} data-toggle='tooltip' title={role.rolename}>{role.rolename}</td>
+                                 <td className="t-cell" style={{maxWidth:"200px"}} data-toggle='tooltip' title={role.tenantname}>{role.tenantname}</td>
                                  <td className="t-cell" style={{maxWidth:"190px"}}>{moment(role.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                                  <td className="t-cell" style={{maxWidth:"190px"}}>{moment(role.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                                  <td className="t-cell text-center" style={{maxWidth:"300px"}}>
-                                    <button className="btn btn-sm yellow-btn text-white font-weight-bold" onClick={() => this.viewRole(role.id)}>查看详情</button>
-                                    <button className="btn btn-sm green-btn text-white font-weight-bold" onClick={() => this.editRole(role.id)} style={{marginLeft:"10px"}}>编辑资料</button>
-                                    <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={() => {if(window.confirm('确认删除此角色?')){this.deleteRole(role.id)}}} style={{marginLeft:"10px"}}>删除</button>
+                                    <button className="btn btn-sm btn-outline-info" onClick={() => this.viewRole(role.id)}>🔎查看</button>
+                                    <button className="btn btn-sm btn-outline-success" onClick={() => this.editRole(role.id)} style={{marginLeft:"10px"}}>🛠️编辑</button>
+                                    <button className="btn btn-sm btn-outline-danger" onClick={() => {if(window.confirm('确认删除此角色?')){this.deleteRole(role.id)}}} style={{marginLeft:"10px"}}>🗑️删除</button>
                                  </td>
                              </tr>
                          )  
@@ -115,13 +117,15 @@ class BizRoleComponent extends React.Component{
                  </tbody>
             </table>
             <div className="text-center">
-            <button className="btn btn-sm color-btn font-weight-bold text-white" onClick={this.firstPage} disabled={(this.state.pageNo == null || this.state.pageNo<=1) ? true : false}>first page</button>
-            <button className="btn btn-sm color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={(this.state.pageNo == null || this.state.pageNo<=1) ? true :false}>previous page</button>
-            <button className="btn btn-sm color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={(this.state.pageNo == null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>next page</button>
-            <button className="btn btn-sm color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={(this.state.pageNo == null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>last page</button>
+            <button className="btn btn-sm btn-outline-dark" onClick={this.firstPage} disabled={(this.state.pageNo == null || this.state.pageNo<=1) ? true : false}>first page</button>
+            <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={(this.state.pageNo == null || this.state.pageNo<=1) ? true :false}>previous page</button>
+            <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={(this.state.pageNo == null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>next page</button>
+            <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={(this.state.pageNo == null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>last page</button>
         </div>
-        <div className="color-font text-center font-weight-bold">{this.state.pageNo} of {this.state.totalPages} 页</div>
-        <div className="color-font text-center font-weight-bold">共{this.state.totalElements}业务角色</div>
+       <div className="text-center" style={{fontSize:"12px",color:"#666669",marginTop:"10px",fontFamily:"sans-serif"}}>
+       <div>{this.state.pageNo} of {this.state.totalPages} 页</div>
+        <div>共{this.state.totalElements}业务角色</div>
+       </div>
         </div>
            )
     }

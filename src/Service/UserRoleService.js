@@ -10,6 +10,10 @@ class UserRoleService{
         return axios.get("/userrole/findalluserrolepaginated?pageNo="+p)
     }
 
+    editUserRole(id,userrole){
+        return axios.post("/userrole/edituserrole/"+id,userrole);
+    }
+
     count(){
         return axios.get("/userrole/count");
     }

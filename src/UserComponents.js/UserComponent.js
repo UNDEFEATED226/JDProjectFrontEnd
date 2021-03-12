@@ -81,16 +81,17 @@ class UserComponent extends React.Component{
        return(
         <div>
         <br></br>
-        <h3 className="text-center font-weight-bold text-secondary">用户列表</h3>
-        <button className="btn blue-btn text-white btn-sm font-weight-bold" onClick={this.addUser}>添加用户</button>
-        <table className="table table-boarder f-size" style={{color:"grey"}}> 
+        <h3 className="text-center" style={{color:"#666669"}}>用户列表</h3>
+        <button className="btn btn-sm btn-outline-primary" onClick={this.addUser}>添加用户</button>
+        <table className="table table-boarder f-size" style={{color:"#666669",fontFamily:'Sans-Serif'}}> 
            <thead className="text-justify">
                 <tr>
-                  <th style={{columnWidth:"30px"}}>id</th>
-                  <th style={{columnWidth:"100px"}}>登录用户名</th>  
-                  <th style={{columnWidth:"100px"}}>名字</th>  
-                  <th style={{columnWidth:"100px"}}>组织名称</th> 
-                  <th style={{columnWidth:"100px"}}>邮箱</th>  
+                  <th style={{columnWidth:"60px"}}>id</th>
+                  <th style={{columnWidth:"120px"}}>登录用户名</th>  
+                  <th style={{columnWidth:"120px"}}>名字</th>  
+                  <th style={{columnWidth:"180px"}}>租户名称</th> 
+                  <th style={{columnWidth:"180px"}}>组织名称</th> 
+                  <th style={{columnWidth:"130px"}}>邮箱</th>  
                   <th style={{columnWidth:"100px"}}>手机号</th> 
                   <th  className="text-center" style={{columnWidth:"300px"}}>操作</th>
                 </tr>
@@ -100,16 +101,17 @@ class UserComponent extends React.Component{
                      this.state.users.map(
                          user =>
                          <tr key= {user.id}>         
-                             <td className="t-cell" style={{maxWidth:"30px"}} data-toggle='tooltip' title={user.id}>{user.id}</td>
-                             <td className="t-cell" style={{maxWidth:"100px"}} data-toggle='tooltip' title={user.loginname}>{user.loginname}</td>
-                             <td className="t-cell" style={{maxWidth:"100px"}} data-toggle='tooltip' title={user.realname}>{user.realname}</td>
-                             <td className="t-cell" style={{maxWidth:"100px",color:user.orgname ==='公司不存在或已删除' ? 'red':undefined}} data-toggle='tooltip' title={user.orgname}>{user.orgname}</td>
-                             <td className="t-cell" style={{maxWidth:"100px"}} data-toggle='tooltip' title={user.email}>{user.email}</td>
+                             <td className="t-cell" style={{maxWidth:"60px"}} data-toggle='tooltip' title={user.id}>{user.id}</td>
+                             <td className="t-cell" style={{maxWidth:"120px"}} data-toggle='tooltip' title={user.loginname}>{user.loginname}</td>
+                             <td className="t-cell" style={{maxWidth:"120px"}} data-toggle='tooltip' title={user.realname}>{user.realname}</td>
+                             <td className="t-cell" style={{maxWidth:"180px"}} data-toggle='tooltip' title={user.tenantname}>{user.tenantname}</td>
+                             <td className="t-cell" style={{maxWidth:"180px"}} data-toggle='tooltip' title={user.orgname}>{user.orgname}</td>
+                             <td className="t-cell" style={{maxWidth:"130px"}} data-toggle='tooltip' title={user.email}>{user.email}</td>
                              <td className="t-cell" style={{maxWidth:"100px"}} data-toggle='tooltip' title={user.mobile}>{user.mobile}</td>
                              <td className="t-cell text-center" style={{maxWidth:"300px"}}>
-                                <button className="btn btn-sm yellow-btn text-white font-weight-bold " onClick={() => this.viewUser(user.id)}>查看详情</button>
-                                <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={() => this.editUser(user.id)} style={{marginLeft:"10px"}}>编辑资料</button>
-                                <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={() => {if(window.confirm('确认删除此用户?')){this.deleteUser(user.id)}}} style={{marginLeft:"10px"}}>删除</button>
+                                <button className="btn btn-sm btn-outline-info" onClick={() => this.viewUser(user.id)}>🔎查看</button>
+                                <button className="btn btn-sm btn-outline-success" onClick={() => this.editUser(user.id)} style={{marginLeft:"10px"}}>🛠️编辑</button>
+                                <button className="btn btn-sm btn-outline-danger" onClick={() => {if(window.confirm('确认删除此用户?')){this.deleteUser(user.id)}}} style={{marginLeft:"10px"}}>🗑️删除</button>
                              </td>
                          </tr>
                      )  
@@ -117,13 +119,15 @@ class UserComponent extends React.Component{
              </tbody>
         </table>
         <div className="text-center">
-            <button className="btn color-btn btn-sm font-weight-bold text-white" onClick={this.firstPage} disabled={(this.state.pageNo==null || this.state.pageNo<=1) ? true : false}>first page</button>
-            <button className="btn color-btn btn-sm font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={(this.state.pageNo==null || this.state.pageNo<=1) ? true : false}>previous page</button>
-            <button className="btn color-btn btn-sm font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={(this.state.pageNo==null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>next page</button>
-            <button className="btn color-btn btn-sm font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={(this.state.pageNo==null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>last page</button>
+            <button className="btn btn-sm btn-outline-dark" onClick={this.firstPage} disabled={(this.state.pageNo==null || this.state.pageNo<=1) ? true : false}>first page</button>
+            <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={(this.state.pageNo==null || this.state.pageNo<=1) ? true : false}>previous page</button>
+            <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={(this.state.pageNo==null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>next page</button>
+            <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={(this.state.pageNo==null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>last page</button>
         </div>
-        <div className="font-weight-bold text-center color-font">{this.state.pageNo} of {this.state.totalPages} 页</div>
-        <div className="font-weight-bold text-center color-font">共{this.state.totalElements}用户</div>
+        <div className="text-center" style={{fontSize:"12px",color:"#666669",marginTop:"10px"}}>
+        <div>{this.state.pageNo} of {this.state.totalPages} 页</div>
+        <div>共{this.state.totalElements}用户</div>
+        </div>
         </div>
        )
     }

@@ -76,15 +76,15 @@ class AuthComponent extends React.Component{
 
     render(){
        return(
-        <div>
+        <div style={{fontSize:"12px",fontFamily:"sans-serif",color:"#666669"}}>
         <br></br>
-        <h3 className="text-center font-weight-bold text-secondary">权限列表</h3>
-        <button className="btn blue-btn text-white btn-sm font-weight-bold" onClick={this.addAuth}>添加权限</button>
-        <table className="table f-size table-border" style={{color:"grey"}}> 
+        <h3 className="text-center" style={{color:"#666669"}}>权限列表</h3>
+        <button className="btn btn-sm btn-outline-primary" onClick={this.addAuth}>添加权限</button>
+        <table className="table" style={{color:"#666669"}}> 
            <thead className="text-justify">
                 <tr>
                   <th style={{columnWidth:"80px"}}>id</th>
-                  <th style={{columnWidth:"170px"}}>权限名称</th>  
+                  <th style={{columnWidth:"200px"}}>权限名称</th>  
                   <th style={{columnWidth:"170px"}}>描述信息</th>  
                   <th style={{columnWidth:"170px"}}>资源名称</th> 
                   <th style={{columnWidth:"190px"}}>创建时间</th>
@@ -98,14 +98,14 @@ class AuthComponent extends React.Component{
                          auth =>
                          <tr key= {auth.id}>         
                              <td className="t-cell" style={{maxWidth:"80px"}} data-toggle='tooltip' title={auth.id}>{auth.id}</td>
-                             <td className="t-cell" style={{maxWidth:"170px"}} data-toggle='tooltip' title={auth.authname}>{auth.authname}</td>
+                             <td className="t-cell" style={{maxWidth:"200px"}} data-toggle='tooltip' title={auth.authname}>{auth.authname}</td>
                              <td className="t-cell" style={{maxWidth:"170px"}} data-toggle='tooltip' title={auth.description}>{auth.description}</td>
                              <td className="t-cell" style={{maxWidth:"170px",color:auth.resname ==='资源不存在或已删除' ? 'red':undefined}} data-toggle='tooltip' title={auth.resname}>{auth.resname}</td>
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(auth.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(auth.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell text-center" style={{maxWidth:"300px"}}>
-                                <button className="btn btn-sm green-btn text-white font-weight-bold" onClick={()=>this.editAuth(auth.id)}>编辑资料</button>
-                                <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={()=>{if(window.confirm('确认删除此权限?')){this.deleteAuth(auth.id)}}} style={{marginLeft:"10px"}}>删除</button>
+                                <button className="btn btn-sm btn-outline-success" onClick={()=>this.editAuth(auth.id)}>🛠️编辑</button>
+                                <button className="btn btn-sm btn-outline-danger" onClick={()=>{if(window.confirm('确认删除此权限?')){this.deleteAuth(auth.id)}}} style={{marginLeft:"10px"}}>🗑️删除</button>
                              </td>
                          </tr>
                      )  
@@ -113,13 +113,15 @@ class AuthComponent extends React.Component{
              </tbody>
         </table>
         <div className="text-center">
-            <button className="btn btn-sm color-btn font-weight-bold text-white" onClick={this.firstPage} disabled={(this.state.pageNo == null || this.state.pageNo<=1) ? true : false}>first page</button>
-            <button className="btn btn-sm color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={(this.state.pageNo == null || this.state.pageNo<=1) ? true :false}>previous page</button>
-            <button className="btn btn-sm color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={(this.state.pageNo == null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>next page</button>
-            <button className="btn btn-sm color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={(this.state.pageNo == null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>last page</button>
+            <button className="btn btn-sm btn-outline-dark" onClick={this.firstPage} disabled={(this.state.pageNo == null || this.state.pageNo<=1) ? true : false}>first page</button>
+            <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={(this.state.pageNo == null || this.state.pageNo<=1) ? true :false}>previous page</button>
+            <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={(this.state.pageNo == null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>next page</button>
+            <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={(this.state.pageNo == null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>last page</button>
         </div>
-        <div className="color-font text-center font-weight-bold">{this.state.pageNo} of {this.state.totalPages} 页</div>
-        <div className="color-font text-center font-weight-bold">共{this.state.totalElements}权限</div>
+        <div className="text-center" style={{fontSize:"12px",color:"#666669",marginTop:"10px"}}>
+        <div>{this.state.pageNo} of {this.state.totalPages} 页</div>
+        <div>共{this.state.totalElements}权限</div>
+        </div>
     </div>
        )
     }

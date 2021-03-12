@@ -9,6 +9,7 @@ class AddOrganizationComponent extends React.Component{
             orgname:'',
             orgnameformat:'',
             tenantid:'',
+            tenantidformat:'',
             tenants:[]
         }
         this.changeOrgnameHandler=this.changeOrgnameHandler.bind(this);
@@ -30,10 +31,21 @@ class AddOrganizationComponent extends React.Component{
 
     saveOrganzation = (o) => {
         o.preventDefault();
-        this.setState({orgnameformat:''});
+        this.setState({
+            orgnameformat:'',
+            tenantidformat:''
+        });
+        var bool = false;
         if(this.state.orgname.trim() === ''){
+            bool = true;
             this.setState({orgnameformat:'组织名称不能为空...'});
-            throw new Error('EMPTY ORG NAME');
+        }
+        if(this.state.tenantid === ''){
+            bool = true;
+            this.setState({tenantidformat:'请选择租户...'});
+        }
+        if(bool){
+            throw new Error('INPUT ERROR');
         }
         let organization = {id:'',orgname:this.state.orgname,parentorgid:'',
         orglevel:'',orgtype:'',orgtypename:'',orgcatlog:'',
@@ -49,35 +61,36 @@ class AddOrganizationComponent extends React.Component{
     }
 
     cancel(){
-        this.props.history.push("/organizationlist");
+        this.props.history.goBack();
     }
     render(){
         return(
-            <div style={{marginTop:"5%"}}>
-                    <div className="card mx-auto bg-light f-size" style={{width:"30rem"}}>            
-                         <h5 className="card-header text-center text-secondary font-weight-bold">添加新组织</h5>
+            <div style={{marginTop:"5%",color:"#666669",fontSize:"12px"}}>
+                    <div className="card mx-auto bg-light" style={{width:"30rem"}}>            
+                         <h5 className="card-header text-center" style={{color:"#666669"}}>添加新组织</h5>
                          <div className="card-body">
                          <form>
                          <div className="form-group">
-                            <label className="text-secondary font-weight-bold">组织名称:</label>
+                            <label>*组织名称:</label>
                             <input placeholder="请输入组织名称..." style={{fontSize:"12px"}} className="form-control" value={this.state.orgname} onChange={this.changeOrgnameHandler}/>
                             <div style={{color:"#f44e3b"}}>{this.state.orgnameformat}</div>
                         </div>
                         <div className="form-group">
-                            <label className="text-secondary font-weight-bold">租户:</label>
+                            <label>*租户:</label>
                             <select className="form-control text-secondary" style={{fontSize:"12px"}} value={this.state.tenantid} onChange={this.changeTenantidHandler}>
-                                <option defaultValue value=''>请选择租户</option>
+                                <option defaultValue value=''>请选择租户...</option>
                                 {
                                     this.state.tenants.map(
                                         tenant =>
-                                        <option value={tenant.id}>{tenant.name}</option>
+                                        <option key={tenant.id} value={tenant.id}>{tenant.name}</option>
                                     )
                                 }
                             </select>
+                            <div style={{color:"#f44e3b"}}>{this.state.tenantidformat}</div>
                             </div>
                                  <div className="text-center">
-                                 <button className="btn btn-sm font-weight-bold text-white green-btn" onClick={this.saveOrganzation}>保存</button>
-                                 <button className="btn btn-sm font-weight-bold text-white red-btn" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                                 <button className="btn btn-sm btn-outline-success" onClick={this.saveOrganzation}>保存</button>
+                                 <button className="btn btn-sm btn-outline-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
                                  </div>
                              </form>
                          </div>

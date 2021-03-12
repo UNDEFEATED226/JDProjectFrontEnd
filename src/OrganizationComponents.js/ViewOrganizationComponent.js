@@ -33,10 +33,10 @@ class ViewOrganizationComponent extends React.Component{
     
     render(){
         return(
-            <div className="text-secondary" style={{marginTop:"2.5%",fontSize:"15px"}}>
-                  <button className="btn text-white font-weight-bold" onClick={e=>{this.props.history.push('/organizationlist')}} style={{marginLeft:'28.5%',backgroundColor:"purple"}}>返回</button>
+            <div style={{marginTop:"2.5%",fontSize:"12px",color:"#666669",fontFamily:"Sans-Serif"}}>
+                  <button className="btn btn-outline-dark" onClick={e=>{this.props.history.goBack()}} style={{marginLeft:'28.5%'}}>返回</button>
               <div className="card bg-light mx-auto" style={{width:"30rem",marginTop:'2.5%'}}>
-                <h5 className="text-center font-weight-bold card-header">组织详情</h5>
+                <h5 className="text-center card-header" style={{color:"#666669"}}>组织详情</h5>
                 <div className="card-body" style={{marginLeft:"5%"}}>
                     <div className="row">
                         <label>ID:</label>

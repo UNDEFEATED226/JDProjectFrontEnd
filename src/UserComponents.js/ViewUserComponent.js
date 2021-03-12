@@ -47,10 +47,10 @@ class ViewUserComponent extends React.Component{
 
     render(){
         return(
-            <div style={{marginTop:"2.5%",fontSize:"15px"}} className="text-secondary">     
-                  <button className="btn text-white font-weight-bold" onClick={e=>{this.props.history.push('/userlist')}} style={{marginLeft:'28.5%',backgroundColor:"purple"}}>返回</button>
+            <div style={{marginTop:"2.5%",fontSize:"12px",color:"#666669"}}>     
+                  <button className="btn btn-outline-secondary" onClick={e=>{this.props.history.goBack()}} style={{marginLeft:'28.5%'}}>返回</button>
               <div className="card bg-light mx-auto" style={{width:"30rem",marginTop:'2.5%'}}>
-                <h5 className="text-center font-weight-bold card-header">用户详情</h5>
+                <h5 className="text-center card-header">用户详情</h5>
                 <div className="card-body" style={{marginLeft:"5%"}}>
                     <div className="row">
                         <label>ID:</label>
@@ -78,7 +78,7 @@ class ViewUserComponent extends React.Component{
                     </div>
                     <div className="row" style={{marginTop:"5px"}}>
                         <label>组织名称:</label>
-                        <div>{this.state.user.orgname}</div>
+                        <div style={{color: this.state.user.orgname==='组织不存在或已删除' ? "red":undefined}}>{this.state.user.orgname}</div>
                     </div>
                     <div className="row" style={{marginTop:"5px"}}>
                         <label>邮箱:</label>
@@ -111,6 +111,10 @@ class ViewUserComponent extends React.Component{
                     <div className="row" style={{marginTop:"5px"}}>
                         <label>租户ID:</label>
                         <div>{this.state.user.tenantid}</div>
+                    </div>
+                    <div className="row" style={{marginTop:"5px"}}>
+                        <label>租户名称:</label>
+                        <div style={{color: this.state.user.tenantname==='租户不存在或已删除' ? "red":undefined}}>{this.state.user.tenantname}</div>
                     </div>
                     <div className="row" style={{marginTop:"5px"}}>
                         <label>是否是租户管理员:</label>

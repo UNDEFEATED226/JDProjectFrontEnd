@@ -83,11 +83,11 @@ class OrganizationComponent extends React.Component{
         return(
             <div>
             <br></br>
-            <h3 className="text-center font-weight-bold text-secondary">组织列表</h3>
-            <button className="btn blue-btn btn-sm font-weight-bold text-white" onClick={this.addOrganization}>添加组织</button>
+            <h3 className="text-center" style={{color:"#666669"}}>组织列表</h3>
+            <button className="btn btn-sm btn-outline-primary" onClick={this.addOrganization}>添加组织</button>
             <div className="row">
             </div>
-            <table className="table table-boarder f-size" style={{color:"grey"}}> 
+            <table className="table table-boarder f-size" style={{color:"#666669",fontFamily:'Sans-Serif'}}> 
                <thead>
                     <tr>
                       <th style={{columnWidth:"30px"}}>id</th>  
@@ -109,9 +109,9 @@ class OrganizationComponent extends React.Component{
                                  <td className="t-cell" style={{maxWidth:"190px"}} data-toggle='tooltip' title={organization.createtime}>{moment(organization.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                                  <td className="t-cell" style={{maxWidth:"190px"}} data-toggle='tooltip' title={organization.updatetime}>{moment(organization.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                                  <td className="t-cell text-center" style={{maxWidth:"300px"}}>
-                                    <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-sm yellow-btn font-weight-bold text-white">查看详情</button>
-                                    <button  onClick={() => this.editOrganization(organization.id)} className="btn btn-sm green-btn font-weight-bold text-white" style={{marginLeft:"10px"}}>编辑资料</button>
-                                    <button  onClick={() => {if(window.confirm('确认删除此组织?')){this.deleteOrganization(organization.id)}}} className="btn btn-sm red-btn font-weight-bold text-white" style={{marginLeft:"10px"}}>删除</button>
+                                    <button  onClick={() => this.viewOrganization(organization.id)} className="btn btn-sm btn-outline-info">🔎查看</button>
+                                    <button  onClick={() => this.editOrganization(organization.id)} className="btn btn-sm btn-outline-success" style={{marginLeft:"10px"}}>🛠️编辑</button>
+                                    <button  onClick={() => {if(window.confirm('确认删除此组织?')){this.deleteOrganization(organization.id)}}} className="btn btn-sm btn-outline-danger" style={{marginLeft:"10px"}}>🗑️删除</button>
                                  </td>
                              </tr>
                          )
@@ -119,13 +119,15 @@ class OrganizationComponent extends React.Component{
                  </tbody>
             </table>
             <div className="text-center">
-            <button className="font-weight-bold btn btn-sm color-btn text-white" onClick={this.firstPage} disabled={(this.state.pageNo==null || this.state.pageNo<=1) ? true : false}>first page</button>
-            <button className="font-weight-bold btn btn-sm color-btn text-white" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={(this.state.pageNo==null || this.state.pageNo<=1) ? true : false}>previous page</button>
-            <button className="font-weight-bold btn btn-sm color-btn text-white" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={(this.state.pageNo==null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>next page</button>
-            <button className="font-weight-bold btn btn-sm color-btn text-white" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={(this.state.pageNo==null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>last page</button>
+            <button className="btn btn-sm btn-outline-dark" style={{fontSize:"12px",color:"#666669"}} onClick={this.firstPage} disabled={(this.state.pageNo==null || this.state.pageNo<=1) ? true : false}>first page</button>
+            <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={(this.state.pageNo==null || this.state.pageNo<=1) ? true : false}>previous page</button>
+            <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={(this.state.pageNo==null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>next page</button>
+            <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={(this.state.pageNo==null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>last page</button>
             </div> 
-            <div className="text-center font-weight-bold color-font" >{this.state.pageNo} of {this.state.totalPages} 页</div>
-            <div className="text-center font-weight-bold color-font">共{this.state.totalElements}组织</div>
+            <div className="text-center" style={{marginTop:"10px",fontSize:"12px",color:"#666669"}}>
+            <div>{this.state.pageNo} of {this.state.totalPages} 页</div>
+            <div>共{this.state.totalElements}组织</div>
+            </div>
         </div>
         )
     }

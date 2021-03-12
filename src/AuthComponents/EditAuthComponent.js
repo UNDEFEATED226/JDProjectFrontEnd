@@ -16,6 +16,7 @@ class EditAuthComponent extends React.Component{
             resources:[]
         }
         this.changeDescriptionHandler=this.changeDescriptionHandler.bind(this);
+        this.cancel=this.cancel.bind(this);
         this.editAuth=this.editAuth.bind(this);
     }
 
@@ -55,24 +56,24 @@ class EditAuthComponent extends React.Component{
     }
 
     cancel(){
-        this.props.history.push("/authlist");
+        this.props.history.goBack();
     }
 
     render(){
         return(
-            <div style={{marginTop:"5%"}}>
-                <div className="card f-size bg-light mx-auto" style={{width:"30rem"}}>
-                 <h5 className="card-header text-center font-weight-bold text-secondary">编辑权限描述信息</h5>
+            <div style={{marginTop:"5%",fontSize:"12px",color:"#666669",fontFamily:"sans-serif"}}>
+                <div className="card bg-light mx-auto" style={{width:"30rem"}}>
+                 <h5 className="card-header text-center">编辑权限描述信息</h5>
                   <div className="card-body">
                    <form>
                     <div className="form-group">
-                        <label className="text-secondary font-weight-bold">描述信息:</label>
+                        <label>描述信息:</label>
                         <input placeholder="请输入描述信息..." style={{fontSize:"12px"}} className="form-control" value={this.state.description} onChange={this.changeDescriptionHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.descriptionformat}</div>    
                     </div>
                     <div className="text-center">
-                    <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.editAuth}>保存</button>
-                    <button className="btn btn-sm red-btn font-weight-bold text-white" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    <button className="btn btn-sm btn-outline-success" onClick={this.editAuth}>保存</button>
+                    <button className="btn btn-sm btn-outline-danger" onClick={this.cancel} style={{marginLeft:"80px"}}>取消</button>
                     </div>
                     </form>
                    </div>

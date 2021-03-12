@@ -83,9 +83,9 @@ class ResourceComponent extends React.Component{
        return(
         <div>
         <br></br>
-        <h3 className="text-center font-weight-bold text-secondary">资源列表</h3>
-        <button className="btn btn-sm blue-btn text-white font-weight-bold" onClick={this.addResource}>添加资源</button>
-        <table className="table table-boarder f-size" style={{color:"grey"}}> 
+        <h3 className="text-center" style={{color:"#666669"}}>资源列表</h3>
+        <button className="btn btn-sm btn-outline-primary" onClick={this.addResource}>添加资源</button>
+        <table className="table table-boarder f-size"  style={{color:"#666669",fontFamily:'Sans-Serif'}}> 
            <thead className="text-justify">
                 <tr>
                   <th style={{columnWidth:"50px"}}>id</th>
@@ -107,9 +107,9 @@ class ResourceComponent extends React.Component{
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(resource.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"190px"}}>{moment(resource.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell text-center" style={{maxWidth:"300px"}}>
-                                <button className="btn yellow-btn btn-sm text-white font-weight-bold" onClick={() => this.viewResource(resource.id)}>查看详情</button>
-                                <button className="btn btn-sm green-btn text-white font-weight-bold" onClick={() => this.editResource(resource.id)} style={{marginLeft:"10px"}}>编辑资料</button>
-                                <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={() => {if(window.confirm('确认删除此资源?')){this.deleteResource(resource.id)}}} style={{marginLeft:"10px"}}>删除</button>
+                                <button className="btn btn-sm btn-outline-info" onClick={() => this.viewResource(resource.id)}>🔎查看</button>
+                                <button className="btn btn-sm btn-outline-success" onClick={() => this.editResource(resource.id)} style={{marginLeft:"10px"}}>🛠️编辑</button>
+                                <button className="btn btn-sm btn-outline-danger" onClick={() => {if(window.confirm('确认删除此资源?')){this.deleteResource(resource.id)}}} style={{marginLeft:"10px"}}>🗑️删除</button>
                              </td>
                          </tr>
                      )  
@@ -117,13 +117,15 @@ class ResourceComponent extends React.Component{
              </tbody>
         </table>
         <div className="text-center">
-                <button className="btn color-btn btn-sm font-weight-bold text-white" onClick={this.firstPage} disabled={(this.state.pageNo==null || this.state.pageNo<=1) ? true : false}>first page</button>
-                <button className="btn color-btn btn-sm font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={(this.state.pageNo==null || this.state.pageNo<=1) ? true : false}>previous page</button>
-                <button className="btn color-btn btn-sm font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={(this.state.pageNo==null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>next page</button>
-                <button className="btn color-btn btn-sm font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={(this.state.pageNo==null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>last page</button>
+                <button className="btn btn-sm btn-outline-dark" onClick={this.firstPage} disabled={(this.state.pageNo==null || this.state.pageNo<=1) ? true : false}>first page</button>
+                <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={(this.state.pageNo==null || this.state.pageNo<=1) ? true : false}>previous page</button>
+                <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={(this.state.pageNo==null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>next page</button>
+                <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={(this.state.pageNo==null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>last page</button>
         </div>
-        <div className="text-center color-font font-weight-bold">{this.state.pageNo} of {this.state.totalPages} 页</div>
-        <div className="text-center color-font font-weight-bold">共{this.state.totalElements}资源</div>
+        <div className="text-center" style={{fontSize:"12px",color:"#666669",marginTop:"10px"}}>
+        <div>{this.state.pageNo} of {this.state.totalPages} 页</div>
+        <div>共{this.state.totalElements}资源</div>
+        </div>
     </div>
        )
     }

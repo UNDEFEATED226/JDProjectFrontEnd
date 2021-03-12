@@ -77,9 +77,9 @@ class TenantComponent extends React.Component{
         return(
             <div>
             <br></br>
-            <h3 className="text-center font-weight-bold text-secondary">租户列表</h3>
-            <button className="btn blue-btn btn-sm text-white font-weight-bold" onClick={this.addTenant}>添加租户</button>
-            <table className="table f-size table-boarder" style={{color:"grey"}}> 
+            <h3 className="text-center" style={{color:"#666669"}}>租户列表</h3>
+            <button className="btn btn-sm btn-outline-primary" onClick={this.addTenant}>添加租户</button>
+            <table className="table" style={{color:"#666669",fontFamily:'sans-serif',fontSize:"12px"}}> 
                <thead className="text-justify">
                     <tr>
                       <th style={{columnWidth:"30px"}}>id</th>
@@ -103,8 +103,8 @@ class TenantComponent extends React.Component{
                                  <td className="t-cell" style={{maxWidth:"190px"}}>{moment(tenant.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                                  <td className="t-cell" style={{maxWidth:"190px"}}>{moment(tenant.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
                                  <td className="t-cell text-center" style={{maxWidth:"300px"}}>
-                                    <button className="btn btn-sm green-btn text-white font-weight-bold" onClick={() => this.editTenant(tenant.id)} style={{marginLeft:"10px"}}>编辑资料</button>
-                                    <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={() => {if(window.confirm('确认删除此租户?')){this.deleteTenant(tenant.id)}}} style={{marginLeft:"10px"}}>删除</button>
+                                    <button className="btn btn-sm btn-outline-success" onClick={() => this.editTenant(tenant.id)} style={{marginLeft:"10px"}}>🛠️编辑</button>
+                                    <button className="btn btn-sm btn-outline-danger" onClick={() => {if(window.confirm('确认删除此租户?')){this.deleteTenant(tenant.id)}}} style={{marginLeft:"10px"}}>🗑️删除</button>
                                  </td>
                              </tr>
                          )  
@@ -112,13 +112,15 @@ class TenantComponent extends React.Component{
                  </tbody>
             </table>
             <div className="text-center">
-                <button className="btn btn-sm color-btn font-weight-bold text-white" onClick={this.firstPage} disabled={(this.state.pageNo<=1 || this.state.pageNo==null) ? true : false}>first page</button>
-                <button className="btn btn-sm color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={(this.state.pageNo<=1 || this.state.pageNo==null) ? true : false}>previous page</button>
-                <button className="btn btn-sm color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={(this.state.pageNo==null||this.state.totalPages==null||this.state.pageNo>=this.state.totalPages) ? true : false}>next page</button>
-                <button className="btn btn-sm color-btn font-weight-bold text-white" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={(this.state.pageNo==null||this.state.totalPages==null||this.state.pageNo>=this.state.totalPages) ? true : false}>last page</button>
+                <button className="btn btn-sm btn-outline-dark" onClick={this.firstPage} disabled={(this.state.pageNo<=1 || this.state.pageNo==null) ? true : false}>first page</button>
+                <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={(this.state.pageNo<=1 || this.state.pageNo==null) ? true : false}>previous page</button>
+                <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={(this.state.pageNo==null||this.state.totalPages==null||this.state.pageNo>=this.state.totalPages) ? true : false}>next page</button>
+                <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={(this.state.pageNo==null||this.state.totalPages==null||this.state.pageNo>=this.state.totalPages) ? true : false}>last page</button>
             </div>
-            <div className="text-center color-font font-weight-bold">{this.state.pageNo} of {this.state.totalPages} 页</div>
-            <div className="text-center color-font font-weight-bold">共{this.state.totalElements}租户</div>
+            <div className="text-center" style={{marginTop:"10px",fontSize:"12px",color:"#666669"}}>
+            <div>{this.state.pageNo} of {this.state.totalPages} 页</div>
+            <div>共{this.state.totalElements}租户</div>
+            </div>
         </div>
         )
     }

@@ -15,6 +15,7 @@ class EditUserComponent extends React.Component{
             realname:'',
             realnameformat:'',
             orgid:'',
+            orgidformat:'',
             email:'',
             emailformat:'',
             sex:'',
@@ -136,7 +137,8 @@ class EditUserComponent extends React.Component{
             userstatusformat:'',
             usergroupidformat:'',
             fullparentidformat:'',
-            mobileformat:''
+            mobileformat:'',
+            orgidformat:''
         });
         var bool = false;
         if(this.state.loginname.trim() === ''){
@@ -146,6 +148,10 @@ class EditUserComponent extends React.Component{
         if(this.state.password.trim() === ''){
             bool = true;
             this.setState({passwordformat:'登录密码不能为空...'});
+        }
+        if(this.state.orgid == null || this.state.orgid === ''){
+            bool = true;
+            this.setState({orgidformat:'请选择组织...'});
         }
         if(bool){
             throw new Error("INPUT ERROR");
@@ -194,100 +200,101 @@ class EditUserComponent extends React.Component{
     }
 
     cancel(){
-        this.props.history.push('/userlist'); 
+        this.props.history.goBack();
     }
                  
     render(){
         return(
-            <div style={{marginTop:"5%"}}>
-                <div className="card f-size bg-light mx-auto" style={{width:"30rem"}}>
-                 <h5 className="card-header text-center font-weight-bold text-secondary">编辑用户资料</h5>
+            <div style={{marginTop:"5%",fontSize:"12px",fontFamily:"sans-serif",color:"#666669"}}>
+                <div className="card bg-light mx-auto" style={{width:"30rem"}}>
+                 <h5 className="card-header text-center" style={{color:"#666669"}}>编辑用户资料</h5>
                   <div className="card-body">
                    <form>
-                   <div className="form-group">
-                        <label className="text-secondary font-weight-bold">登录用户名:</label>
+                   <div className="form-group" style={{color:"#666669"}}>
+                        <label>*登录用户名:</label>
                         <input placeholder="请输入登录用户名..." style={{fontSize:"12px"}} className="form-control" value={this.state.loginname} onChange={this.changeLoginnameHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.loginnameformat}</div>
                     </div>
-                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">登录密码:</label>
+                    <div className="form-group" style={{color:"#666669"}}>
+                        <label>*登录密码:</label>
                         <input placeholder="请输入登录密码..." style={{fontSize:"12px"}} className="form-control" value={this.state.password} onChange={this.changePasswordHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.passwordformat}</div>
                     </div>
-                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">名字:</label>
+                    <div className="form-group" style={{color:"#666669"}}>
+                        <label>名字:</label>
                         <input placeholder="请输入名字..." style={{fontSize:"12px"}} className="form-control" value={this.state.realname} onChange={this.changeRealnameHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.realnameformat}</div>
                     </div>
-                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">组织:</label>
+                    <div className="form-group" style={{color:"#666669"}}>
+                        <label>*组织:</label>
                         <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.orgid} onChange={this.changeOrgidHandler}>
-                        <option defaultValue value=''>请选择组织...</option>
+                        <option value=''>请选择组织...</option>
                         {
                             this.state.organizations.map(
                                 organization => 
-                                <option value={organization.id}>{organization.orgname}</option>
+                                <option key={organization.id} value={organization.id}>{organization.orgname}</option>
                             )
                         }
                         </select>
+                        <div style={{color:"#f44e3b"}}>{this.state.orgidformat}</div>
                     </div>
-                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">邮箱:</label>
+                    <div className="form-group" style={{color:"#666669"}}>
+                        <label>邮箱:</label>
                         <input placeholder="请输入邮箱..." style={{fontSize:"12px"}} className="form-control" value={this.state.email} onChange={this.changeEmailHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.emailformat}</div>
                     </div>
-                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">性别:</label>
-                        <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.sex} onChange={this.changeSexHandler}>
+                    <div className="form-group" style={{color:"#666669"}}>
+                        <label>性别:</label>
+                        <select className="form-control" style={{fontSize:"12px",color:"#666669"}} value={this.state.sex} onChange={this.changeSexHandler}>
                             <option value=''>请选择性别</option>
                             <option value="1">男</option>
                             <option value="0">女</option>
                         </select>
                     </div>
-                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">备注:</label>
+                    <div className="form-group" style={{color:"#666669"}}>
+                        <label>备注:</label>
                         <input placeholder="请输入备注..." style={{fontSize:"12px"}} className="form-control" value={this.state.comment} onChange={this.changeCommentHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.commentformat}</div>
                     </div>
-                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">用户状态:</label>
+                    <div className="form-group" style={{color:"#666669"}}>
+                        <label>用户状态:</label>
                         <input placeholder="请输入用户状态..." style={{fontSize:"12px"}} className="form-control" value={this.state.userstatus} onChange={this.changeUserstatusHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.userstatusformat}</div>
                     </div>
-                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">用户分组ID:</label>
+                    <div className="form-group" style={{color:"#666669"}}>
+                        <label>用户分组ID:</label>
                         <input placeholder="请输入用户分组ID..." style={{fontSize:"12px"}} className="form-control" value={this.state.usergroupid} onChange={this.changeUsergroupidHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.usergroupidformat}</div>
                     </div>
-                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">组织全路径:</label>
+                    <div className="form-group" style={{color:"#666669"}}>
+                        <label>组织全路径:</label>
                         <input placeholder="请输入组织全路径..." style={{fontSize:"12px"}} className="form-control" value={this.state.fullparentid} onChange={this.changeFullparentidHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.fullparentidformat}</div>
                     </div>
-                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">手机号:</label>
+                    <div className="form-group" style={{color:"#666669"}}>
+                        <label>手机号:</label>
                         <input placeholder="请输入手机号..." style={{fontSize:"12px"}} className="form-control" value={this.state.mobile} onChange={this.changeMobileHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.mobileformat}</div>
                     </div>
-                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">是否为租户管理员</label>
-                        <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.istenantadmin} onChange={this.changeIstenantadminHandler}>
-                            <option defaultValue value=''>请选择是否为租户管理员</option>
+                    <div className="form-group" style={{color:"#666669"}}>
+                        <label>是否为租户管理员:</label>
+                        <select className="form-control" style={{fontSize:"12px",color:"#666669"}} value={this.state.istenantadmin} onChange={this.changeIstenantadminHandler}>
+                            <option value=''>请选择是否为租户管理员...</option>
                             <option value="1">是</option>
                             <option value="0">否</option>
                         </select>
                     </div>
-                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">是否被禁用</label>
-                        <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.isforbidden} onChange={this.changeIsforbiddenHandler}>
-                            <option defaultValue value=''>请选择是否被禁用</option>
+                    <div className="form-group" style={{color:"#666669"}}>
+                        <label>是否被禁用:</label>
+                        <select className="form-control" style={{fontSize:"12px",color:"#666669"}} value={this.state.isforbidden} onChange={this.changeIsforbiddenHandler}>
+                            <option value=''>请选择是否被禁用...</option>
                             <option value="1">是</option>
                             <option value="0">否</option>
                         </select>
                     </div>
                     <div className="text-center">
-                    <button className="btn btn-sm green-btn text-white font-weight-bold" onClick={this.editUser}>保存</button>
-                    <button className="btn btn-sm red-btn text-white font-weight-bold" onClick={this.cancel} style={{marginLeft:"80px"}}>取消</button>
+                    <button className="btn btn-sm btn-outline-success" onClick={this.editUser}>保存</button>
+                    <button className="btn btn-sm btn-outline-danger" onClick={this.cancel} style={{marginLeft:"80px"}}>取消</button>
                     </div>
                     </form>
                    </div>

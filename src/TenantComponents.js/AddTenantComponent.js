@@ -12,6 +12,7 @@ class AddTenantComponent extends React.Component{
            users:[]
         }
         this.changeNameHandler=this.changeNameHandler.bind(this);
+        this.cancel=this.cancel.bind(this);
         this.changeAdminuseridHandler=this.changeAdminuseridHandler.bind(this);
         this.saveTenant=this.saveTenant.bind(this);
     }
@@ -47,25 +48,25 @@ class AddTenantComponent extends React.Component{
     }
 
     cancel(){
-        this.props.history.push('/tenantlist'); 
+        this.props.history.goBack();
     }
                  
     render(){
         return(
-            <div style={{marginTop:"5%"}}>
-                <div className="card f-size bg-light mx-auto" style={{width:"30rem"}}>
-                 <h5 className="card-header text-center font-weight-bold text-secondary">添加租户</h5>
+            <div style={{marginTop:"5%",fontSize:"12px",color:"#666669",fontFamily:"sans-serif"}}>
+                <div className="card bg-light mx-auto" style={{width:"30rem"}}>
+                 <h5 className="card-header text-center">添加租户</h5>
                   <div className="card-body">
                    <form>
                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">租户名称:</label>
+                        <label>*租户名称:</label>
                         <input placeholder="请输入租户名称..." style={{fontSize:"12px"}} className="form-control" value={this.state.name} onChange={this.changeNameHandler}/> 
                         <div style={{color:"#f44e3b"}}>{this.state.nameformat}</div>    
                     </div>
                     <div className="form-group">
-                        <label className="text-secondary font-weight-bold">租户管理员用户:</label>
+                        <label>租户管理员用户:</label>
                         <select className="text-secondary form-control" value={this.state.adminuserid} style={{fontSize:"12px"}} onChange={this.changeAdminuseridHandler}>
-                            <option defaultValue value=''>请选择租户管理员用户</option>
+                            <option defaultValue value=''>请选择租户管理员用户...</option>
                             {
                                 this.state.users.map(
                                     u =>
@@ -75,8 +76,8 @@ class AddTenantComponent extends React.Component{
                         </select>
                     </div>
                     <div className="text-center">
-                    <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.saveTenant}>保存</button>
-                    <button className="btn btn-sm red-btn font-weight-bold text-white" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    <button className="btn btn-sm btn-outline-success" onClick={this.saveTenant}>保存</button>
+                    <button className="btn btn-sm btn-outline-danger" onClick={this.cancel} style={{marginLeft:"80px"}}>取消</button>
                     </div>
                     </form>
                    </div>

@@ -10,6 +10,10 @@ class RoleService{
         return axios.get("/role/findallrolepaginated?pageNo="+p);
     }
 
+    authListForRole(id){
+        return axios.get("/role/authlistforrole?id="+id);
+    }
+
     count(){
         return axios.get("/role/count");
     }

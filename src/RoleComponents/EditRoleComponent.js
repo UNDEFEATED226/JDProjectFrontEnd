@@ -91,7 +91,7 @@ class EditRoleComponent extends React.Component{
             bool = true;
             this.setState({rolenameformat:'角色名称不能为空...'});
         }
-        if(this.state.roletype===''){
+        if(this.state.roletype === '' || this.state.roletype == null){
             bool = true;
             this.setState({roletypeformat:'请选择角色类型...'});
         }
@@ -129,19 +129,19 @@ class EditRoleComponent extends React.Component{
                  
     render(){
         return(
-            <div style={{marginTop:"5%"}}>
-                <div className="card f-size bg-light mx-auto" style={{width:"30rem"}}>
-                 <h5 className="card-header text-center font-weight-bold text-secondary">编辑角色资料</h5>
+            <div style={{marginTop:"5%",fontSize:"12px",fontFamily:"Sans-Serif",color:"#666669"}}>
+                <div className="card bg-light mx-auto" style={{width:"30rem"}}>
+                 <h5 className="card-header text-center">编辑角色资料</h5>
                   <div className="card-body">
                    <form>
                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">角色名称:</label>
+                        <label>*角色名称:</label>
                         <input placeholder="请输入角色名称..." style={{fontSize:"12px"}} className="form-control" value={this.state.rolename} onChange={this.changeRolenameHandler}/>    
                         <div style={{color:"#f44e3b"}}>{this.state.rolenameformat}</div>     
                     </div>
                     <div className="form-group">
-                        <label className="text-secondary font-weight-bold">角色类型:</label>
-                        <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.roletype} onChange={this.changeRoletypeHandler}>
+                        <label>*角色类型:</label>
+                        <select className="form-control" style={{fontSize:"12px",color:"#666669"}} value={this.state.roletype} onChange={this.changeRoletypeHandler}>
                             <option value =''>请选择角色类型...</option>
                             <option value='1'>组织角色</option>
                             <option value='2'>业务角色</option>
@@ -149,24 +149,24 @@ class EditRoleComponent extends React.Component{
                         <div style={{color:"#f44e3b"}}>{this.state.roletypeformat}</div>   
                     </div>
                     <div className="form-group">
-                        <label className="text-secondary font-weight-bold">描述信息:</label>
+                        <label>描述信息:</label>
                         <input placeholder="请输入描述信息..." style={{fontSize:"12px"}} className="form-control" value={this.state.description} onChange={this.changeDescriptionHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.descriptionformat}</div>    
                     </div>
                     <div className="form-group">
-                        <label className="text-secondary font-weight-bold">租户:</label>
+                        <label>租户:</label>
                         <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.tenantid} onChange={this.changeTenantidHandler}>
-                            <option defaultValue value=''>请选择租户...</option>
+                            <option value=''>请选择租户...</option>
                             {
                                 this.state.tenants.map(
                                     tenant => 
-                                    <option value={tenant.id}>{tenant.name}</option>
+                                    <option key={tenant.id} value={tenant.id}>{tenant.name}</option>
                                 )
                             }
                         </select>
                     </div>
                     <div className="form-group">
-                        <label className="text-secondary font-weight-bold">是否为系统角色:</label>
+                        <label>是否为系统角色:</label>
                         <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.issystem} onChange={this.changeIssystemHandler}>
                             <option value=''>请选择是否为系统角色...</option>
                             <option value='1'>是</option>
@@ -174,12 +174,12 @@ class EditRoleComponent extends React.Component{
                         </select>
                     </div>
                     <div className="form-group">
-                        <label className="text-secondary font-weight-bold">角色编码:</label>
+                        <label>角色编码:</label>
                         <input placeholder="请输入角色编码..." style={{fontSize:"12px"}} className="form-control" value={this.state.rolecode} onChange={this.changeRolecodeHandler}/>
                         <div style={{color:"#f44e3b"}}>{this.state.rolecodeformat}</div>    
                     </div>
                     <div className="form-group">
-                        <label className="text-secondary font-weight-bold">是否被禁用:</label>
+                        <label>是否被禁用:</label>
                         <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.isforbidden} onChange={this.changeIsforbiddenHandler}>
                             <option value=''>请选择是否被禁用...</option>
                             <option value='1'>是</option>
@@ -187,7 +187,7 @@ class EditRoleComponent extends React.Component{
                         </select>
                     </div>
                     <div className="form-group">
-                        <label className="text-secondary font-weight-bold">是否默认角色:</label>
+                        <label>是否默认角色:</label>
                         <select className="text-secondary form-control" style={{fontSize:"12px"}} value={this.state.isdefault} onChange={this.changeIsdefaultHandler}>
                             <option value=''>请选择是否默认角色...</option>
                             <option value='1'>是</option>
@@ -195,8 +195,8 @@ class EditRoleComponent extends React.Component{
                         </select>
                     </div>
                     <div className="text-center">
-                    <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.editRole}>保存</button>
-                    <button className="btn btn-sm red-btn font-weight-bold text-white" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    <button className="btn btn-sm btn-outline-success" onClick={this.editRole}>保存</button>
+                    <button className="btn btn-sm btn-outline-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
                     </div>
                     </form>
                    </div>

@@ -47,10 +47,10 @@ class ViewRoleComponent extends React.Component{
 
     render(){
         return(
-            <div style={{marginTop:"2.5%",fontSize:"15px"}} className="text-secondary">
-                 <button className="btn font-weight-bold text-white" onClick={()=>{this.props.history.goBack()}} style={{marginLeft:"28.5%",backgroundColor:"purple"}}>返回</button>
+            <div style={{marginTop:"2.5%",fontSize:"12px",fontFamily:"Sans-Serif"}} className="text-secondary">
+                 <button className="btn btn-outline-dark" onClick={()=>{this.props.history.goBack()}} style={{marginLeft:"28.5%"}}>返回</button>
               <div className="card bg-light mx-auto" style={{width:"30rem",marginTop:"2.5%"}}>
-                <h5 className="text-center font-weight-bold card-header">角色详情</h5>
+                <h5 className="text-center card-header">角色详情</h5>
                 <div className="card-body" style={{marginLeft:"5%"}}>
                     <div className="row">
                         <label>ID:</label>

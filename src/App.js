@@ -34,9 +34,6 @@ import EditTenantComponent from './TenantComponents.js/EditTenantComponent';
 import AddResourceComponent from './ResourceComponents/AddResourceComponent';
 import UserRoleComponent from './UserRoleComponents.js/UserRoleComponent';
 import AddUserRoleComponent from './UserRoleComponents.js/AddUserRoleComponent';
-import RoleAuthComponent from './RoleAuthComponents/RoleAuthComponent';
-import AddRoleAuthComponent from './RoleAuthComponents/AddRoleAuthComponent'
-import EditRoleAuthComponent from './RoleAuthComponents/EditRoleAuthComponent';
 import RoleAuthComponentForUser from './RoleAuthComponents/RoleAuthComponentForUser';
 
 function App() {
@@ -79,9 +76,6 @@ function App() {
             <Route path="/edittenant/:id" component={EditTenantComponent}></Route>
             <Route path="/userrolelist" component={UserRoleComponent}></Route>
             <Route path="/adduserrole" component={AddUserRoleComponent}></Route>
-            <Route path="/roleauthlist" component={RoleAuthComponent}></Route>
-            <Route path="/addroleauth" component={AddRoleAuthComponent}></Route>
-            <Route path="/editroleauth/:id" component={EditRoleAuthComponent}></Route>
             <Route path="/roleauthforuser" component={RoleAuthComponentForUser}></Route>
           </Switch>
         </div>

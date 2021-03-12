@@ -54,24 +54,24 @@ class AddResourceComponent extends React.Component{
     }
 
     cancel(){
-        this.props.history.push("/resourcelist");
+        this.props.history.goBack();
     }
 
     render(){
         return(
-            <div style={{marginTop:"5%"}}>
-                <div className="card f-size bg-light mx-auto" style={{width:"30rem"}}>
-                 <h5 className="card-header text-center font-weight-bold text-secondary">添加资源</h5>
+            <div style={{marginTop:"5%",fontSize:"12px",color:"#666669"}}>
+                <div className="card f-size bg-light mx-auto" style={{width:"30rem",fontFamily:"Sans-Serif"}}>
+                 <h5 className="card-header text-center">添加资源</h5>
                   <div className="card-body">
                    <form>
                    <div className="form-group">
-                        <label className="text-secondary font-weight-bold">资源名称:</label>
+                        <label>*资源名称:</label>
                         <input placeholder="请输入资源名称..." style={{fontSize:"12px"}} className="form-control" value={this.state.resname} onChange={this.changeResnameHandler}/> 
                         <div style={{color:"#f44e3b"}}>{this.state.resnameformat}</div>    
                     </div>
                     <div className="form-group">
-                        <label className="text-secondary font-weight-bold">资源对应类型:</label>
-                        <select className="text-secondary form-control" style={{fontSize:"12px"}} onChange={this.changeRestypeidHandler}>
+                        <label>*资源对应类型:</label>
+                        <select className="form-control" style={{fontSize:"12px",color:"#666669"}} onChange={this.changeRestypeidHandler}>
                             <option defaultValue value=''>请选择资源对应类型...</option>
                             <option value='1'>物管平台菜单</option>
                             <option value='2'>物管平台API</option>
@@ -83,8 +83,8 @@ class AddResourceComponent extends React.Component{
                         <div style={{color:"#f44e3b"}}>{this.state.restypeidformat}</div>    
                     </div>
                     <div className="text-center">
-                    <button className="btn btn-sm green-btn font-weight-bold text-white" onClick={this.saveResource}>保存</button>
-                    <button className="btn btn-sm red-btn font-weight-bold text-white" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
+                    <button className="btn btn-sm btn-outline-success" onClick={this.saveResource}>保存</button>
+                    <button className="btn btn-sm btn-outline-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"80px"}}>取消</button>
                     </div>
                     </form>
                    </div>
