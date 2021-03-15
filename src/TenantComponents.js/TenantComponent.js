@@ -76,13 +76,12 @@ class TenantComponent extends React.Component{
     render(){
         return(
             <div>
-            <br></br>
-            <h3 className="text-center" style={{color:"#666669"}}>租户列表</h3>
+            <h3 className="text-center" style={{color:"#666669",marginTop:"3.5%"}}>租户列表</h3>
             <button className="btn btn-sm btn-outline-primary" onClick={this.addTenant}>添加租户</button>
             <table className="table" style={{color:"#666669",fontFamily:'sans-serif',fontSize:"12px"}}> 
                <thead className="text-justify">
                     <tr>
-                      <th style={{columnWidth:"30px"}}>id</th>
+                      <th style={{columnWidth:"60px"}}>id</th>
                       <th style={{columnWidth:"200px"}}>租户名称</th>  
                       <th style={{columnWidth:"200px"}}>业务归属</th>  
                       <th style={{columnWidth:"200px"}}>租户管理员用户名字</th>  
@@ -96,7 +95,7 @@ class TenantComponent extends React.Component{
                          this.state.tenants.map(
                              tenant =>
                              <tr key= {tenant.id}>         
-                                 <td className="t-cell" style={{maxWidth:"30px"}} data-toggle='tooltip' title={tenant.id}>{tenant.id}</td>
+                                 <td className="t-cell" style={{maxWidth:"60px"}} data-toggle='tooltip' title={tenant.id}>{tenant.id}</td>
                                  <td className="t-cell" style={{maxWidth:"200px"}} data-toggle='tooltip' title={tenant.name}>{tenant.name}</td>
                                  <td className="t-cell" style={{maxWidth:"200px"}} data-toggle='tooltip' title={tenant.businessassignment}>{tenant.businessassignment}</td>
                                  <td className="t-cell" style={{maxWidth:"200px",color:tenant.adminname ==='租户管理员用户不存在或已删除' ? 'red':undefined}} data-toggle='tooltip' title={tenant.adminname}>{tenant.adminname}</td>

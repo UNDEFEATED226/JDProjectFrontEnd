@@ -82,8 +82,7 @@ class govMenuComponent extends React.Component{
     render(){
        return(
         <div>
-        <br></br>
-        <h3 className="text-center" style={{color:"#666669"}}>能源平台政府侧菜单</h3>
+        <h3 className="text-center" style={{color:"#666669",marginTop:"3.5%"}}>能源平台政府侧菜单</h3>
         <button className="btn btn-sm btn-outline-primary" onClick={this.addResource}>添加资源</button>
         <table className="table f-size table-boarder" style={{color:"#666669",fontFamily:'Sans-Serif'}}> 
            <thead className="text-justify">

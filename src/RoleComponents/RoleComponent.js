@@ -87,8 +87,7 @@ class RoleComponent extends React.Component{
     render(){
        return(
         <div>
-        <br></br>
-        <h3 className="text-center" style={{color:"#666669"}}>角色列表</h3>
+        <h3 className="text-center" style={{color:"#666669",marginTop:"3.5%"}}>角色列表</h3>
         <button className="btn btn-sm btn-outline-primary" onClick={this.addRole}>添加角色</button>
         <table className="table" style={{color:"#666669",fontFamily:'Sans-Serif',fontSize:"12px"}}> 
            <thead className="text-justify">

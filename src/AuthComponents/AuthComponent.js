@@ -76,11 +76,10 @@ class AuthComponent extends React.Component{
 
     render(){
        return(
-        <div style={{fontSize:"12px",fontFamily:"sans-serif",color:"#666669"}}>
-        <br></br>
-        <h3 className="text-center" style={{color:"#666669"}}>权限列表</h3>
+        <div>
+        <h3 className="text-center" style={{color:"#666669",marginTop:"3.5%"}}>权限列表</h3>
         <button className="btn btn-sm btn-outline-primary" onClick={this.addAuth}>添加权限</button>
-        <table className="table" style={{color:"#666669"}}> 
+        <table className="table" style={{color:"#666669",fontSize:"12px "}}> 
            <thead className="text-justify">
                 <tr>
                   <th style={{columnWidth:"80px"}}>id</th>

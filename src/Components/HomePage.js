@@ -10,18 +10,18 @@ class HomePage extends React.Component{
 
     render(){
         return(
-         <div>
-               <div className="text-center" style={{fontSize:"18px",fontFamily:"sans-serif",width:"44%",marginLeft:"10%",display:"inline-block",marginRight:"1%",marginTop:"10%"}}>
+         <div style={{display:"flex",justifyContent:"center"}}>
+               <div className="text-center" style={{fontSize:"18px",fontFamily:"sans-serif",marginTop:"5%"}}>
                 <h4 style={{color:"#666669"}}>基础功能</h4>
-               <div><Link to="/adduser" style={{textDecoration:"none",color:"#666669"}}>添加用户</Link></div>
-               <div><Link to="/addorganization" style={{textDecoration:"none",color:"#666669"}}>添加组织</Link></div>
-               <div><Link to="/userrolelist" style={{textDecoration:"none",color:"#666669"}}>修改用户角色(跳转后请点击编辑)</Link></div>
-               <div><Link to="/roleauthforuser" style={{textDecoration:"none",color:"#666669"}}>修改角色权限</Link></div>
+               <div><Link className="btn btn-sm btn-outline-dark" to="/adduser" style={{textDecoration:"none",marginTop:"10px",width:"7rem"}}>添加用户</Link></div>
+               <div><Link className="btn btn-sm btn-outline-dark" to="/addorganization" style={{textDecoration:"none",marginTop:"10px",width:"7rem"}}>添加组织</Link></div>
+               <div><Link className="btn btn-sm btn-outline-dark" to="/userrolelist" data-toggle='tooltip' title="跳转后请点击编辑" style={{textDecoration:"none",marginTop:"10px",width:"7rem"}}>修改用户角色</Link></div>
+               <div><Link className="btn btn-sm btn-outline-dark" to="/roleauthforuser" style={{textDecoration:"none",marginTop:"10px",width:"7rem"}}>修改角色权限</Link></div>
                </div>
-               <div className="text-center" style={{fontSize:"18px",fontFamily:"sans-serif",width:"44%",marginLeft:"10%",marginTop:"5%"}}>
+               <div className="text-center" style={{fontSize:"18px",fontFamily:"sans-serif",marginLeft:"20%",marginTop:"5%"}}>
                 <h4 style={{color:"#666669"}}>其他功能</h4>
-                <div><Link to="/addrole" style={{textDecoration:"none",color:"#666669"}}>添加角色</Link></div>
-                <div><Link to="/userlist" style={{textDecoration:"none",color:"#666669"}}>修改用户信息(跳转后请点击编辑)</Link></div>
+                <div><Link className="btn btn-sm btn-outline-dark" to="/addrole" style={{textDecoration:"none",marginTop:"10px",width:"7rem"}}>添加角色</Link></div>
+                <div><Link className="btn btn-sm btn-outline-dark" data-toggle='tooltip' title="跳转后请点击编辑" to="/userlist" style={{textDecoration:"none",marginTop:"10px",width:"7rem"}}>修改用户信息</Link></div>
                </div>
          </div>
         )

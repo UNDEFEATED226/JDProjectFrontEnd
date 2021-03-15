@@ -50,7 +50,7 @@ class RoleAuthComponentForUser extends React.Component{
 
     render(){  
         return( 
-        <div style={{marginTop:"5%"}}>
+        <div style={{marginTop:"3.5%"}}>
         <div className="text-center" style={{color:"#666669"}}>
         <h3 data-toggle='tooltip' title='请通过勾选框以修改权限'>角色权限管理</h3>
         <h5>角色ID:{this.state.role.id}</h5>

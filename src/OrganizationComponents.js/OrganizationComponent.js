@@ -82,8 +82,7 @@ class OrganizationComponent extends React.Component{
     render(){
         return(
             <div>
-            <br></br>
-            <h3 className="text-center" style={{color:"#666669"}}>组织列表</h3>
+            <h3 className="text-center" style={{color:"#666669",marginTop:"3.5%"}}>组织列表</h3>
             <button className="btn btn-sm btn-outline-primary" onClick={this.addOrganization}>添加组织</button>
             <div className="row">
             </div>
@@ -119,7 +118,7 @@ class OrganizationComponent extends React.Component{
                  </tbody>
             </table>
             <div className="text-center">
-            <button className="btn btn-sm btn-outline-dark" style={{fontSize:"12px",color:"#666669"}} onClick={this.firstPage} disabled={(this.state.pageNo==null || this.state.pageNo<=1) ? true : false}>first page</button>
+            <button className="btn btn-sm btn-outline-dark" onClick={this.firstPage} disabled={(this.state.pageNo==null || this.state.pageNo<=1) ? true : false}>first page</button>
             <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.pageDown} disabled={(this.state.pageNo==null || this.state.pageNo<=1) ? true : false}>previous page</button>
             <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.pageUp} disabled={(this.state.pageNo==null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>next page</button>
             <button className="btn btn-sm btn-outline-dark" style={{marginLeft:"10px"}} onClick={this.lastPage} disabled={(this.state.pageNo==null || this.state.totalPages==null || this.state.pageNo>=this.state.totalPages) ? true : false}>last page</button>

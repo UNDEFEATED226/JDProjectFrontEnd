@@ -116,17 +116,16 @@ class UserRoleComponent extends React.Component{
             </div>
             </div>
         </div>
-        <br></br>
-        <h3 className="text-center" style={{color:"#666669"}}>用户角色列表</h3>
+        <h3 className="text-center" style={{color:"#666669",marginTop:"3.5%"}}>用户角色列表</h3>
         <button className="btn btn-sm btn-outline-primary" onClick={this.addUserRole}>添加用户角色</button>
         <table className="table f-size table-boarder" style={{color:"#666669",fontFamily:'Sans-Serif'}}> 
            <thead className="text-justify">
                 <tr>
-                  <th style={{columnWidth:"50px"}}>id</th>
-                  <th style={{columnWidth:"100px"}}>用户ID</th>  
-                  <th style={{columnWidth:"150px"}}>用户名字</th>  
-                  <th style={{columnWidth:"100px"}}>角色ID</th>  
-                  <th style={{columnWidth:"150px"}}>角色名称</th>  
+                  <th style={{columnWidth:"60px"}}>id</th>
+                  <th style={{columnWidth:"60px"}}>用户ID</th>  
+                  <th className="text-center" style={{columnWidth:"150px"}}>用户名字</th>  
+                  <th style={{columnWidth:"60px"}}>角色ID</th>  
+                  <th className="text-center" style={{columnWidth:"150px"}}>角色名称</th>  
                   <th style={{columnWidth:"180px"}}>创建时间</th> 
                   <th style={{maxcolumnWidthWidth:"180px"}}>更新时间</th>  
                   <th className="text-center" style={{columnWidth:"200px"}}>操作</th>
@@ -137,10 +136,10 @@ class UserRoleComponent extends React.Component{
                      this.state.userroles.map(
                         userrole =>
                          <tr key= {userrole.id}>         
-                             <td className="t-cell" style={{maxWidth:"50px"}} data-toggle='tooltip' title={userrole.id}>{userrole.id}</td>
-                             <td className="t-cell" style={{maxWidth:"100px"}} data-toggle='tooltip' title={userrole.userid}>{userrole.userid}</td>
+                             <td className="t-cell" style={{maxWidth:"60px"}} data-toggle='tooltip' title={userrole.id}>{userrole.id}</td>
+                             <td className="t-cell" style={{maxWidth:"60px"}} data-toggle='tooltip' title={userrole.userid}>{userrole.userid}</td>
                              <td className="t-cell" style={{maxWidth:"150px",color:userrole.username ==='用户不存在或已删除' ? 'red':undefined}} data-toggle='tooltip' title={userrole.username}>{userrole.username}</td>
-                             <td className="t-cell" style={{maxWidth:"100px"}} data-toggle='tooltip' title={userrole.roleid}>{userrole.roleid}</td>
+                             <td className="t-cell" style={{maxWidth:"60px"}} data-toggle='tooltip' title={userrole.roleid}>{userrole.roleid}</td>
                              <td className="t-cell" style={{maxWidth:"150px",color:userrole.rolename ==='角色不存在或已删除' ? 'red':undefined}} data-toggle='tooltip' title={userrole.rolename}>{userrole.rolename}</td>
                              <td className="t-cell" style={{maxWidth:"180px"}}>{moment(userrole.createtime).format('YYYY-MM-DD HH:mm:ss')}</td>
                              <td className="t-cell" style={{maxWidth:"180px"}}>{moment(userrole.updatetime).format('YYYY-MM-DD HH:mm:ss')}</td>
